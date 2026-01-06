@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    .math-display {
+        margin: 1em 0;
+        padding: 1em;
+        background-color: #000c43;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+    .math-inline {
+        background-color: #000f1f;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+    }
+    .feedback {
+        line-height: 1.6;
+    }
+    .feedback pre {
+        background-color: #f5f5f5;
+        padding: 1em;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+    .feedback code {
+        background-color: #f5f5f5;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-family: monospace;
+    }
+    .feedback blockquote {
+        border-left: 3px solid #ddd;
+        padding-left: 1em;
+        margin-left: 0;
+        color: #666;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    <h1>Prüfungsergebnisse</h1>
+    <p>Hier ist Ihre bewertete {{ exam_type }}-Prüfung mit Feedback:</p>
+    
+    <div class="score-container">
+        <h2>Ihre Leistung</h2>
+        <div class="feedback">
+            {{ feedback|safe }}
+        </div>
+    </div>
+    
+    <div class="actions">
+        <a href="{{ url_for('exam_selection') }}" class="btn">Neue Prüfung versuchen</a>
+        <a href="{{ url_for('dashboard') }}" class="btn secondary">Zurück zum Dashboard</a>
+    </div>
+</div>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+            processEscapes: true,
+            packages: {'[+]': ['ams']}
+        },
+        options: {
+            ignoreHtmlClass: 'tex2jax_ignore',
+            processHtmlClass: 'tex2jax_process'
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof MathJax !== 'undefined') {
+            MathJax.typesetPromise();
+        }
+    });
+</script>
+{% endblock %}

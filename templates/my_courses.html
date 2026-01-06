@@ -1,0 +1,383 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="my-courses-page">
+  <header class="mc-hero">
+    <div>
+      <h1 class="title">Meine Kurse</h1>
+      <p class="subtitle">Behalte den Überblick über gestartete, abgeschlossene, gespeicherte und selbst erstellte Kurse. Dein Fortschritt fließt in deine Auswertungen ein.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" href="/courses"><i class="bi bi-grid"></i> Katalog</a>
+      <a class="btn btn-primary" href="/courses/create"><i class="bi bi-magic"></i> Kurs erstellen</a>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="stat">
+      <div class="stat-n" id="stat-active">0</div>
+      <div class="stat-l">Aktiv</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-completed">0</div>
+      <div class="stat-l">Abgeschlossen</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-saved">0</div>
+      <div class="stat-l">Gespeichert</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" id="stat-created">0</div>
+      <div class="stat-l">Erstellt</div>
+    </div>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Kursbereiche">
+    <button class="tab active" role="tab" aria-selected="true" aria-controls="panel-enrolled" id="tab-enrolled">Aktiv</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="panel-completed" id="tab-completed">Abgeschlossen</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="panel-saved" id="tab-saved">Gespeichert</button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="panel-created" id="tab-created">Erstellt</button>
+  </nav>
+
+  <section id="panel-enrolled" class="panel active" role="tabpanel" aria-labelledby="tab-enrolled">
+    <div class="panel-head">
+      <div class="control control--search">
+        <i class="bi bi-search"></i>
+        <input id="search-enrolled" type="search" placeholder="In aktiven Kursen suchen …" autocomplete="off" />
+      </div>
+    </div>
+    <div id="list-enrolled" class="mc-list"></div>
+  </section>
+
+  <section id="panel-completed" class="panel" role="tabpanel" aria-labelledby="tab-completed">
+    <div class="panel-head">
+      <div class="control control--search">
+        <i class="bi bi-search"></i>
+        <input id="search-completed" type="search" placeholder="In abgeschlossenen Kursen suchen …" autocomplete="off" />
+      </div>
+    </div>
+    <div id="list-completed" class="mc-list"></div>
+  </section>
+
+  <section id="panel-saved" class="panel" role="tabpanel" aria-labelledby="tab-saved">
+    <div class="panel-head">
+      <div class="control control--search">
+        <i class="bi bi-search"></i>
+        <input id="search-saved" type="search" placeholder="In gespeicherten Kursen suchen …" autocomplete="off" />
+      </div>
+    </div>
+    <div id="list-saved" class="mc-list"></div>
+  </section>
+
+  <section id="panel-created" class="panel" role="tabpanel" aria-labelledby="tab-created">
+    <div class="panel-head">
+      <div class="control control--search">
+        <i class="bi bi-search"></i>
+        <input id="search-created" type="search" placeholder="In eigenen Kursen suchen …" autocomplete="off" />
+      </div>
+    </div>
+    <div id="list-created" class="mc-list"></div>
+  </section>
+</div>
+
+<style>
+.my-courses-page{max-width:1100px;margin:0 auto;padding:24px}
+.mc-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.title{margin:0;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:2rem}
+.subtitle{color:#9ca3af;margin-top:6px}
+.actions .btn{text-decoration:none}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+@media (max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:rgba(255,255,255,0.03);border:1px solid rgba(96,165,250,0.18);border-radius:16px;padding:12px}
+.stat-n{font-size:1.6rem;font-weight:700;color:#e5e7eb}
+.stat-l{color:#9ca3af}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 4px}
+.tab{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);border-radius:9999px;padding:8px 12px;color:#e5e7eb;cursor:pointer}
+.tab.active{border-color:rgba(96,165,250,0.35);background:rgba(96,165,250,0.12)}
+
+.panel{display:none;margin-top:8px}
+.panel.active{display:block}
+.panel-head{display:flex;justify-content:flex-end;margin-bottom:8px}
+
+.control{display:flex;align-items:center;background:rgba(15,23,42,0.6);border:1px solid rgba(96,165,250,0.15);border-radius:12px;gap:8px;padding:8px 12px;color:#d1d5db;min-width:260px}
+.control input{background:transparent;border:none;outline:none;color:#e5e7eb}
+
+.mc-list{display:grid;grid-template-columns:1fr;gap:10px}
+.mc-card{display:grid;grid-template-columns:1.6fr 1fr auto;gap:12px;align-items:center;background:rgba(255,255,255,0.03);border:1px solid rgba(96,165,250,0.18);border-radius:16px;padding:12px;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease}
+@media (max-width:900px){.mc-card{grid-template-columns:1fr}}
+.mc-card:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.35)}
+.mc-card:focus-visible{outline:2px solid rgba(96,165,250,0.6);outline-offset:2px}
+.mc-title{margin:0;color:#f3f4f6}
+.mc-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.badge{font-size:.75rem;color:#d1d5db;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:9999px;padding:3px 8px}
+.badge--subject{border-color:rgba(96,165,250,0.35)}
+.badge--level{border-color:rgba(16,185,129,0.35)}
+.mc-meta{color:#9ca3af;display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.progress-box{width:100%}
+.progress-label{display:flex;justify-content:space-between;color:#9ca3af}
+.progress-bar{height:10px;border-radius:9999px;background:rgba(255,255,255,0.06);overflow:hidden;margin-top:6px}
+.progress{height:100%;background:linear-gradient(90deg,#34d399,#10b981);width:0%}
+.mc-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:1px solid rgba(96,165,250,0.25);color:#e5e7eb;text-decoration:none;background:rgba(96,165,250,0.12);cursor:pointer;transition:transform .12s ease,background .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-1px);background:rgba(96,165,250,0.18)}
+.btn-secondary{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.18)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,0.12)}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;color:#fff}
+
+.empty{background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.18);border-radius:16px;padding:16px;text-align:center;color:#9ca3af}
+.empty .inline{display:flex;gap:8px;justify-content:center;margin-top:8px}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function(){
+  const gridEls = {
+    enrolled: document.getElementById('list-enrolled'),
+    completed: document.getElementById('list-completed'),
+    saved: document.getElementById('list-saved'),
+    created: document.getElementById('list-created')
+  };
+  const searchEls = {
+    enrolled: document.getElementById('search-enrolled'),
+    completed: document.getElementById('search-completed'),
+    saved: document.getElementById('search-saved'),
+    created: document.getElementById('search-created')
+  };
+
+  const state = {
+    enrolled: [],
+    completed: [],
+    saved: [],
+    created: []
+  };
+
+  function fmtMin(min){ if(!min && min!==0) return '—'; if(min<60) return min+' Min'; const h=Math.floor(min/60),m=min%60; return h+' h'+(m?(' '+m+' min'):''); }
+
+  function mcCardHTML(c){
+    const p = c.progress || 0;
+    return `
+      <div class="mc-card" data-id="${c.id}" data-last-index="${(typeof c.lastModuleIndex === 'number') ? c.lastModuleIndex : ''}" tabindex="0" aria-label="${c.title} – öffnen">
+        <div>
+          <h3 class="mc-title">${c.title}</h3>
+          <div class="mc-badges">
+            <span class="badge badge--subject">${c.subject}</span>
+            <span class="badge badge--level">${c.level}</span>
+            <span class="badge"><i class="bi bi-clock"></i> ${fmtMin(c.minutes||0)}</span>
+            <span class="badge"><i class="bi bi-layout-text-sidebar"></i> ${c.modules||0} Module</span>
+          </div>
+          <div class="mc-meta">
+            <span><i class="bi bi-graph-up"></i> ${(c.learners||0).toLocaleString('de-CH')}</span>
+            <span>•</span>
+            <span><i class="bi bi-stars"></i> ${(c.rating||0).toFixed(1)} (${c.ratings||0})</span>
+          </div>
+        </div>
+
+        <div class="progress-box">
+          <div class="progress-label">
+            <span>Fortschritt</span>
+            <span class="progress-val">${p}%</span>
+          </div>
+          <div class="progress-bar"><div class="progress" style="width:${p}%"></div></div>
+        </div>
+
+        <div class="mc-actions">
+          <a class="btn" href="/courses/${encodeURIComponent(c.id)}${(typeof c.lastModuleIndex === 'number') ? ('?m=' + encodeURIComponent(c.lastModuleIndex)) : ''}"><i class="bi bi-box-arrow-up-right"></i> Details</a>
+          <button class="btn btn-primary" data-action="resume"><i class="bi bi-play-circle"></i> ${p>0 ? 'Weiterlernen' : 'Starten'}</button>
+          <button class="btn btn-secondary" data-action="reset"><i class="bi bi-arrow-counterclockwise"></i> Zurücksetzen</button>
+          <button class="btn btn-ghost" data-action="toggle-save"><i class="bi ${c.saved ? 'bi-bookmark-fill' : 'bi-bookmark'}"></i> ${c.saved ? 'Gespeichert' : 'Speichern'}</button>
+          <button class="btn btn-ghost" data-action="complete"><i class="bi bi-check2-circle"></i> Als abgeschlossen markieren</button>
+          <button class="btn btn-ghost" data-action="remove"><i class="bi bi-x-circle"></i> Entfernen</button>
+        </div>
+      </div>
+    `;
+  }
+
+  function emptyHTML(kind){
+    const texts = {
+      enrolled: 'Du hast noch keine aktiven Kurse.',
+      completed: 'Noch keine abgeschlossenen Kurse.',
+      saved: 'Noch keine gespeicherten Kurse.',
+      created: 'Du hast noch keine Kurse erstellt.'
+    };
+    const ctas = `
+      <div class="inline">
+        <a class="btn" href="/courses"><i class="bi bi-grid"></i> Katalog</a>
+        <a class="btn btn-primary" href="/courses/create"><i class="bi bi-magic"></i> Kurs erstellen</a>
+      </div>
+    `;
+    return `<div class="empty">${texts[kind]||'Keine Einträge.'}${ctas}</div>`;
+  }
+
+  function filterByQuery(items, q){
+    const s = (q||'').toLowerCase();
+    if (!s) return items;
+    return items.filter(c =>
+      (c.title||'').toLowerCase().includes(s) ||
+      (c.subject||'').toLowerCase().includes(s) ||
+      (c.level||'').toLowerCase().includes(s) ||
+      (c.tags||[]).some(t => (t||'').toLowerCase().includes(s))
+    );
+  }
+
+  function renderAll(){
+    // Stats
+    const activeCount = state.enrolled.filter(c => (c.progress||0) < 100).length;
+    document.getElementById('stat-active').textContent = activeCount;
+    document.getElementById('stat-completed').textContent = state.completed.length;
+    document.getElementById('stat-saved').textContent = state.saved.length;
+    document.getElementById('stat-created').textContent = state.created.length;
+
+    // Panels
+    Object.keys(gridEls).forEach(kind => {
+      const list = filterByQuery(state[kind], searchEls[kind]?.value || '');
+      gridEls[kind].innerHTML = list.length ? list.map(mcCardHTML).join('') : emptyHTML(kind);
+    });
+  }
+
+  async function fetchJSON(url, opts){
+    const res = await fetch(url, opts || {});
+    const ct = res.headers.get('content-type') || '';
+    if (!res.ok) {
+      if (ct.includes('text/html')) { window.location.href = res.url || '/login'; throw new Error('Redirect'); }
+      const txt = await res.text().catch(()=> '');
+      throw new Error(txt || ('HTTP '+res.status));
+    }
+    if (ct.includes('application/json')) return res.json();
+    return res.text();
+  }
+
+  async function loadData(){
+    const me = await fetchJSON('/api/courses/me');
+    // Normalize saved flag
+    const toSavedMap = new Set((me.saved || []).map(c => c.id));
+    state.enrolled = (me.enrolled || []).map(c => Object.assign({}, c, { saved: toSavedMap.has(c.id) }));
+    state.completed = (me.completed || []).map(c => Object.assign({}, c, { saved: toSavedMap.has(c.id) }));
+    state.saved = (me.saved || []).map(c => Object.assign({}, c, { saved: true }));
+    state.created = (me.created || []).map(c => Object.assign({}, c, { saved: toSavedMap.has(c.id) }));
+    renderAll();
+  }
+
+  async function postAction(courseId, action, data){
+    const path = {
+      save: `/api/courses/${courseId}/save`,
+      enroll: `/api/courses/${courseId}/enroll`,
+      unenroll: `/api/courses/${courseId}/unenroll`,
+      progress: `/api/courses/${courseId}/progress`
+    }[action];
+    const opts = { method: 'POST', headers: { 'Content-Type': 'application/json' } };
+    if (action === 'progress') opts.body = JSON.stringify(data || {});
+    const res = await fetchJSON(path, opts);
+    return res;
+  }
+
+  function findAndUpdateCourse(id, updater){
+    ['enrolled','completed','saved','created'].forEach(kind => {
+      state[kind] = state[kind].map(c => c.id === id ? updater(c) : c);
+    });
+  }
+
+  // Actions
+  async function onAction(e){
+    const btn = e.target.closest('button'); if (!btn) return;
+    const card = e.target.closest('.mc-card'); if (!card) return;
+    const id = parseInt(card.getAttribute('data-id'), 10);
+    const action = btn.dataset.action;
+
+    try {
+      if (action === 'resume') {
+        await postAction(id, 'enroll');
+        const li = card.getAttribute('data-last-index');
+        window.location.href = '/courses/' + encodeURIComponent(id) + (li ? ('?m=' + encodeURIComponent(li)) : '');
+        return;
+      }
+      if (action === 'reset') {
+        if (!confirm('Fortschritt wirklich zurücksetzen?')) return;
+        await postAction(id, 'progress', { event: 'course_reset', progress: 0 });
+        findAndUpdateCourse(id, c => Object.assign({}, c, { progress: 0 }));
+      }
+      if (action === 'toggle-save') {
+        const res = await postAction(id, 'save');
+        const saved = !!res.saved;
+        findAndUpdateCourse(id, c => Object.assign({}, c, { saved }));
+      }
+      if (action === 'complete') {
+        await postAction(id, 'progress', { event: 'course_complete', progress: 100 });
+        // Move from enrolled to completed on next load; quick local update:
+        findAndUpdateCourse(id, c => Object.assign({}, c, { progress: 100 }));
+      }
+      if (action === 'remove') {
+        if (!confirm('Kurs aus der Liste entfernen? Dein Fortschritt bleibt gespeichert.')) return;
+        await postAction(id, 'unenroll');
+        // Remove from enrolled locally
+        state.enrolled = state.enrolled.filter(c => c.id !== id);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Aktion fehlgeschlagen.');
+    } finally {
+      renderAll();
+    }
+  }
+
+  // Tabs
+  const tabButtons = Array.from(document.querySelectorAll('.tab'));
+  const tabPanels = Array.from(document.querySelectorAll('.panel'));
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-selected', b===btn ? 'true' : 'false'); });
+      tabPanels.forEach(p => p.classList.toggle('active', p.id === btn.getAttribute('aria-controls')));
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+
+  // Search
+  Object.keys(searchEls).forEach(kind => {
+    searchEls[kind] && searchEls[kind].addEventListener('input', renderAll);
+  });
+
+  // Delegated click
+  document.getElementById('panel-enrolled').addEventListener('click', onAction);
+  document.getElementById('panel-completed').addEventListener('click', onAction);
+  document.getElementById('panel-saved').addEventListener('click', onAction);
+  document.getElementById('panel-created').addEventListener('click', onAction);
+
+  // Card navigation: click anywhere on row to open, plus keyboard navigation
+  function onNavClick(e){
+    const link = e.target.closest('a');
+    if (link) return; // let anchors work
+    const btn = e.target.closest('button');
+    if (btn) return; // handled by onAction
+    const card = e.target.closest('.mc-card');
+    if (!card) return;
+    const id = parseInt(card.getAttribute('data-id'), 10);
+    const li = card.getAttribute('data-last-index');
+    if (id) window.location.href = '/courses/' + encodeURIComponent(id) + (li ? ('?m=' + encodeURIComponent(li)) : '');
+  }
+  function attachPanelNav(panelId){
+    const el = document.getElementById(panelId);
+    if (!el) return;
+    el.addEventListener('click', onNavClick);
+    el.addEventListener('keydown', (e)=>{
+      const target = e.target;
+      if (!target || !target.classList || !target.classList.contains('mc-card')) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const id = parseInt(target.getAttribute('data-id'), 10);
+        const li = target.getAttribute('data-last-index');
+        if (id) window.location.href = '/courses/' + encodeURIComponent(id) + (li ? ('?m=' + encodeURIComponent(li)) : '');
+      }
+    });
+  }
+  attachPanelNav('panel-enrolled');
+  attachPanelNav('panel-completed');
+  attachPanelNav('panel-saved');
+  attachPanelNav('panel-created');
+
+  // Init
+  loadData();
+})();
+</script>
+{% endblock %}

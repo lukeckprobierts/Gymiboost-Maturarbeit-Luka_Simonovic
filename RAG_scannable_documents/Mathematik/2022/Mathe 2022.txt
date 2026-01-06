@@ -1,0 +1,150 @@
+Zentrale Aufnahmeprüfung 2022 Matheprüfung 2022, Mathematikprüfung 2022, Zentrale Matheprüfung 2022, Aufgaben Mathe 2022, Lösungen Mathematik 2022, Teil A Teil B Prüfung 2022, Jahr 2022 Mathe, Prüfung aus dem Jahr 2022 Mathematik, Aufgabe 1 Aufgabe 2 Aufgabe 3 Aufgabe 4 Aufgabe 5 Aufgabe 6, ZAP Mathematik 2022, 2022 2022 2022 22 22 22, Zentrale Prüfung 2022 Mathe, Prüfungsversion Mathematik 2022.
+
+für die Langgymnasien des Kantons Zürich
+Korrekturschema Mathematik
+Lösungen
+1.  1099
+2.  a) 2 oder 2 Tage oder 2 d
+    b) 26 oder 26 Tage oder 26 d
+    c) 22.2 oder 22.2° oder 22.2°C
+3.  a) 69 oder 69 Würfel
+    b) 15 oder 15 Würfel
+    c) 56 oder 56 Würfel
+4.  35 oder 35 Brezel
+5.  9 km/h
+6.  a) 5.955
+    b) 5.025
+7.  a) 56 oder 56 cm
+    b) 5 cm (oder dasselbe Ergebnis in anderer Einheit, z. B. 0.5 dm)
+8.  400 oder 400  l
+9.  a)                       b)                      c)
+---
+Kanton Zürich
+Zentrale Aufnahmeprüfung 2022
+für die Langgymnasien
+ Kanton Zürich
+ Zentrale Aufnahmeprüfung 2022
+ für die Langgymnasien
+Mathematik
+ Mathematik
+Name:                                  Vorname:
+Prüfungsnummer:                        Kantonsschule:
+ Name:                                Vorname:
+ Prüfungsnummer:                      Kantonsschule:
+Allgemeine Hinweise:
+ Allgemeine Hinweise:
+•  Du hast 60 Minuten Zeit.
+ •  Du hast 60 Minuten Zeit.
+•  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer
+ • Aufgabe nicht aus, fährst du auf der letzten Seite weiter.
+    Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer
+•   Aufgabe nicht aus, fährst du auf der letzten Seite weiter.
+   Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der
+ • Lösungsweg verständlich ist; sonst erhältst du keine Punkte.
+    Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der
+•   Lösungsweg verständlich ist; sonst erhältst du keine Punkte.
+   Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich
+ • und notiere sie mit der passenden Masseinheit.
+    Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich
+•   und notiere sie mit der passenden Masseinheit.
+   Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+ •  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+•  Bei Aufgabe 9 darfst du das Quadrat nicht ausschneiden.
+ •  Bei Aufgabe 9 darfst du das Quadrat nicht ausschneiden.
+•  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel
+ • verwenden.
+    Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel
+    verwenden.
+Bitte leer lassen!
+  Aufgabe    1     2    3    4    5     6    7    8     9  Total   Note
+  Maximale   4     4    4    4    4     4    4    4     4    36
+  Punktzahl
+  Erreichte
+  Punktzahl
+---
+1.   Gib das Ergebnis an:    (12.32 · 56)− 100.8 + (19· 4.2) + (56· 7.68)
+     Wenn du geschickt rechnest, kannst du den Rechenaufwand stark verringern.
+---
+2.    Klima
+      Der Monat Juli hat 31 Tage. In der folgenden Tabelle sind Hitzetage und Regentage immer
+      verschiedene Tage.
+            Κanton Ζürich                   Juli 2014          Juli 2015   Juli 2021
+            Αnzahl Ηitzetage                                       16          0
+            Αnzahl Regentage                    20             9              20
+            Αnzahl Τropennächte                 0              5               0
+            durchschnittliche Τemperatur     17.5◦ C                        17.6◦ C
+       a)  Die Anzahl Hitzetage im Juli 2014 beträgt  1 der Hitzetage im Juli 2015. Wie viele Hitze-
+           tage gab es im Juli 2014?                  8
+       b)  Wie viele Tage im Juli der drei Jahre 2014, 2015 und 2021 waren insgesamt weder Hitze-
+           tage noch Regentage?
+       c)  Der Mittelwert der drei Durchschnittstemperaturen beträgt 19.1◦ C. Wie viele Grad Celsi-
+           us beträgt die Durchschnittstemperatur im Juli 2015?
+---
+3.    Die nebenstehende Burg ist aus Würfeln von 1 cm
+      Kantenlänge zusammengeklebt. Nur auf der Vorder-
+      seite hat es eine Tür und ein Fenster.
+       a)   Aus wie vielen Würfeln besteht die Burg?
+       b)   Wie viele Würfel der Burg berühren den Boden?
+       c)   Wie viele Würfel braucht es zusätzlich, um aus
+            der Burg einen vollständig gefüllten Würfel mit
+            5 cm Seitenlänge zu erhalten?
+---
+4.    In der Zehnuhrpause liegen Brezel bereit.  3 der Brezel sind mit Butter bestrichen, die restlichen
+      nicht. Nur  3                              5
+                  7 von den Butterbrezeln werden gegessen. Daher bleiben 12 Butterbrezel übrig.
+      Wie viele Brezel lagen insgesamt zu Beginn der Pause bereit?
+---
+5.    Gabriela und Daria machen einen Ausﬂug ins Technorama. Gemeinsam laufen sie um 8.00 Uhr
+      mit einer Geschwindigkeit von 6 km/h zur Tramstation los. Nach drei Minuten bemerkt Daria,
+      dass sie ihr Portemonnaie vergessen hat. Sie übergibt ihren Rucksack Gabriela und rennt nach
+      Hause zurück, um das Portemonnaie zu holen. Gabriela läuft mit einer Geschwindigkeit von
+      6 km/h weiter und erreicht die Tramstation um 8.15 Uhr. Daria trifft ausser Atem gleichzeitig
+      ein.
+      Mit welcher durchschnittlichen Geschwindigkeit war Daria seit ihrer Umkehr unterwegs? Gib
+      das Resultat in km/h an.
+---
+6.    a)  Auf dem Zahlenstrahl sind zwei Zahlen A und B markiert.
+                                     A                   B
+                        5.9                                       6
+          Bestimme A und B. Welche Zahl liegt genau in der Mitte von A und B? Schreibe die drei
+          gesuchten Zahlen auf. Zeige deinen Lösungsweg graphisch oder mit einer Rechnung.
+      b)
+                    C = 4.8                                  D = 5.1
+          Welche Zahl liegt dreimal so weit von C entfernt wie von D? Zeige deinen Lösungsweg
+          graphisch oder mit einer Rechnung.
+---
+7.      Maxim und Noah bringen zu einer Geburtstagsparty
+   je ein Paket vorbei, das wie in der Skizze rechts mit
+      einer Schnur gebunden ist.
+      a)   Bei Maxims Paket ist A = 15 cm, B = 25 cm und                                C
+              C = 6 cm. Das Paket wurde mit einer 160 cm
+           langen Schnur gebunden. Wie viele Zentimeter     A                  B
+           der Schnur blieben für die Masche übrig?
+      b)   Bei Noahs Paket ist A = 20 cm und B = 30 cm und das Paket hat ein Volumen von 3 dm3.
+           Wie lang ist C?
+---
+8.    An einem kalten Wintertag lässt Frau Donatsch von ihrer Tochter Flurina ein warmes Bad ein-
+      laufen. Sie wundert sich, dass die 150l-Wanne nach 20 Minuten erst zu   2 gefüllt ist. Da bemerkt
+                                                                              3
+      sie, dass der Abﬂuss nicht richtig verschlossen ist. Das holt Frau Donatsch nun schnell nach und
+      zwei Minuten später kann sie ihr Vollbad geniessen.
+      Wie viele Liter Wasser sind in den ersten 20 Minuten unnötigerweise abgeﬂossen?
+---
+9.    Du hast das Quadrat ABCD rechts mit der dick markierten Li-   D                  C
+      nie. Dieses Quadrat wird nun mehrmals auf verschiedene Ar-
+      ten verändert. Gehe bei allen Aufgaben immer vom ursprüng-
+      lichen Quadrat aus.
+      Die Lösung  muss  klar ersichtlich sein. Verwende     Mass-
+      stab / Geodreieck und Zirkel für die Linien!
+                                                                    A                  B
+       a)  Drehe das Quadrat ABCD um 90◦        im Uhrzeigersinn.
+           Zeichne ein, wie die Linie dann aussieht.
+       b)  Spiegle das Quadrat ABCD an seiner Seite CD. Zeichne
+           ein, wie die Linie dann aussieht.
+       c)  Ergänze die Figur mit möglichst wenigen zusätzlichen     D                  C
+           Linien so, dass die ergänzte Figur beide Diagonalen AC
+           und BD als Symmetrieachsen hat.
+                                                                    A                  B
+---
+Auf dieser Seite kannst du Aufgaben weiter lösen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.

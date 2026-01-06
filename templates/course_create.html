@@ -1,0 +1,558 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="create-course-page">
+  <header class="create-hero">
+    <div>
+      <h1 class="title">Kurs erstellen</h1>
+      <p class="subtitle">Erstelle mit wenigen Klicks einen interaktiven, KI-gestützten Kurs. Er wird automatisch für alle geteilt.</p>
+    </div>
+    <div class="actions">
+      <a class="btn btn-ghost" href="/courses"><i class="bi bi-grid"></i> Katalog</a>
+    </div>
+  </header>
+
+  <section class="wizard">
+    <ol class="stepper" aria-label="Kurs-Erstellungsfortschritt">
+      <li class="step active" data-step="1"><span class="num">1</span> Grundlagen</li>
+      <li class="step" data-step="2"><span class="num">2</span> Struktur</li>
+      <!-- Interaktivität Schritt entfernt -->
+    </ol>
+
+    <!-- Step 1: Basics -->
+    <div class="panel active" data-panel="1">
+      <div class="grid">
+        <div class="card">
+          <h3>Grundlagen</h3>
+          <div class="form">
+            <label>
+              Kurstitel
+              <input id="title" type="text" placeholder="z. B. Textverständnis meistern (ZAP)" maxlength="120">
+            </label>
+
+            <div class="grid-2">
+              <label>
+                Fach
+                <select id="subject">
+                  <option value="">Auswählen…</option>
+                  <option>Mathematik</option>
+                  <option>Deutsch</option>
+                  <option>Französisch</option>
+                  <option>Englisch</option>
+                  <option>Logik</option>
+                  <option>Lernstrategien</option>
+                  <option>Allgemein</option>
+                </select>
+              </label>
+              <label>
+                Niveau
+                <select id="level">
+                  <option>Anfänger</option>
+                  <option>Mittelstufe</option>
+                  <option>Fortgeschritten</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Lernziele (kurz)
+              <textarea id="goals" rows="3" placeholder="z. B. Hauptaussagen erkennen, Argumentationsstruktur analysieren, typische Fallen vermeiden"></textarea>
+            </label>
+
+            <label>
+              Tags
+              <div class="chips-input">
+                <input id="tags-input" type="text" placeholder="Enter drücken zum Hinzufügen">
+                <div id="tags-list" class="chips"></div>
+              </div>
+            </label>
+
+            <div class="grid-2">
+              <label>
+                Sprache
+                <select id="language">
+                  <option>Deutsch</option>
+                  <option>Französisch</option>
+                  <option>Englisch</option>
+                </select>
+              </label>
+              <label>
+                Zielgruppe
+                <select id="audience">
+                  <option>6. Klasse</option>
+                  <option>2. Sek</option>
+                  <option>3. Sek</option>
+                  <option>Gemischt</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card hint">
+          <h4>Hinweis</h4>
+          <p>Sei präzise beim Titel und den Lernzielen – dadurch generiert die KI später sinnvollere Inhalte.</p>
+          <p class="muted"><i class="bi bi-shield-check"></i> Kurse sind fortschrittsfähig: Lernaktivitäten zählen später zu deinen Auswertungen.</p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Step 2: Structure -->
+    <div class="panel" data-panel="2">
+      <div class="grid">
+        <div class="card">
+          <h3>Struktur & Umfang</h3>
+          <div class="form">
+            <div class="grid-3">
+              <label>
+                Dauer
+                <select id="duration">
+                  <option value="short">Kurz (&lt; 1h)</option>
+                  <option value="medium" selected>Mittel (1–3h)</option>
+                  <option value="long">Lang (3–10h)</option>
+                  <option value="xl">Sehr lang (10h+)</option>
+                </select>
+              </label>
+              <label>
+                Module
+                <select id="modules">
+                  <option value="auto" selected>Automatisch</option>
+                  <option>4</option>
+                  <option>6</option>
+                  <option>8</option>
+                  <option>10</option>
+                  <option>12</option>
+                </select>
+              </label>
+              <label>
+                Vorwissen
+                <select id="prereq">
+                  <option>Keines</option>
+                  <option>Grundkenntnisse</option>
+                  <option>Gute Kenntnisse</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              Schwerpunkte (Komma-getrennt)
+              <input id="topics" type="text" placeholder="z. B. Hauptaussage, Argumentation, Wortschatz">
+            </label>
+
+            <label>
+              Voraussetzungen (freiwillig)
+              <textarea id="preq-text" rows="2" placeholder="z. B. Grundrechenarten sicher, Satzbau"></textarea>
+            </label>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="final-actions">
+          <button class="btn btn-secondary" data-nav="prev"><i class="bi bi-arrow-left"></i> Zurück</button>
+          <button id="generate" class="btn btn-primary"><i class="bi bi-magic"></i> Kurs generieren</button>
+        </div>
+
+        <aside class="card">
+          <h4>Vorschau: Gliederung (Beispiel)</h4>
+          <ol id="syllabus-preview" class="syllabus">
+            <li>Einführung und Diagnose</li>
+            <li>Kernkonzept 1 mit Beispielen</li>
+            <li>Geführte Übungen</li>
+            <li>Zwischenquiz & Feedback</li>
+            <li>Kernkonzept 2 vertiefen</li>
+            <li>Abschlussprojekt & Prüfungstraining</li>
+          </ol>
+          <p class="muted">Wird automatisch an deinen Input angepasst.</p>
+        </aside>
+
+        <aside class="card success hidden" id="success-box" role="status" aria-live="polite">
+          <h3><i class="bi bi-check-circle-fill"></i> Kurs erstellt!</h3>
+          <p>Dein Kurs wurde dem globalen Katalog hinzugefügt und veröffentlicht. Du kannst ihn sofort starten oder Details ansehen.</p>
+          <div class="inline-actions">
+            <a id="success-detail" class="btn"><i class="bi bi-box-arrow-up-right"></i> Details</a>
+            <a class="btn btn-secondary" href="/courses"><i class="bi bi-grid"></i> Zum Katalog</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+
+
+    <!-- Wizard Nav -->
+    <div class="wizard-nav">
+      <button class="btn btn-secondary" data-nav="prev"><i class="bi bi-arrow-left"></i> Zurück</button>
+      <div class="spacer"></div>
+      <button class="btn btn-primary" data-nav="next">Weiter <i class="bi bi-arrow-right"></i></button>
+    </div>
+  </section>
+</div>
+
+<div id="course-loading" class="loading-overlay" aria-live="polite" aria-busy="true" role="alert">
+  <div class="loading-card">
+    <div class="spinner" aria-hidden="true"></div>
+    <h3>Kurs wird generiert…</h3>
+    <p id="loading-message">Die KI plant den Kurs und erstellt die Inhalte. Das dauert ca. 20–90 Sekunden.</p>
+    <p class="muted tiny">Bitte dieses Fenster geöffnet lassen. Du wirst automatisch informiert.</p>
+  </div>
+</div>
+
+<style>
+.create-course-page{max-width:1000px;margin:0 auto;padding:24px}
+.create-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px;flex-wrap:wrap}
+.title{font-size:2rem;margin:0;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:#9ca3af;margin-top:6px}
+.actions .btn{text-decoration:none}
+
+.wizard{background:rgba(255,255,255,0.03);border:1px solid rgba(96,165,250,0.15);border-radius:16px;padding:16px}
+.stepper{list-style:none;padding:0;margin:0 0 12px;display:flex;gap:10px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:8px;color:#9ca3af;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.12);padding:6px 10px;border-radius:9999px;font-size:.95rem}
+.step .num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:9999px;background:rgba(96,165,250,0.18);border:1px solid rgba(96,165,250,0.35);color:#dbeafe;font-weight:600}
+.step.active{color:#e5e7eb;border-color:rgba(96,165,250,0.35)}
+
+.panel{display:none}
+.panel.active{display:block}
+
+.grid{display:grid;grid-template-columns:2.2fr 1fr;gap:12px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media (max-width:700px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(96,165,250,0.18);border-radius:16px;padding:14px}
+.card h3{margin:0 0 8px}
+.card.hint{border-style:dashed}
+.muted{color:#9ca3af}
+
+.form label{display:block;font-size:.92rem;color:#e5e7eb;margin-bottom:8px}
+.form input,.form select,.form textarea{width:100%;background:rgba(15,23,42,0.6);border:1px solid rgba(96,165,250,0.18);border-radius:12px;color:#e5e7eb;padding:10px 12px;font-size:.95rem;outline:none}
+.form textarea{resize:vertical}
+
+.check{display:flex;align-items:center;gap:8px}
+.check input{width:auto}
+
+.chips-input{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:rgba(15,23,42,0.6);border:1px solid rgba(96,165,250,0.18);border-radius:12px;padding:6px}
+.chips-input input{background:transparent;border:none;outline:none;padding:8px 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:rgba(96,165,250,0.12);border:1px solid rgba(96,165,250,0.25);color:#dbeafe;padding:6px 10px;border-radius:9999px;font-size:.85rem}
+.chip .x{margin-left:8px;opacity:.7;cursor:pointer}
+
+.syllabus{margin:8px 0 0 18px}
+.divider{height:1px;background:rgba(96,165,250,0.18);margin:10px 0}
+.final-actions{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+
+.wizard-nav{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:12px}
+.wizard-nav .spacer{flex:1}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:1px solid rgba(96,165,250,0.25);color:#e5e7eb;text-decoration:none;background:rgba(96,165,250,0.12);cursor:pointer;transition:transform .12s ease,background .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-1px);background:rgba(96,165,250,0.18)}
+.btn-secondary{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.18)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,0.12)}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;color:#fff}
+
+.success h3{margin:0 0 8px;color:#bbf7d0}
+.success .inline-actions{display:flex;gap:8px;flex-wrap:wrap}
+.hidden{display:none !important}
+
+/* Loading overlay */
+.loading-overlay{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:9999;
+  background:radial-gradient(1200px 600px at 50% 50%, rgba(37,99,235,0.10), rgba(17,24,39,0.85) 60%);
+  backdrop-filter:saturate(120%) blur(2px);
+}
+.loading-overlay.show{display:flex}
+.loading-card{
+  width:min(520px, 92vw);
+  border-radius:16px;
+  border:1px solid rgba(96,165,250,0.35);
+  background:rgba(2,6,23,0.75);
+  padding:22px;
+  box-shadow:0 20px 60px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+  text-align:center;
+}
+.loading-card h3{
+  margin:10px 0 6px;
+  color:#e5e7eb;
+}
+.loading-card p{
+  margin:6px 0;
+}
+.spinner{
+  width:42px;height:42px;
+  border-radius:9999px;
+  border:4px solid rgba(148,163,184,0.25);
+  border-top-color:#93c5fd;
+  animation:spin 1s linear infinite;
+  margin:0 auto 8px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tiny{font-size:.85rem}
+.btn[disabled], .btn[aria-disabled="true"]{
+  opacity:0.65; cursor:not-allowed; transform:none !important;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+  // Local storage keys shared with catalog
+  const LS = {
+    catalog: 'gb_courses_catalog',
+    saved: 'gb_saved_course_ids',
+    enrolled: 'gb_enrolled_courses',
+    created: 'gb_created_courses'
+  };
+
+  const read = (k, fallback) => {
+    try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : (fallback ?? null); }
+    catch { return fallback ?? null; }
+  };
+  const write = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+  // Stepper state
+  let step = 1;
+  const total = 2;
+
+  const stepEls = document.querySelectorAll('.step');
+  const panels = document.querySelectorAll('.panel');
+  const nextBtns = document.querySelectorAll('[data-nav="next"]');
+  const prevBtns = document.querySelectorAll('[data-nav="prev"]');
+
+  function goto(s) {
+    step = Math.max(1, Math.min(total, s));
+    stepEls.forEach(el => el.classList.toggle('active', Number(el.dataset.step) <= step));
+    panels.forEach(p => p.classList.toggle('active', Number(p.dataset.panel) === step));
+
+    const success = document.getElementById('success-box');
+    const nav = document.querySelector('.wizard-nav');
+    const next = document.querySelector('.wizard-nav [data-nav="next"]');
+
+    // Hide bottom nav when success visible
+    if (success && !success.classList.contains('hidden')) {
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+      // Hide next on last step to reduce clutter
+      if (next) next.style.display = (step < total) ? 'inline-flex' : 'none';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  nextBtns.forEach(b => b.addEventListener('click', () => goto(step + 1)));
+  prevBtns.forEach(b => b.addEventListener('click', () => goto(step - 1)));
+
+  // Tags input
+  const tagsInput = document.getElementById('tags-input');
+  const tagsList = document.getElementById('tags-list');
+  const tags = new Set();
+  function renderTags() {
+    tagsList.innerHTML = Array.from(tags).map(t => `<span class="chip" data-tag="${t}">${t}<span class="x" title="Entfernen">&times;</span></span>`).join('');
+  }
+  tagsList.addEventListener('click', (e) => {
+    const x = e.target.closest('.x');
+    if (!x) return;
+    const chip = e.target.closest('.chip');
+    const t = chip?.dataset?.tag;
+    if (t) { tags.delete(t); renderTags(); }
+  });
+  tagsInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const val = (tagsInput.value || '').trim();
+      if (val) { tags.add(val); renderTags(); tagsInput.value = ''; }
+    }
+  });
+
+  // Live syllabus preview
+  const titleEl = document.getElementById('title');
+  const topicsEl = document.getElementById('topics');
+  const syllabusEl = document.getElementById('syllabus-preview');
+  function updateSyllabus() {
+    const title = (titleEl.value || 'Kurs').slice(0, 40);
+    const topics = (topicsEl.value || '').split(',').map(s => s.trim()).filter(Boolean).slice(0, 4);
+    const items = [
+      `Einführung: Ziele & Startdiagnose`,
+      topics[0] ? `Kernkonzept: ${topics[0]}` : `Kernkonzept 1`,
+      `Geführte Übungen & Beispiele`,
+      topics[1] ? `Vertiefung: ${topics[1]}` : `Vertiefung`,
+      `Quiz & Feedback`,
+      topics[2] ? `Transfer: ${topics[2]}` : `Transfer`,
+      `Prüfungstraining / Projekt`,
+      `Abschluss & Wiederholung`
+    ].slice(0, 6 + (topics[3] ? 1 : 0));
+    syllabusEl.innerHTML = items.map(it => `<li>${it}</li>`).join('');
+  }
+  titleEl.addEventListener('input', updateSyllabus);
+  topicsEl.addEventListener('input', updateSyllabus);
+  updateSyllabus();
+
+  // Generate course
+  const generateBtn = document.getElementById('generate');
+  const successBox = document.getElementById('success-box');
+  const successDetail = document.getElementById('success-detail');
+
+  // Loading overlay + click guard
+  const overlayEl = document.getElementById('course-loading');
+  const loadingMsgEl = document.getElementById('loading-message');
+  let isGenerating = false;
+  let msgTimer = null;
+  let originalBtnHTML = generateBtn.innerHTML;
+
+  const messages = [
+    'Plane Lernziele und Struktur…',
+    'Erzeuge Inhalte…',
+    'Schreibe Quizfragen und Lösungen…',
+    'Prüfe Qualität und Konsistenz…',
+    'Speichere den Kurs…'
+  ];
+
+  function startLoadingUI() {
+    isGenerating = true;
+    generateBtn.disabled = true;
+    generateBtn.setAttribute('aria-disabled', 'true');
+    originalBtnHTML = generateBtn.innerHTML;
+    generateBtn.innerHTML = '<i class="bi bi-hourglass-split"></i> Generiere…';
+    overlayEl.classList.add('show');
+    // Rotate status message
+    let i = 0;
+    if (loadingMsgEl) loadingMsgEl.textContent = 'Die KI plant den Kurs und erstellt die Inhalte. Das dauert ca. 20–90 Sekunden.';
+    msgTimer = setInterval(() => {
+      i = (i + 1) % messages.length;
+      if (loadingMsgEl) loadingMsgEl.textContent = messages[i];
+    }, 2500);
+  }
+
+  function stopLoadingUI() {
+    overlayEl.classList.remove('show');
+    if (msgTimer) { clearInterval(msgTimer); msgTimer = null; }
+    generateBtn.disabled = false;
+    generateBtn.removeAttribute('aria-disabled');
+    generateBtn.innerHTML = originalBtnHTML;
+    isGenerating = false;
+  }
+
+  function estMinutes(bucket) {
+    switch (bucket) {
+      case 'short': return 45;
+      case 'medium': return 150;
+      case 'long': return 420;
+      case 'xl': return 720;
+      default: return 120;
+    }
+  }
+  function pickModules(sel, bucket) {
+    if (sel && sel !== 'auto') return Number(sel);
+    switch (bucket) {
+      case 'short': return 4;
+      case 'medium': return 6;
+      case 'long': return 10;
+      case 'xl': return 14;
+      default: return 6;
+    }
+  }
+  function cleanId(s) {
+    return 'c-' + (s || 'kurs').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '') + '-' + Math.random().toString(36).slice(2,7);
+  }
+
+  function validateStep1() {
+    const title = (document.getElementById('title').value || '').trim();
+    const subject = document.getElementById('subject').value;
+    if (!title || !subject) {
+      alert('Bitte Titel und Fach ausfüllen.');
+      return false;
+    }
+    return true;
+  }
+
+  generateBtn.addEventListener('click', () => {
+    if (isGenerating) return;
+    if (!validateStep1()) { goto(1); return; }
+
+    // Collect fields
+    const title = (document.getElementById('title').value || '').trim();
+    const subject = document.getElementById('subject').value;
+    const level = document.getElementById('level').value;
+    const goals = (document.getElementById('goals').value || '').trim();
+    const tagList = Array.from(tags);
+    const language = document.getElementById('language').value;
+    const audience = document.getElementById('audience').value;
+
+    const duration = document.getElementById('duration').value;
+    const modulesSel = document.getElementById('modules').value;
+    const prereq = document.getElementById('prereq').value;
+    const topics = (document.getElementById('topics').value || '').split(',').map(s=>s.trim()).filter(Boolean);
+    const preqText = (document.getElementById('preq-text').value || '').trim();
+
+
+
+    const minutes = estMinutes(duration);
+    const modules = pickModules(modulesSel, duration);
+    const id = cleanId(title);
+
+    // Defaults for removed Veröffentlichung step
+    const summary = goals ? goals.split(/[.\n]/).filter(Boolean)[0]?.slice(0, 160) : '';
+    const cover = '';
+    const license = 'CC BY-SA';
+    const allowClone = true;
+
+    // Build payload for backend generator
+    const payload = {
+      title, subject, level, goals,
+      tags: tagList.length ? tagList : topics.slice(0,4),
+      language, audience,
+      duration,
+      modules: modulesSel,
+      prior_knowledge: prereq,
+      prereq_text: preqText,
+      assume_no_prior: (prereq === 'Keines'),
+      no_practice_outside_quiz: true
+    };
+
+    console.debug('Course generation payload', payload);
+    startLoadingUI();
+
+    fetch('/api/courses/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(async res => {
+      if (!res.ok) {
+        const txt = await res.text().catch(()=> '');
+        throw new Error(txt || 'Fehler beim Generieren');
+      }
+      return res.json();
+    }).then(data => {
+      const courseId = data.course_id;
+      // Success UI
+      const detailUrl = '/courses/' + encodeURIComponent(courseId);
+      successDetail.href = detailUrl;
+      successBox.classList.remove('hidden');
+
+      // Hide wizard nav to reduce clutter
+      const nav = document.querySelector('.wizard-nav');
+      nav.style.display = 'none';
+      goto(2);
+      stopLoadingUI();
+      // Optional auto-redirect:
+      // setTimeout(() => window.location.href = detailUrl, 1200);
+    }).catch(err => {
+      stopLoadingUI();
+      alert('Fehler beim Generieren: ' + err.message);
+    });
+  });
+
+  // Allow clicking on step headings to jump
+  document.querySelectorAll('.step').forEach(el => {
+    el.addEventListener('click', () => {
+      const target = Number(el.dataset.step);
+      goto(target);
+    });
+  });
+
+  // Initialize
+  goto(1);
+})();
+</script>
+{% endblock %}

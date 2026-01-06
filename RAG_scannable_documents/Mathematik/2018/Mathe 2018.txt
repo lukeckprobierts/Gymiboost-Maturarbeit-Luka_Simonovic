@@ -1,0 +1,90 @@
+Zentrale Aufnahmeprüfung 2018 für die Langgymnasien des Kantons Zürich
+Μathematik
+Name:   . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  Vorname:     . . . . . . . . . . . . . . . . . . . . . . . . . .
+Prüfungsnummer:  . . . . . . . . . . .                             Schule:  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Allgemeine Hinweise:
+   •  Du hast 60 Minuten Zeit.
+   •  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer Aufgabe nicht aus,
+      fährst du auf der letzten Seite weiter.
+   •  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der Lösungsweg
+      verständlich ist; sonst erhältst du keine Punkte.
+   •  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich und notiere sie
+      mit der passenden Masseinheit.
+   •  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+   •  Die Aufgabe 9 musst du mit Bleistift und Geometriewerkzeugen lösen.
+      Die Konstruktionslinien müssen sichtbar sein.
+   •  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel verwenden.
+Bitte leer lassen!
+ Aufgabe      1     2     3     4    5                              6  7  8  9 Total  Note
+ Maximale     4     4     4     4    4                              4  4  4  4   36
+ Punktzahl
+ Erreichte
+ Punktzahl
+---
+NO_CONTENT_HERE
+---
+1.    Gib das Ergebnis an:     (975.2 : 23) + (12 · 21.9)− (12· 6.9)− (892.4 : 23)
+---
+2.   Gib die Lösung in h und min an:   (63· 17 min) +4 7 h − (23 · 17 min) +  = 23 h 19 min
+                                                      15
+---
+3.    Für ein Fest haben sich 72 Personen angemeldet. Pro Person wurden 5 Mini-Sandwiches einge-
+      kauft. Kurz vor dem Fest sagen einige Personen ab. Nun erhalten  5 der ursprünglich angemel-
+                                                                       9
+      deten Personen je 6 Mini-Sandwiches und die anderen anwesenden Personen je 5.
+      Wie viele Personen nehmen tatsächlich am Fest teil?
+---
+4.    Frau Scalvinoni erledigt ihren Einkauf auf dem Wochenmarkt. Im Portemonnaie beﬁnden sich
+      86.80 Fr. Sie kauft 3 kg Tomaten zu 4.90 Fr. pro Kilo, Früchte für 16.80 Fr. und 6 kg Kartoffeln.
+      1 kg Tomaten ist doppelt so teuer wie 1 kg Kartoffeln. Zum Schluss kauft sie 800 g frische
+      Teigwaren. Nach dem gesamten Einkauf sind noch 29.40 Fr. im Portemonnaie.
+      Wie viel kostet 1 kg Teigwaren?
+---
+5.    Claudia hat einen Schulweg von 1300 m, wofür sie zu Fuss in ihrem normalen Tempo genau
+      15 Minuten benötigt. Sie macht sich 15 Minuten vor Schulbeginn auf den Weg. Nach 260 m
+      merkt sie, dass sie ihr Etui zuhause vergessen hat. Sie geht in ihrem bisherigen Tempo wieder
+      nach Hause, wo sie 1 Minute braucht, um das Etui zu suchen und einzupacken.
+      Mit welcher durchschnittlichen Geschwindigkeit – gemessen in km/h – muss sie jetzt den Weg
+      zurücklegen, um pünktlich zu sein?
+---
+6.    Eine Maschine soll Schuhbändelpaare von je 80 cm Länge pro Schuhbändel schneiden und
+      verpacken. In die Maschine wird eine 168 m lange Rolle Schuhbändelschnur eingesetzt. Bei
+      der Kontrolle des 30. Paares merkt der Prüfer, dass die Maschine auf die Bändellänge 85 cm
+      eingestellt war.
+      Auf welche Bändellänge muss der Prüfer jetzt die Maschine einstellen, damit am Schluss die
+      gleiche Anzahl Schuhbändelpaare, wie am Anfang gewünscht, herauskommt?
+---
+7.    Andreas zeichnet von innen nach aussen eine Spirale auf
+      Häuschenpapier. Nach 2 Runden sieht es so aus:
+      Insgesamt zeichnet er 4 solche Runden.
+       a)   Wie viele Häuschen beträgt die Länge der ganzen Spirale?
+       b)   Bei wie vielen Häuschen malt er genau eine Seite an?
+       c)   Wie viele rechte Winkel zeichnet er?
+       d)   Bei wie vielen Häuschen malt er genau zwei gegenüberliegende Seiten an?
+---
+8.    Notiere alle vierstelligen Zahlen, die alle folgenden Bedingungen erfüllen:
+      •   Sie enthalten nur ungerade Ziffern;
+      •   sie können gleiche Ziffern enthalten;
+      •   sie sind durch 15 teilbar;
+      •   sie sind grösser als 5000;
+      •   sie haben die Quersumme 18.
+      Markiere deine Lösungszahlen deutlich.
+---
+9.    Konstruiere das Gebiet, in dem alle Punkte liegen, die alle folgenden Bedingungen erfüllen:
+      •    Sie liegen näher bei A als bei B;
+      •    sie haben vom Kreis k mit Mittelpunkt M höchstens den Abstand 1.5 cm;
+      •    sie haben von der Geraden g mindestens den Abstand 2 cm.
+      Schrafﬁere dieses Gebiet gut sichtbar mit Bleistift.
+                    k                   M                                      g
+                                                                  B
+                                A
+---
+Auf dieser Seite kannst du Aufgaben weiter lösen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.
+---
+   m
+k2         M
+                    XB
+
+
+Mathematikprüfung 2018, Matheprüfung 2018, ZAP 2018 Mathematik, Mathematik Zentrale Prüfung 2018, Zentrale Matheprüfung 2018, Teil A Teil B 2018 Mathematik, Aufgabe 1 bis Aufgabe 6 Mathe 2018, Lösungen Mathe 2018, 2018 2018 2018 18 18 18, Mathetest Jahr 2018, Prüfungsjahr 2018 Mathematik, Aufgaben und Lösungen 2018 Mathe, Prüfung aus 2018 Mathe, Mathematikprüfung 2018 original, ZAP Mathematik 2018 vollständig.

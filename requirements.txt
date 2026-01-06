@@ -1,0 +1,14 @@
+Flask
+Flask-SQLAlchemy
+Werkzeug
+chromadb
+openai
+PyMuPDF
+waitress
+markdown
+weasyprint
+cairocffi
+PyMySQL
+requests
+python-dotenv
+beautifulsoup4>=4.12.3

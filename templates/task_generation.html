@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1 class="page-title">Aufgaben generieren</h1>
+        <p class="page-description">Erstelle personalisierte Übungsaufgaben basierend auf deinen Bedürfnissen</p>
+        <div class="mt-2">
+            <a href="{{ url_for('saved_tasks') }}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-collection"></i> Gespeicherte Aufgaben anzeigen
+            </a>
+        </div>
+    </div>
+
+    <div class="task-generation-form">
+        <form id="taskGenerationForm">
+            <div class="form-group">
+                <label for="taskType" class="form-label">Aufgabentyp</label>
+                <select class="form-control" id="taskType">
+                    <option value="random">Zufälliges Thema</option>
+                    <option value="custom">Eigenes Thema</option>
+                    <option value="specific">Bestimmte Prüfung</option>
+                    <option value="upload">Von Datei importieren</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="fileUploadContainer" style="display: none;">
+                <label for="fileUpload" class="form-label">PDF oder Bild hochladen</label>
+                <input type="file" class="form-control" id="fileUpload" accept=".pdf,.jpg,.jpeg,.png">
+                <small class="form-text text-muted">
+                    Lade eine Prüfungsaufgabe hoch, um ähnliche Aufgaben mit anderen Zahlen/Werten zu generieren
+                </small>
+            </div>
+
+            <div class="form-group" id="customTopicContainer" style="display: none;">
+                <label for="customTopic" class="form-label">Thema eingeben</label>
+                <input type="text" class="form-control" id="customTopic" 
+                       placeholder="z.B. Bruchrechnen, Aufsatzthemen 2023, etc.">
+            </div>
+            
+            <div class="form-group" id="examSelectionContainer" style="display: none;">
+                <label for="examSelection" class="form-label">Prüfung auswählen</label>
+                <select class="form-control" id="examSelection">
+                    {% for exam_type, files in exams.items() %}
+                        {% for file in files %}
+                            <option value="{{ exam_type }}/{{ file }}">{{ exam_type }} - {{ file }}</option>
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="difficulty" class="form-label">Schwierigkeit</label>
+                <div class="difficulty-container">
+                    <input type="range" class="difficulty-slider" id="difficulty" min="1" max="5" value="3" step="1">
+                    <span class="difficulty-value">Stufe: 3</span>
+                    <div class="difficulty-labels">
+                        <span data-value="1">Einfach</span>
+                        <span data-value="3">Mittel</span>
+                        <span data-value="5">Schwer</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="taskCount" class="form-label">Anzahl Aufgaben</label>
+                <input type="number" class="form-control" id="taskCount" min="1" max="10" value="3">
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="generateBtn">
+                    <span id="generateText">Aufgaben generieren</span>
+                    <span id="generateSpinner" class="spinner-border spinner-border-sm d-none ms-2"></span>
+                </button>
+            </div>
+        </form>
+
+        <div id="loadingIndicator" class="loading-state text-center py-5" style="display: none;">
+            <div class="spinner spinner-lg"></div>
+            <p class="loading-text mt-3">Aufgaben werden generiert...</p>
+        </div>
+        
+        <div id="taskResults" class="results-container" style="display: none;">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">Generierte Aufgaben</h3>
+                </div>
+                <div class="card-body" id="generatedTasks">
+                    <div class="tasks-header">
+                        <h4 class="tasks-title"><i class="bi bi-journal-text"></i> Aufgabenblatt</h4>
+                    </div>
+                    <div id="tasksContent"></div>
+                </div>
+            </div>
+            
+            <div class="card shadow-sm mb-4" id="solutionSection" style="display: none;">
+                <div class="card-header bg-success text-white">
+                    <h3 class="card-title mb-0"><i class="bi bi-check-circle"></i> Lösungen</h3>
+                </div>
+                <div class="card-body" id="taskSolutions">
+                    <div class="solutions-header">
+                        <h4 class="solutions-title">Lösungsblatt</h4>
+                    </div>
+                    <div id="solutionsContent"></div>
+                </div>
+            </div>
+            
+            <div id="actionButtons" class="results-actions text-center mb-5" style="display: none;">
+                <button id="showSolutionsBtn" class="btn btn-success">
+                    <i class="bi bi-eye"></i> Lösungen anzeigen
+                </button>
+                <button id="exportPdfBtn" class="btn btn-danger">
+                    <i class="bi bi-file-earmark-pdf"></i> Aufgaben als PDF
+                </button>
+                <button id="exportSolutionsPdfBtn" class="btn btn-warning" style="display: none;">
+                    <i class="bi bi-file-earmark-pdf"></i> Lösungen als PDF
+                </button>
+                <button id="saveTasksBtn" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Aufgaben speichern
+                </button>
+            </div>
+        </div>
+    </div>
+    
+
+        
+        <div class="card shadow-sm mb-4" id="solutionSection" style="display: none;">
+            <div class="card-header bg-success text-white">
+                <h3 class="card-title mb-0"><i class="bi bi-check-circle"></i> Lösungen</h3>
+            </div>
+            <div class="card-body" id="taskSolutions">
+                <div class="solutions-header">
+                    <h4 class="solutions-title">Lösungsblatt</h4>
+                </div>
+                <div id="solutionsContent">
+                    <!-- Individual solutions will be inserted here -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="actionButtons" class="results-actions text-center mb-5" style="display: none;">
+            <button id="showSolutionsBtn" class="btn btn-success">
+                <i class="bi bi-eye"></i> Lösungen anzeigen
+            </button>
+            <button id="exportPdfBtn" class="btn btn-danger">
+                <i class="bi bi-file-earmark-pdf"></i> Als PDF speichern
+            </button>
+            <button id="saveTasksBtn" class="btn btn-primary">
+                <i class="bi bi-save"></i> Aufgaben speichern
+            </button>
+            <button id="previewBtn" class="btn btn-info">
+                <i class="bi bi-zoom-in"></i> Vorschau
+            </button>
+        </div>
+
+        <script>
+            // Initialize solution section visibility
+            document.addEventListener('DOMContentLoaded', function() {
+                const solutionSection = document.getElementById('solutionSection');
+                if (solutionSection) {
+                    solutionSection.style.display = 'none';
+                }
+            });
+        </script>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/task_generation.css') }}?v={{ range(1, 10000) | random }}">
+
+<script>
+    function renderMarkdownWithMath(content) {
+        // Sanitize and render markdown
+        const dirty = marked.parse(content);
+        const clean = DOMPurify.sanitize(dirty);
+        
+        // Return wrapped in div that MathJax will process
+        return `<div class="markdown-content">${clean}</div>`;
+    }
+
+    function typesetMath() {
+        if (typeof MathJax !== 'undefined') {
+            MathJax.typesetPromise();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Your existing task generation JS here
+        // Make sure to wrap task/solution content with:
+        // renderMarkdownWithMath(content) before inserting into DOM
+        // Then call typesetMath() after insertion
+    });
+</script>
+
+<script src="{{ url_for('static', filename='js/task_generation.js') }}?v={{ range(1, 10000) | random }}"></script>
+{% endblock %}

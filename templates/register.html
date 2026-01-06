@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <h2 class="auth-title">Loslegen</h2>
+        <p class="auth-subtitle">Erstelle deinen kostenlosen Gymiboost-Account</p>
+        <form method="POST" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Passwort</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Passwort bestätigen</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <button type="submit" class="primary-button">Weiter</button>
+        </form>
+        <div class="auth-links">
+            <p>Bereits registriert? <a href="{{ url_for('login') }}">Anmelden</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

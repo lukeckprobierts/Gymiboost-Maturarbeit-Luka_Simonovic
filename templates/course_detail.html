@@ -1,0 +1,777 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="course-detail-page">
+  <header class="detail-hero">
+    <div class="left">
+      <a class="back" href="/courses"><i class="bi bi-arrow-left"></i> Zurück zum Katalog</a>
+      <h1 id="cd-title" class="title">Kurs</h1>
+      <div class="meta">
+        <span class="badge badge--subject" id="cd-subject">Fach</span>
+        <span class="badge badge--level" id="cd-level">Niveau</span>
+        <span class="badge"><i class="bi bi-clock"></i> <span id="cd-duration">—</span></span>
+        <span class="badge"><i class="bi bi-layout-text-sidebar"></i> <span id="cd-modules">—</span> Module</span>
+      </div>
+      <p class="summary" id="cd-summary"></p>
+      <div class="quick">
+        <div class="rating" id="cd-rating"></div>
+        <div class="sep">•</div>
+        <div class="learners"><i class="bi bi-graph-up"></i> <span id="cd-learners">0</span> Lernende</div>
+        <div class="sep">•</div>
+        <div class="creator"><i class="bi bi-patch-check"></i> <span id="cd-creator">—</span></div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="progress-box">
+        <div class="progress-top">
+          <span>Fortschritt</span>
+          <span id="cd-progress-label">0%</span>
+        </div>
+        <div class="progress-bar"><div class="progress" id="cd-progress" style="width:0%"></div></div>
+        <div class="progress-actions">
+          <button id="cd-start" class="btn btn-primary"><i class="bi bi-play-circle"></i> Starten</button>
+          <button id="cd-save" class="btn btn-ghost"><i class="bi bi-bookmark"></i> Speichern</button>
+        </div>
+      </div>
+      <div class="rate-box">
+        <div class="rate-title">Bewerten</div>
+        <div class="rate-stars" id="cd-rate-stars" role="radiogroup" aria-label="Kurs bewerten (1-5)">
+          <button class="star" data-v="1" aria-label="1 von 5"><i class="bi bi-star"></i></button>
+          <button class="star" data-v="2" aria-label="2 von 5"><i class="bi bi-star"></i></button>
+          <button class="star" data-v="3" aria-label="3 von 5"><i class="bi bi-star"></i></button>
+          <button class="star" data-v="4" aria-label="4 von 5"><i class="bi bi-star"></i></button>
+          <button class="star" data-v="5" aria-label="5 von 5"><i class="bi bi-star"></i></button>
+        </div>
+        <div class="rate-note" id="cd-rate-note">Deine Bewertung hilft allen.</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="content-grid">
+    <article class="card">
+      <h3>Inhalte</h3>
+      <ol id="cd-syllabus" class="syllabus"></ol>
+
+      <div class="module-list" id="cd-modules-container"></div>
+      <div class="module-pager" id="module-pager" aria-label="Modul-Navigation">
+        <button class="btn btn-secondary" id="mod-prev"><i class="bi bi-arrow-left"></i> Zurück</button>
+        <div class="module-step">
+          <button class="btn btn-ghost" id="mod-overview"><i class="bi bi-list-ul"></i> Übersicht</button>
+          <span class="step-n"><span id="mod-index">1</span> / <span id="mod-total">1</span></span>
+        </div>
+        <button class="btn btn-primary" id="mod-next">Nächstes Modul <i class="bi bi-arrow-right"></i></button>
+        <button class="btn btn-success" id="mod-finish" style="display:none"><i class="bi bi-flag2-checkered"></i> Kurs beenden</button>
+      </div>
+      <div class="module-overlay" id="module-overlay" aria-hidden="true" role="dialog" aria-label="Modul-Übersicht">
+        <div class="module-overlay__backdrop" data-close="1"></div>
+        <div class="module-overlay__content" role="document">
+          <div class="module-overlay__header">
+            <h4>Module</h4>
+            <button class="btn btn-ghost" id="mod-close" aria-label="Schliessen"><i class="bi bi-x-lg"></i></button>
+          </div>
+          <ol id="mod-overview-list" class="overview-list"></ol>
+        </div>
+      </div>
+
+      <div class="inline-actions">
+        <button id="cd-resume" class="btn"><i class="bi bi-play"></i> Weiterlernen</button>
+        <button id="cd-restart" class="btn btn-secondary"><i class="bi bi-arrow-counterclockwise"></i> Neu beginnen</button>
+      </div>
+      <p class="muted">Hinweis: Interaktive Übungen, Quiz und Simulationen werden mit dem Fortschrittssystem verknüpft.</p>
+    </article>
+
+    <aside class="card">
+      <h4>Details</h4>
+      <ul class="details">
+        <li><span>Sprache</span><span id="cd-language">Deutsch</span></li>
+        <li><span>Zielgruppe</span><span id="cd-audience">—</span></li>
+        <li><span>Voraussetzungen</span><span id="cd-prereq">—</span></li>
+        <li><span>Interaktivität</span><span id="cd-interact">—</span></li>
+        <li><span>Lizenz</span><span id="cd-license">—</span></li>
+        <li><span>Klonen</span><span id="cd-clone">Erlaubt</span></li>
+      </ul>
+
+      <div class="tags" id="cd-tags"></div>
+
+      <div class="share">
+        <div class="muted">Teilen</div>
+        <div class="share-row">
+          <input id="cd-share-url" type="text" readonly>
+          <button id="cd-copy" class="btn btn-ghost"><i class="bi bi-clipboard"></i></button>
+        </div>
+      </div>
+    </aside>
+</section>
+</div>
+
+<!-- Course finish overlay -->
+<div class="course-finish" id="course-finish" aria-hidden="true" role="dialog" aria-label="Kurs abgeschlossen">
+  <div class="course-finish__backdrop" data-finish-close="1"></div>
+  <div class="course-finish__content" role="document">
+    <div class="course-finish__icon"><i class="bi bi-trophy-fill"></i></div>
+    <h3>Kurs abgeschlossen!</h3>
+    <p class="muted">Stark gemacht. Dein Fortschritt wurde gespeichert und in die Auswertungen übernommen.</p>
+    <div class="course-finish__actions">
+      <button class="btn btn-primary" id="finish-to-my"><i class="bi bi-grid"></i> Zu "Meine Kurse"</button>
+      <button class="btn btn-secondary" id="finish-restart"><i class="bi bi-arrow-counterclockwise"></i> Kurs neu starten</button>
+    </div>
+  </div>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+</div>
+
+<style>
+.course-detail-page{max-width:1100px;margin:0 auto;padding:24px}
+.detail-hero{display:grid;grid-template-columns:2fr 1.2fr;gap:16px;margin-bottom:12px}
+@media (max-width:960px){.detail-hero{grid-template-columns:1fr}}
+.back{color:#9ca3af;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.title{margin:6px 0;background:linear-gradient(135deg,#60a5fa,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.meta{display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-size:.8rem;color:#d1d5db;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:9999px;padding:3px 8px}
+.badge--subject{border-color:rgba(96,165,250,0.35)}
+.badge--level{border-color:rgba(16,185,129,0.35)}
+.summary{color:#cbd5e1}
+.quick{display:flex;align-items:center;gap:10px;color:#9ca3af;flex-wrap:wrap;margin-top:6px}
+.sep{opacity:.5}
+.right{display:flex;flex-direction:column;gap:12px}
+.progress-box,.rate-box{background:rgba(255,255,255,0.03);border:1px solid rgba(96,165,250,0.18);border-radius:16px;padding:14px}
+.progress-top{display:flex;justify-content:space-between;color:#9ca3af;margin-bottom:6px}
+.progress-bar{height:10px;border-radius:9999px;background:rgba(255,255,255,0.06);overflow:hidden}
+.progress{height:100%;background:linear-gradient(90deg,#34d399,#10b981);width:0%}
+.progress-actions{display:flex;gap:8px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;border:1px solid rgba(96,165,250,0.25);color:#e5e7eb;text-decoration:none;background:rgba(96,165,250,0.12);cursor:pointer;transition:transform .12s ease,background .2s ease,border-color .2s ease}
+.btn:hover{transform:translateY(-1px);background:rgba(96,165,250,0.18)}
+.btn-secondary{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.18)}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,0.12)}
+.btn-primary{background:linear-gradient(135deg,#2563eb,#7c3aed);border:none;color:#fff}
+.btn-success{background:linear-gradient(135deg,#10b981,#059669);border:none;color:#fff}
+.rate-title{color:#e5e7eb;margin-bottom:6px}
+.rate-stars{display:flex;gap:6px}
+.rate-stars .star{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);cursor:pointer}
+.rate-stars .star.active i{color:#fbbf24}
+.rate-note{color:#9ca3af;margin-top:6px}
+.content-grid{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:12px 0}
+@media (max-width:960px){.content-grid{grid-template-columns:1fr}}
+.card{background:rgba(255,255,255,0.03);border:1px solid rgba(96,165,250,0.18);border-radius:16px;padding:14px}
+.card h3{margin:0 0 8px}
+.details{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;color:#cbd5e1}
+.details li{display:flex;justify-content:space-between;gap:8px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{background:rgba(37,99,235,0.14);color:#bfdbfe;border:1px solid rgba(37,99,235,0.3);border-radius:9999px;padding:3px 8px;font-size:.75rem}
+.share .share-row{display:flex;gap:8px;margin-top:6px}
+.share input{flex:1;background:rgba(15,23,42,0.6);border:1px solid rgba(96,165,250,0.18);border-radius:12px;color:#e5e7eb;padding:8px 10px}
+.syllabus{margin:8px 0 0 18px}
+.inline-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.module-list{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
+.module-card{background:rgba(255,255,255,0.04);border:1px dashed rgba(96,165,250,0.25);border-radius:12px;padding:12px}
+.module-card h4{margin:0 0 8px}
+.module-actions{display:flex;gap:8px;margin:8px 0 12px;flex-wrap:wrap}
+.module-content{background:rgba(15,23,42,0.6);border:1px solid rgba(96,165,250,0.18);border-radius:12px;padding:12px}
+.module-card.hidden{display:none}
+.module-card.appear{animation:modIn .22s ease-out}
+@keyframes modIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.module-pager{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:10px;flex-wrap:wrap}
+.module-step{color:#9ca3af;font-size:.95rem;display:flex;gap:10px;align-items:center}
+.module-step .step-n{opacity:.9}
+
+.module-overlay{position:fixed;inset:0;display:none;z-index:50}
+.module-overlay[aria-hidden="false"]{display:block}
+.module-overlay__backdrop{position:absolute;inset:0;background:rgba(2,6,23,0.6);backdrop-filter:blur(2px)}
+.module-overlay__content{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(15,23,42,0.92);border:1px solid rgba(96,165,250,0.25);border-radius:16px;min-width:min(90vw,560px);max-height:80vh;overflow:auto;padding:12px}
+.module-overlay__header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.overview-list{margin:0;padding-left:22px}
+.overview-list li{margin:6px 0}
+.overview-list button{display:flex;align-items:center;gap:8px;background:transparent;border:1px solid rgba(96,165,250,0.18);border-radius:10px;color:#e5e7eb;padding:6px 10px;cursor:pointer}
+.overview-list button:hover{background:rgba(96,165,250,0.12)}
+.overview-list button.current{border-color:rgba(96,165,250,0.5);background:rgba(96,165,250,0.12)}
+.overview-list .status{width:10px;height:10px;border-radius:50%;background:#64748b}
+.overview-list .status.done{background:#10b981}
+.overview-list .status.current{background:#60a5fa}
+
+/* Course finish overlay + confetti */
+.course-finish{position:fixed;inset:0;display:none;z-index:60}
+.course-finish[aria-hidden="false"]{display:block}
+.course-finish__backdrop{position:absolute;inset:0;background:rgba(2,6,23,0.6);backdrop-filter:blur(2px)}
+.course-finish__content{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(15,23,42,0.92);border:1px solid rgba(96,165,250,0.25);border-radius:16px;min-width:min(92vw,560px);padding:16px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.35)}
+.course-finish__icon{font-size:2.2rem;color:#fbbf24;margin-bottom:6px}
+.course-finish__actions{display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+#confetti-canvas{position:fixed;inset:0;pointer-events:none}
+.rating-stars{display:inline-flex;gap:2px}
+.rating-stars i{color:#fbbf24}
+.muted{color:#9ca3af}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/course_tools.js') }}"></script>
+<script>
+(function(){
+  const user = window.gymiboostUser || {};
+  const hasSub = !!(user && user.subscriptionActive);
+
+  function qs(p){return document.querySelector(p);}
+  function qsa(p){return Array.from(document.querySelectorAll(p));}
+  function fmtMin(min){ if(min<60) return min+' Min'; const h=Math.floor(min/60),m=min%60; return h+' h'+(m?(' '+m+' min'):''); }
+  function renderStars(avg) {
+    const full = Math.floor(avg||0);
+    const half = (avg||0) - full >= 0.5 ? 1 : 0;
+    const empty = 5 - full - half;
+    return '<span class="rating-stars">'+
+           '★'.repeat(full).split('').map(()=>'<i class="bi bi-star-fill"></i>').join('') +
+           (half?'<i class="bi bi-star-half"></i>':'') +
+           '☆'.repeat(empty).split('').map(()=>'<i class="bi bi-star"></i>').join('') +
+           '</span>';
+  }
+  async function fetchJSON(url, opts) {
+    const res = await fetch(url, opts || {});
+    const ct = res.headers.get('content-type') || '';
+    if (!res.ok) {
+      if (ct.includes('text/html')) {
+        window.location.href = res.url || '/login';
+        throw new Error('Redirected');
+      }
+      const txt = await res.text().catch(()=> '');
+      throw new Error(txt || ('HTTP ' + res.status));
+    }
+    if (ct.includes('application/json')) return res.json();
+    return res.text();
+  }
+
+  // Parse courseId from /courses/<id>
+  const parts = window.location.pathname.split('/').filter(Boolean);
+  const courseId = parseInt(parts[1], 10);
+  if (!courseId) { window.location.href = '/courses'; return; }
+
+  let saved = false;
+  let enrolled = false;
+  let progress = 0;
+
+  // Module pagination state
+  let modulesData = [];
+  let currentIndex = 0;
+  let completedSet = new Set();
+
+  let serverLastIndex = null;
+
+  const LS_LAST = () => `course:${courseId}:lastModuleIndex`;
+  const LS_DONE = () => `course:${courseId}:completedIndices`;
+
+  function loadCompleted(){
+    try {
+      const arr = JSON.parse(localStorage.getItem(LS_DONE()) || '[]');
+      completedSet = new Set((arr || []).map(n => parseInt(n,10)).filter(n => !isNaN(n)));
+    } catch {}
+  }
+  function saveCompleted(){
+    try {
+      localStorage.setItem(LS_DONE(), JSON.stringify(Array.from(completedSet)));
+    } catch {}
+  }
+
+  function getIndexFromURL(){
+    const sp = new URLSearchParams(window.location.search);
+    if (sp.has('m')) {
+      const m = parseInt(sp.get('m') || '0', 10);
+      return isNaN(m) ? 0 : Math.max(0, m);
+    }
+    // Default to first module on initial open (do not auto-resume here)
+    return 0;
+  }
+  function getResumeIndex(){
+    // Prefer server-provided last index for cross-device resume
+    if (serverLastIndex !== null && serverLastIndex !== undefined) {
+      const v = parseInt(String(serverLastIndex), 10);
+      if (!isNaN(v)) return Math.max(0, v);
+    }
+    // Fallback to last viewed from localStorage
+    try {
+      const last = parseInt(localStorage.getItem(LS_LAST()) || '0', 10);
+      return isNaN(last) ? 0 : Math.max(0, last);
+    } catch { return 0; }
+  }
+  function setIndexToURL(i){
+    const sp = new URLSearchParams(window.location.search);
+    sp.set('m', i);
+    const newUrl = window.location.pathname + '?' + sp.toString();
+    history.replaceState(null, '', newUrl);
+  }
+  function buildOverview(){
+    const list = qs('#mod-overview-list');
+    if (!list) return;
+    list.innerHTML = (modulesData || []).map((m, i) => `
+      <li>
+        <button type="button" class="${i===currentIndex ? 'current' : ''}" data-index="${i}">
+          <span class="status ${i===currentIndex ? 'current' : (completedSet.has(i) ? 'done' : '')}"></span>
+          <span>${m.title || ('Modul ' + (i+1))}</span>
+        </button>
+      </li>
+    `).join('');
+  }
+  function openOverlay(){
+    const ov = qs('#module-overlay');
+    if (!ov) return;
+    ov.setAttribute('aria-hidden', 'false');
+    buildOverview();
+  }
+  function closeOverlay(){
+    const ov = qs('#module-overlay');
+    if (!ov) return;
+    ov.setAttribute('aria-hidden', 'true');
+  }
+
+  async function updateModuleView(i){
+    const cards = qsa('.module-card');
+    if (!cards.length) return;
+    i = Math.max(0, Math.min(cards.length - 1, i|0));
+    currentIndex = i;
+    cards.forEach((c, idx) => c.classList.toggle('hidden', idx !== i));
+    const currentCard = cards[i];
+    if (currentCard) {
+      currentCard.classList.add('appear');
+      setTimeout(()=> currentCard.classList.remove('appear'), 250);
+      if (window.initCourseTools && !currentCard.dataset.toolsInit) {
+        window.initCourseTools(currentCard, courseId);
+        currentCard.dataset.toolsInit = '1';
+      }
+    }
+    const idxEl = qs('#mod-index'), totEl = qs('#mod-total');
+    if (idxEl) idxEl.textContent = String(i + 1);
+    if (totEl) totEl.textContent = String(cards.length);
+    const prevBtn = qs('#mod-prev'), nextBtn = qs('#mod-next'), finishBtn = qs('#mod-finish');
+    if (prevBtn) prevBtn.disabled = i === 0;
+    if (nextBtn) nextBtn.style.display = (i >= cards.length - 1) ? 'none' : '';
+    if (finishBtn) finishBtn.style.display = (i >= cards.length - 1) ? '' : 'none';
+    setIndexToURL(i);
+    try { localStorage.setItem(LS_LAST(), String(i)); } catch {}
+    // Persist lightweight view progress; ignore errors
+    try {
+      const mid = parseInt(currentCard?.getAttribute('data-module-id') || '0', 10) || (modulesData[i] && modulesData[i].id);
+      if (mid) { markProgress('module_view', progress, mid, { index: i }); }
+    } catch {}
+    buildOverview();
+    const wrap = qs('#cd-modules-container');
+    if (wrap && 'scrollIntoView' in wrap) {
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([cards[i]]);
+    }
+  }
+  function nextModule(){ updateModuleView(currentIndex + 1); }
+  function prevModule(){ updateModuleView(currentIndex - 1); }
+
+  function closeFinishOverlay(){
+    const el = qs('#course-finish');
+    if (el) el.setAttribute('aria-hidden','true');
+  }
+
+  function confettiBurst(duration=1600){
+    try {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+      const resize = () => {
+        canvas.width = Math.floor(window.innerWidth * dpr);
+        canvas.height = Math.floor(window.innerHeight * dpr);
+      };
+      resize(); window.addEventListener('resize', resize, { once: true });
+      const colors = ['#60a5fa','#34d399','#f59e0b','#ef4444','#a78bfa','#f472b6'];
+      const pieces = Array.from({length: 180}, () => {
+        const w = canvas.width, h = canvas.height;
+        return {
+          x: Math.random()*w, y: -Math.random()*h*0.2, r: (Math.random()*8+4)*dpr,
+          vx: (Math.random()-0.5)*2*dpr, vy: (Math.random()*2+2)*dpr,
+          rot: Math.random()*Math.PI, vr: (Math.random()-0.5)*0.2,
+          color: colors[(Math.random()*colors.length)|0], shape: Math.random()<0.5 ? 'rect' : 'circle'
+        };
+      });
+      const start = performance.now();
+      function step(t){
+        const elapsed = t - start;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        pieces.forEach(p => {
+          p.x += p.vx; p.y += p.vy; p.vy += 0.02*dpr; p.rot += p.vr;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          if (p.shape === 'rect') { ctx.fillRect(-p.r/2, -p.r/2, p.r, p.r*0.6); }
+          else { ctx.beginPath(); ctx.arc(0,0,p.r/2,0,Math.PI*2); ctx.fill(); }
+          ctx.restore();
+        });
+        if (elapsed < duration) requestAnimationFrame(step);
+        else ctx.clearRect(0,0,canvas.width,canvas.height);
+      }
+      requestAnimationFrame(step);
+    } catch {}
+  }
+
+  async function finishCourse(){
+    try {
+      await markProgress('course_complete', 100, null, { modules: modulesData.length, finished_at: Date.now() });
+    } catch (e) {}
+    setProgress(100);
+    // Mark all as done locally
+    try {
+      completedSet = new Set(modulesData.map((_, i) => i));
+      saveCompleted();
+      buildOverview();
+    } catch {}
+    const ov = qs('#course-finish');
+    if (ov) {
+      ov.setAttribute('aria-hidden','false');
+      confettiBurst();
+    }
+  }
+
+  function paintSaveBtn(){
+    const saveBtn = qs('#cd-save');
+    saveBtn.innerHTML = saved ? '<i class="bi bi-bookmark-fill"></i> Gespeichert' : '<i class="bi bi-bookmark"></i> Speichern';
+  }
+  function paintStartBtn(){
+    const startBtn = qs('#cd-start');
+    startBtn.innerHTML = '<i class="bi bi-play-circle"></i> ' + (enrolled ? 'Weiterlernen' : 'Starten');
+  }
+  function setProgress(val){
+    progress = Math.max(0, Math.min(100, val|0));
+    qs('#cd-progress').style.width = progress + '%';
+    qs('#cd-progress-label').textContent = progress + '%';
+  }
+
+  function sanitize(html) {
+    try {
+      return DOMPurify.sanitize(html || '', {
+        ADD_ATTR: ['data-quiz','data-checkpoint','aria-label','data-tool','data-slug','data-label','data-title','data-cards','data-ref','data-minutes','data-question-id','data-items']
+      });
+    } catch {
+      return html || '';
+    }
+  }
+
+  async function loadDetail() {
+    const data = await fetchJSON(`/api/courses/${courseId}`);
+    // Header/meta
+    qs('#cd-title').textContent = data.title || 'Kurs';
+    qs('#cd-subject').textContent = data.subject || '—';
+    qs('#cd-level').textContent = data.level || '—';
+    qs('#cd-duration').textContent = fmtMin(data.minutes || 0);
+    qs('#cd-modules').textContent = (data.modules || data.modulesFull?.length || 0);
+    qs('#cd-summary').textContent = data.summary || '';
+    qs('#cd-learners').textContent = (data.learners || 0).toLocaleString('de-CH');
+    qs('#cd-creator').textContent = data.creator || 'Community';
+    qs('#cd-language').textContent = data.language || 'Deutsch';
+    qs('#cd-audience').textContent = data.audience || '—';
+    qs('#cd-license').textContent = data.license || '—';
+    qs('#cd-clone').textContent = data.allowClone ? 'Erlaubt' : 'Nicht erlaubt';
+    const tags = data.tags || [];
+    qs('#cd-tags').innerHTML = tags.map(t => `<span class="tag">${t}</span>`).join('');
+    qs('#cd-share-url').value = window.location.origin + '/courses/' + courseId;
+    serverLastIndex = (typeof data.lastModuleIndex === 'number') ? data.lastModuleIndex : null;
+
+    // Rating
+    const ratingWrap = qs('#cd-rating');
+    const avg = data.rating || 0;
+    ratingWrap.innerHTML = renderStars(avg) + ' ' + (avg ? (avg.toFixed(1) + ' (' + (data.ratings || 0) + ')') : 'Noch keine Bewertungen');
+
+    // Syllabus
+    const syllabus = qs('#cd-syllabus');
+    modulesData = (data.modulesFull || []).slice().sort((a,b)=> (a.index||0)-(b.index||0));
+    syllabus.innerHTML = modulesData.map((m, i) => `<li><button class="btn btn-ghost" data-index="${i}">${m.title || ('Modul ' + (i+1))}</button></li>`).join('');
+    syllabus.addEventListener('click', (e)=> {
+      const el = e.target.closest('[data-index]');
+      if (!el) return;
+      const idx = parseInt(el.getAttribute('data-index'), 10);
+      if (!isNaN(idx)) updateModuleView(idx);
+    });
+
+    // Modules content
+    const container = qs('#cd-modules-container');
+    container.innerHTML = modulesData.map((m, i) => `
+      <div class="module-card" data-module-id="${m.id}" data-index="${i}">
+        <h4>${m.title || ('Modul ' + (i+1))}</h4>
+        <div class="module-actions">
+          <button class="btn" data-action="tts"><i class="bi bi-soundwave"></i> Vorlesen</button>
+          <button class="btn btn-secondary" data-action="checkpoint"><i class="bi bi-flag"></i> Checkpoint</button>
+          <button class="btn btn-secondary" data-action="complete"><i class="bi bi-check2-circle"></i> Modul abschliessen</button>
+        </div>
+        <div class="module-content">${sanitize(m.contentHtml)}</div>
+      </div>
+    `).join('');
+
+    // Upsert server-side tools declared by the generator (if any)
+    try {
+      const upserts = (modulesData || []).map(async (mm) => {
+        const tools = (mm.extras && mm.extras.tools) ? mm.extras.tools : [];
+        if (!Array.isArray(tools) || !tools.length) return;
+        const ckItems = [];
+        for (const t of tools) {
+          try {
+            if (!t || !t.type) continue;
+            if (t.type === 'quiz' && t.slug && t.data) {
+              await fetchJSON(`/api/courses/${courseId}/modules/${mm.id}/tools/quiz/upsert`, {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({ slug: t.slug, title: t.title || null, data: t.data })
+              });
+            } else if (t.type === 'poll' && t.slug && t.question && Array.isArray(t.options)) {
+              await fetchJSON(`/api/courses/${courseId}/modules/${mm.id}/tools/poll/upsert`, {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({ slug: t.slug, question: t.question, options: t.options, multiple: !!t.multiple, is_open: t.is_open !== false })
+              });
+            } else if (t.type === 'flashcards' && t.slug && Array.isArray(t.cards)) {
+              await fetchJSON(`/api/courses/${courseId}/modules/${mm.id}/tools/flashcards/upsert`, {
+                method:'POST', headers:{'Content-Type':'application/json'},
+                body: JSON.stringify({ slug: t.slug, title: t.title || null, config: t.config || {}, cards: t.cards })
+              });
+            } else if (t.type === 'checkpoint' && t.slug) {
+              ckItems.push({
+                slug: String(t.slug),
+                label: (t.label || String(t.slug)),
+                description: (t.description || ''),
+                weight: typeof t.weight === 'number' ? t.weight : 1.0
+              });
+            }
+          } catch (e) { /* ignore per tool */ }
+        }
+        if (ckItems.length) {
+          try {
+            await fetchJSON(`/api/courses/${courseId}/modules/${mm.id}/tools/checkpoints/upsert`, {
+              method:'POST', headers:{'Content-Type':'application/json'},
+              body: JSON.stringify({ items: ckItems })
+            });
+          } catch (e) { /* ignore */ }
+        }
+      });
+      await Promise.all(upserts);
+    } catch (e) { /* ignore */ }
+
+    // Initialize data-tool widgets inside each module card
+    qsa('.module-card', container).forEach(card => {
+      if (window.initCourseTools && !card.dataset.toolsInit) {
+        window.initCourseTools(card, courseId);
+        card.dataset.toolsInit = '1';
+      }
+    });
+
+    // Initialize module view (pagination)
+    loadCompleted();
+    updateModuleView(getIndexFromURL());
+    buildOverview();
+
+    // After DOM insert, re-typeset Math if present
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise();
+    }
+  }
+
+  async function loadMe() {
+    try {
+      const me = await fetchJSON('/api/courses/me');
+      const savedIds = new Set((me.saved || []).map(c => c.id));
+      const enrolledItems = me.enrolled || [];
+      saved = savedIds.has(courseId);
+      enrolled = enrolledItems.some(c => c.id === courseId);
+      const mine = enrolledItems.find(c => c.id === courseId);
+      setProgress(mine ? (mine.progress || 0) : 0);
+      paintSaveBtn();
+      paintStartBtn();
+    } catch (e) {
+      // ignore if not accessible
+    }
+  }
+
+  async function saveToggle() {
+    await fetchJSON(`/api/courses/${courseId}/save`, { method: 'POST', headers: {'Content-Type':'application/json'} });
+    saved = !saved;
+    paintSaveBtn();
+  }
+
+  async function enrollStart() {
+    await fetchJSON(`/api/courses/${courseId}/enroll`, { method: 'POST', headers: {'Content-Type':'application/json'} });
+    enrolled = true;
+    paintStartBtn();
+    // mark start event
+    await fetchJSON(`/api/courses/${courseId}/progress`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ event: 'course_start', progress: Math.max(5, progress) })
+    });
+    setProgress(Math.max(5, progress));
+  }
+
+  async function markProgress(event, progressValue, moduleId, data={}) {
+    const payload = { event, progress: progressValue|0, module_id: moduleId, data };
+    const res = await fetchJSON(`/api/courses/${courseId}/progress`, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    setProgress(res.progress || progressValue);
+  }
+
+  async function ttsForModule(moduleId) {
+    const card = document.querySelector(`.module-card[data-module-id="${moduleId}"]`);
+    const btn = card ? card.querySelector('button[data-action="tts"]') : null;
+    try {
+      if (btn) { btn.disabled = true; btn.innerHTML = '<i class="bi bi-soundwave"></i> Lädt…'; }
+
+      // Remove previous audio if any
+      if (card) {
+        const existing = card.querySelector('audio');
+        if (existing) existing.remove();
+      }
+
+      // Stream realtime audio (WAV) so playback can start immediately
+      const src = `/api/courses/${courseId}/tts/stream?module_id=${encodeURIComponent(moduleId)}&voice=alloy&format=mp3`;
+      const audio = document.createElement('audio');
+      audio.setAttribute('controls', 'controls');
+      audio.setAttribute('preload', 'auto');
+      audio.style.marginTop = '8px';
+      audio.src = src;
+
+      // AI voice disclosure (required by policy)
+      const note = document.createElement('div');
+      note.className = 'muted';
+      note.style.fontSize = '0.85rem';
+      note.style.marginTop = '4px';
+      note.textContent = 'Hinweis: Diese Stimme ist KI-generiert.';
+
+      if (card) {
+        card.querySelector('.module-actions').after(audio);
+        audio.after(note);
+      }
+
+      await audio.play();
+    } catch (err) {
+      // Fallback: use non-streaming endpoint that saves an asset and returns a URL
+      try {
+        const res = await fetchJSON(`/api/courses/${courseId}/tts`, {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ module_id: moduleId, voice: 'alloy' })
+        });
+        if (res && res.url && card) {
+          const existing = card.querySelector('audio');
+          if (existing) existing.remove();
+          const audio = document.createElement('audio');
+          audio.setAttribute('controls', 'controls');
+          audio.setAttribute('src', res.url);
+          audio.style.marginTop = '8px';
+          card.querySelector('.module-actions').after(audio);
+          await audio.play().catch(()=>{});
+        }
+      } catch (e2) {
+        alert('TTS fehlgeschlagen.');
+      }
+    } finally {
+      if (btn) { btn.disabled = false; btn.innerHTML = '<i class="bi bi-soundwave"></i> Vorlesen'; }
+    }
+  }
+
+  // Wire UI
+  qs('#cd-save').addEventListener('click', saveToggle);
+  qs('#cd-start').addEventListener('click', async ()=>{ await enrollStart(); updateModuleView(0); });
+  qs('#cd-resume').addEventListener('click', async ()=>{ await enrollStart(); updateModuleView(getResumeIndex()); });
+  qs('#cd-restart').addEventListener('click', () => markProgress('course_reset', 0));
+
+  qs('#cd-rate-stars').addEventListener('click', async (e)=>{
+    const btn = e.target.closest('.star'); if (!btn) return;
+    const v = Number(btn.dataset.v) || 0;
+    if (!v) return;
+    await fetchJSON(`/api/courses/${courseId}/rate`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ stars: v })
+    });
+    // paint stars locally
+    qsa('#cd-rate-stars .star').forEach(s => {
+      const sv = Number(s.dataset.v);
+      s.classList.toggle('active', sv <= v);
+      s.innerHTML = `<i class="bi ${sv <= v ? 'bi-star-fill' : 'bi-star'}"></i>`;
+    });
+    qs('#cd-rate-note').textContent = `Deine Bewertung: ${v}/5`;
+  });
+
+  qs('#cd-copy').addEventListener('click', ()=>{
+    const input = qs('#cd-share-url');
+    input.select();
+    document.execCommand('copy');
+  });
+
+  // Delegated actions for modules
+  qs('#cd-modules-container').addEventListener('click', async (e)=>{
+    const btn = e.target.closest('button'); if (!btn) return;
+    const card = e.target.closest('.module-card'); if (!card) return;
+    const moduleId = parseInt(card.getAttribute('data-module-id'), 10);
+    const action = btn.dataset.action;
+    if (action === 'tts') return ttsForModule(moduleId);
+    if (action === 'checkpoint') return markProgress('checkpoint', Math.min(99, progress+5), moduleId, { at: Date.now() });
+    if (action === 'complete') { 
+      completedSet.add(currentIndex);
+      saveCompleted();
+      await markProgress('module_complete', Math.min(100, progress+ Math.max(5, Math.floor(100 / Math.max(1, document.querySelectorAll(".module-card").length)))), moduleId);
+      buildOverview();
+      const total = document.querySelectorAll(".module-card").length;
+      if (currentIndex >= total - 1) {
+        await finishCourse();
+      } else {
+        nextModule();
+      }
+      return;
+    }
+  });
+
+  // Init
+  (async function init(){
+    await loadDetail();
+    await loadMe();
+
+    // Pager controls
+    const _prev = qs('#mod-prev');
+    const _next = qs('#mod-next');
+    const _finish = qs('#mod-finish');
+    const _ov = qs('#mod-overview');
+    const _ovClose = qs('#mod-close');
+    const _ovEl = qs('#module-overlay');
+    if (_prev) _prev.addEventListener('click', (e)=>{ e.preventDefault(); prevModule(); });
+    if (_next) _next.addEventListener('click', (e)=>{ e.preventDefault(); nextModule(); });
+    if (_finish) _finish.addEventListener('click', (e)=>{ e.preventDefault(); finishCourse(); });
+    if (_ov) _ov.addEventListener('click', (e)=>{ e.preventDefault(); openOverlay(); });
+    if (_ovClose) _ovClose.addEventListener('click', (e)=>{ e.preventDefault(); closeOverlay(); });
+    if (_ovEl) {
+      _ovEl.addEventListener('click', (e)=>{
+        const close = e.target.closest('[data-close]');
+        const item = e.target.closest('[data-index]');
+        if (close) { closeOverlay(); return; }
+        if (item) {
+          const idx = parseInt(item.getAttribute('data-index'), 10);
+          if (!isNaN(idx)) { updateModuleView(idx); closeOverlay(); }
+        }
+      });
+    }
+
+    // Finish overlay actions
+    const _finishOverlay = qs('#course-finish');
+    const _finishBackdrop = _finishOverlay && _finishOverlay.querySelector('[data-finish-close]');
+    const _finishToMy = qs('#finish-to-my');
+    const _finishRestart = qs('#finish-restart');
+    if (_finishBackdrop) _finishBackdrop.addEventListener('click', ()=> closeFinishOverlay());
+    if (_finishToMy) _finishToMy.addEventListener('click', ()=> { window.location.href = '/my-courses'; });
+    if (_finishRestart) _finishRestart.addEventListener('click', async ()=>{
+      try { await markProgress('course_reset', 0); } catch(e){}
+      try { localStorage.setItem(LS_LAST(), '0'); completedSet = new Set(); saveCompleted(); } catch{}
+      setProgress(0);
+      closeFinishOverlay();
+      updateModuleView(0);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e)=>{
+      const tag = (e.target && e.target.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select' || (e.target && e.target.isContentEditable)) return;
+      if (e.key === 'Escape') { closeOverlay(); closeFinishOverlay(); return; }
+      if (e.key === 'ArrowRight') nextModule();
+      else if (e.key === 'ArrowLeft') prevModule();
+    });
+  })();
+})();
+</script>
+{% endblock %}

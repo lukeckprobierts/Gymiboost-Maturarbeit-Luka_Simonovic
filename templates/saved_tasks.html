@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+{% block content %}
+<div class="container py-5">
+    <div class="page-header text-center mb-5">
+        <h1 class="page-title display-4 fw-bold text-primary">Gespeicherte Aufgaben</h1>
+        <p class="page-description lead text-muted">Deine persönliche Sammlung von Übungsaufgaben</p>
+    </div>
+
+    {% if not tasks %}
+    <div class="empty-state text-center py-5">
+        <div class="empty-icon mb-4">
+            <i class="bi bi-journal-text display-1 text-muted"></i>
+        </div>
+        <h3 class="mb-3">Keine Aufgaben gefunden</h3>
+        <p class="text-muted mb-4">Du hast noch keine Aufgaben gespeichert. Generiere neue Aufgaben um hier zu beginnen.</p>
+        <a href="{{ url_for('task_generation') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-plus-circle"></i> Neue Aufgaben generieren
+        </a>
+    </div>
+    {% else %}
+    <div class="saved-tasks-container">
+        <div class="row g-4">
+            {% for task in tasks %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card task-card h-100 border-0 shadow-sm hover-shadow transition-all">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="card-title fw-bold mb-0">{{ task.title }}</h5>
+                            {% if task.topic %}
+                            <span class="badge bg-primary-subtle text-primary">
+                                <i class="bi bi-tag"></i> {{ task.topic }}
+                            </span>
+                            {% endif %}
+                        </div>
+                        <div class="card-text text-muted mb-3 flex-grow-1">
+                            {{ task.content|truncate(150) }}
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-auto">
+                            <small class="text-muted">
+                                <i class="bi bi-calendar"></i> {{ task.timestamp.strftime('%d.%m.%Y %H:%M') }}
+                            </small>
+                            <a href="{{ url_for('view_saved_task', task_id=task.id) }}" 
+                               class="btn btn-primary btn-sm px-3">
+                                <i class="bi bi-eye me-1"></i> Anzeigen
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="text-center mt-5 pt-4">
+        <a href="{{ url_for('task_generation') }}" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-plus-circle"></i> Neue Aufgaben generieren
+        </a>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/task_generation.css') }}?v={{ range(1, 10000) | random }}">
+{% endblock %}

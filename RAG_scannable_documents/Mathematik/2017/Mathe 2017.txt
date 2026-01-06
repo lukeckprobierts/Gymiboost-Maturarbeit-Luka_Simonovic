@@ -1,0 +1,110 @@
+Zentrale Aufnahmeprufung 2017
+fur die Langgymnasien des Kantons Zurich
+Korrekturschema Mathematik
+Losungen
+     122.075 /
+     a) 180   b) 4.15
+     35  oder 35 Tiger
+     16 kmlh
+     40 cm
+6.   243 |
+     1632 oder 1632 - oder    1632 Fr:
+     Losungstabelle im Format (2 Stufen; 3 Stufen, 4 Stufen):
+         0, 4
+        0,2,3
+        3,0,3
+       2, 2,2
+       1, 45
+        4 2,1
+        7 , 4,0 )
+        3_
+       6, 2,0 )
+     Entweder Variante 1
+        oder Variante 2
+---
+Zentrale Aufnahmeprüfung 2017 für die Langgymnasien des Kantons Zürich
+Μathematik
+Name:   . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  Vorname:     . . . . . . . . . . . . . . . . . . . . . . . . . .
+Prüfungsnummer:  . . . . . . . . . . .                             Schule:  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Allgemeine Hinweise:
+   •  Du hast 60 Minuten Zeit.
+   •  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer Aufgabe nicht aus,
+      fährst du auf der letzten Seite weiter.
+   •  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der Lösungsweg
+      verständlich ist; sonst erhältst du keine Punkte.
+   •  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich und notiere
+      sie mit der passenden Masseinheit.
+   •  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+   •  Bei der Aufgabe 9 darfst du das Netz weder ausschneiden noch nachbilden.
+   •  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel verwenden.
+Bitte leer lassen!
+ Aufgabe      1     2     3     4    5                              6  7  8  9 Total  Note
+ Maximale     4     4     4     4    4                              4  4  4  4   36
+ Punktzahl
+ Erreichte
+ Punktzahl
+---
+NO_CONTENT_HERE
+---
+1.    Gib die Lösung in l an:    (472.6l : 17)− 88.75 dl +    = (5 7 l · 24)
+                                                                   8
+---
+2.      a)    Gib das Ergebnis an:   72.48 −17.52 +227.52− 102.48
+        b)    Gib das Ergebnis an:   (11.31 : 13) + (124.1 : 34) − (4.81 : 13)
+---
+3.    In einem Bilderbuch sind Fische, Löwen, Schweine und Tiger abgebildet, insgesamt genau
+      195 Tiere. Landtiere hat es viermal so viele wie Fische. Es hat doppelt so viele Schweine wie
+      Raubkatzen und 18 Tiger mehr als Löwen.
+      Wie viele Tiger sind im Bilderbuch abgebildet?
+---
+4.    Anna startet um 8.30 Uhr zu einer Velotour. Mit einer durchschnittlichen Geschwindigkeit von
+      18 km/h wäre sie um 11.50 Uhr am Ziel. Sie kommt aber erst um 12.30 Uhr an und hat dabei
+      15 Minuten Pause gemacht.
+      Mit welcher durchschnittlichen Geschwindigkeit ist Anna gefahren?
+---
+5.    Der Umfang des äusseren Rechtecks beträgt 328 cm. Die Länge dieses Rechtecks ist um 68 cm
+      grösser als die Breite. Alle 4 Teilrechtecke A, B, C, D haben den Umfang 168 cm.
+      Wie lang ist die Strecke x?
+                                                       B
+                             A
+                                              C                D
+                                                                x
+---
+6.    Autofan Marco plant die Grand Tour Schweiz zu absolvieren. Für die ganze Strecke rechnet er
+      mit einem Benzinverbrauch von 216 l für sein Auto, das 12 l pro 100 km verbraucht. Da es aber
+      sehr heiss ist, schaltet Marco während  3 der Strecke die Klimaanlage in seinem Auto an, was
+                                              4      1
+      den Benzinverbrauch auf dieser Teilstrecke um  6 erhöht.
+      Wie viel Benzin hat Marco auf seiner Tour verbraucht?
+---
+7.    Lebensmittelhersteller Herbix produziert 600 Büchsen zu 850 g Gemüsemix aus Erbsli, Rüebli
+      und Bohnen. Eine Büchse kostet im Verkauf 5.50 Fr. Für die Produktion kauft Herbix die Erbsli
+      für 2.20 Fr. pro Kilogramm, die Rüebli für 1.80 Fr. pro Kilogramm und die Bohnen für 6.40 Fr.
+      pro Kilogramm ein. Es wird so billig wie möglich produziert, aber von jedem Gemüse werden
+      mindestens 150 kg eingekauft.
+      Wie viele Franken beträgt der Unterschied zwischen den kleinstmöglichen Kosten im Einkauf
+      und den Einnahmen aus dem Verkauf aller 600 Büchsen?
+---
+8.    Severin steht vor einer Treppe mit 18 Stufen. Er möchte die Treppe in Sprüngen von 2, 3 oder 4
+      Stufen hinunter hüpfen. Dabei dürfen nicht alle Sprünge gleich gross sein. Zum Beispiel kann
+      Severin 5 Sprünge von 2 Stufen und 2 Sprünge von 4 Stufen machen.
+      Trage alle Möglichkeiten in die folgende Tabelle ein.
+                                                      Sprünge       Sprünge      Sprünge
+                                                    von 2 Stufen  von 3 Stufen von 4 Stufen
+                                                         5             0             2
+                                                   Achtung: Die Tabelle hat mehr Zeilen, als
+                                                   es Lösungen gibt.
+---
+9.    Der links abgebildete Körper hat das rechts dargestellte Netz. Der Boden des Körpers ist im
+      Netz schattiert gezeichnet.
+                                                                                   k
+                                                                                k
+                                     A
+       a)   Zeichne die Kante k im Körper links ein.
+       b)   Zeichne den Punkt A im Netz überall ein, wo er vorkommt.
+      Hinweis: Du darfst das Netz weder ausschneiden noch nachbilden.
+---
+Auf dieser Seite kannst du Aufgaben weiter lösen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.
+
+ZAP Mathematik 2017, Prüfung Mathematik 2017, Mathetest 2017, Matheprüfung Jahr 2017, Jahr 2017 Mathematikprüfung, Mathematik Aufgaben 2017, Teil A Teil B Mathe 2017, Matheprüfung von 2017, Zentrale Mathematikprüfung 2017, Aufgaben & Lösungen 2017, Aufgabe 1 Aufgabe 2 Aufgabe 3 Aufgabe 4 Aufgabe 5 Aufgabe 6, Lösung Aufgabe 1-6 2017, Mathe 2017, Mathematikprüfung aus dem Jahr 2017, Matheprüfung 2017 ZAP, 2017 2017 2017 17 17 17, Zentrale Aufnahmeprüfung Mathematik 2017, Matheprüfungsbogen 2017.

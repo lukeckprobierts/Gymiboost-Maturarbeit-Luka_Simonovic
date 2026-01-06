@@ -1,0 +1,591 @@
+Kanton Zürich
+Zentrale Aufnahmeprüfung 2023
+ Kanton Zürich
+für die Langgymnasien
+ Zentrale Aufnahmeprüfung 2023
+ für die Langgymnasien
+Mathematik
+ Mathematik
+Name:                                   Vorname:
+ Name:                                 Vorname:
+Prüfungsnummer:                         Kantonsschule:
+ Prüfungsnummer:                       Kantonsschule:
+ Allgemeine Hinweise:
+Allgemeine Hinweise:
+ •  Du hast 60 Minuten Zeit.
+•  Du hast 60 Minuten Zeit.
+ •  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer
+•  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer
+    Aufgabe nicht aus, fährst du auf der letzten Seite weiter.
+   Aufgabe nicht aus, fährst du auf der letzten Seite weiter.
+ •  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der
+•  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der
+    Lösungsweg verständlich ist; sonst erhältst du keine Punkte.
+   Lösungsweg verständlich ist; sonst erhältst du keine Punkte.
+ •  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich
+•  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich
+    und notiere sie mit der passenden Masseinheit.
+   und notiere sie mit der passenden Masseinheit.
+ •  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+•  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+ •  Bei Aufgabe 4 erhältst du für jedes richtig gesetzte Kreuz einen Punkt, für jedes
+•  Bei Aufgabe 4 erhältst du für jedes richtig gesetzte Kreuz einen Punkt, für
+    falsch gesetzte Kreuz einen Punkt Abzug. Setzt du kein Kreuz, so erhältst du
+   jedes falsch gesetzte Kreuz einen Punkt Abzug. Setzt du kein Kreuz,
+    weder einen Punkt noch einen Abzug.
+   so erhältst du weder einen Punkt noch einen Abzug.
+ •  Die Aufgabe 5 musst du mit Bleistift und Geometriewerkzeugen lösen. Die
+•  Die Aufgabe 5 musst du mit Bleistift und Geometriewerkzeugen lösen.
+    Konstruktionslinien müssen sichtbar sein.
+   Die Konstruktionslinien müssen sichtbar sein.
+ •  Bei Aufgabe 6 darfst du das Netz weder ausschneiden noch
+•  Bei Aufgabe 6 darfst du das Netz weder ausschneiden noch nachbilden.
+    nachbilden.
+•  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel
+ •  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel
+   verwenden.
+    verwenden.
+Bitte leer lassen!
+  Aufgabe    1     2    3     4    5     6    7     8    9   Total   Note
+  Maximale   4     4    4     4    4     4    4     4    4     36
+  Punktzahl
+  Erreichte
+  Punktzahl
+---
+NO_CONTENT_HERE
+---
+1.    Bestimme die fehlende Zahl im K¨
+                                 astchen.
+      a)  2 ·  kg + 536 kg = 1.24t                                            (2P)
+      b)   ⌈5 von 2 h 33 min⌉−  min = 3 h                                     (2P)
+            9                         5
+---
+2.    Die folgende Tabelle zeigt die Distanzen und Zeiten f¨
+                                                        ur die jeweils schnellsten Verbindungen.
+                                Ζ ¨
+                                 urich – Ρaris             Ζ ¨
+                                                            urich – Br ¨
+                                                                        ussel
+                             Distanz     Reisezeit       Distanz     Reisezeit
+            Luftlinie        488 km           x          493 km           x
+            Flugzeug         490 km      1 h 15 min      500 km      1 h 15 min
+            Ζug              575 km      4 h 10 min      848 km      6 h 50 min
+            Αuto             640 km      6 h 40 min      632 km      7 h 15 min
+      a)   Der schnellste Weg mit dem Zug von Z¨
+                                                 urich nach Br¨
+                                                              ussel f¨
+                                                                    uhrt ¨
+                                                                        uber Paris. Wie weit ist
+           demnach die Distanz von Paris nach Br¨
+                                                ussel mit dem Zug?                          (1P)
+      b)   Wie viele km/h betr¨
+                              agt die Durchschnittsgeschwindigkeit eines Fluges von Z¨
+                                                                                      urich nach
+           Br¨
+              ussel?                                                                        (1P)
+      c)   Wie viele Minuten k¨
+                              onnte ein Auto auf der Fahrt von Z¨
+                                                              urich nach Br¨
+                                                                           ussel einsparen, wenn
+           es gleich schnell fahren k¨
+                                   onnte wie ein Auto auf der Fahrt von Z¨
+                                                                        urich nach Paris?   (2P)
+---
+3.    a)   Du siehst zwei Abbildungen mit Rechtecken, deren Seiten auf den Linien der H¨
+                                                                                            auschen
+           liegen. Darin ist je eine Figur grau eingezeichnet. Welchem Bruchteil des Rechtecks ent-
+           spricht jeweils der graue Teil? Gib deine Antwort als vollst¨
+                                                                     andig gek¨
+                                                                                   urzten Bruch an.
+           Markiere die Antworten f¨
+                                   ur Α und B deutlich.                                        (2P)
+                                  Α                                 B
+      b)   Nun ist nur das Teilst¨                3
+                               uck gezeichnet, das    5 von einem Rechteck ausmachen soll. Berechne
+           und notiere die Anzahl H¨
+                                     auschen des Rechtecks. Zeichne ein passendes Rechteck, welches
+           das gegebene graue Teilst¨
+                                   uck enth¨
+                                           alt.                                                (2P)
+                                                3
+                                                5
+---
+4.    Sind die folgenden Aussagen richtig oder falsch? Beachte, dass die Aufgabe gel¨
+                                                                                ost werden soll,
+      ohne dass die Rechnungen ausgef¨
+                                   uhrt werden. Es ist keine Begr¨
+                                                              undung und kein L¨
+                                                                                       osungsweg
+      notwendig.
+      Setze das Kreuz bei richtig oder falsch. Falsch gesetzte Kreuze geben Abzug. Das Auslassen
+      einer Antwort f¨
+                   uhrt zu keinem Abzug. Maximal 4 Punkte, minimal 0 Punkte.
+           90 · 568.1 = 100 · 568.1 − 10 · 568.1
+              richtig              falsch
+           7895.21 − 168.7 + 31.3 = 7895.21− 200
+              richtig              falsch
+           89.65 · 6.3 = 6.3 · 89.65
+              richtig              falsch
+           871.9 : 75 : 3 = 871.9 : 25
+              richtig              falsch
+---
+5.    Wachhund Rex bewacht das grau schattierte Haus, neben dem der Wanderweg w vorbeif¨
+                                                                                                uhrt.
+      Beim Punkt F hat Rex seinen Futternapf und beim Punkt K hat er einen Knochen vergraben.
+       a)      Rex’ Lieblingsplatz P beﬁndet sich auf dem Wanderweg w und ist gleich weit vom Futter-
+           napf F und vom Knochen K entfernt. Konstruiere diesen Punkt P.                        (1P)
+       b)  Rex ist angeleint. Seine Leine ist im Punkt L befestigt und hat eine L¨
+                                                                                   ange von 20 m. Der
+           Massstab ist in der Figur angegeben. Weil Rex angeleint ist, kann er nicht jeden Punkt auf
+           dem Gel¨
+                   ande erreichen. Konstruiere und markiere das Gebiet, das Rex erreichen kann.
+                                                                                                 (3P)
+      Deine Konstruktion muss deutlich ersichtlich sein. Lass daher alle Hilfslinien stehen!
+                     10 m
+                                                                                     w
+                         K
+                                               L         F
+                                                       Haus
+---
+6.    In der Abbildung siehst du das Netz eines Quaders.
+            8 cm                                                   k
+                                                                             56 cm
+                                     E
+                                  65 cm
+      a)   Wie viele cm3 betr¨
+                            agt das Volumen des zusammengefalteten Quaders?                  (2P)
+      b)   Die markierte Kante k m¨
+                                    usste dabei mit einer anderen Kante verklebt werden. Markiere
+           diese andere Kante deutlich im Netz und beschrifte sie ebenfalls mit k.           (1P)
+      c)   F¨
+            ur die markierte Ecke E      im Netz gibt es noch zwei andere Punkte im Netz so, dass
+           diese Punkte im zusammengefalteten Quader auf die Ecke E fallen. Markiere diese beiden
+           Punkte deutlich im Netz und beschrifte sie ebenfalls mit E.                       (1P)
+      Hinweis: Das Netz ist nicht massst¨
+                                      ablich.
+---
+7.    Rechenquadrate
+      Ein Rechenquadrat besteht aus ganzen Zahlen gr¨
+                                                osser als 0. Die Zahl
+      in der Mitte ist die Summe der vier Zahlen in den grauen Dreiecken.  2  11     9
+      Jede Zahl in einem grauen Dreieck ist die Summe der beiden Zahlen
+      in den angrenzenden weissen Dreiecken. Rechts hast du ein Beispiel   5  36    13
+      eines Rechenquadrates.
+                                                                           3   7     4
+       a)  Erg¨
+              anze die fehlenden f¨
+                                      unf Zahlen im nebenstehenden Re-
+           chenquadrat.                                           (2P)               5
+                                                                              46
+                                                                           3         8
+       b)  Erg¨
+              anze die fehlenden sechs Zahlen im nebenstehenden Re-
+           chenquadrat so, dass es folgende Eigenschaften hat:
+            •   Die Zahlen in den oberen beiden weissen Dreiecken sind        30
+                ungerade Zahlen.
+            •   Alle neun Zahlen des Rechenquadrats sind verschieden.      2         7
+                                                                  (2P)
+---
+8.    Gabeln werden in Packungen zu 4 St¨
+                                         uck verkauft und Messer in Packungen zu 6 St¨
+                                                                                     uck. Ein
+      Wirt m¨
+            ochte gleich viele St¨
+                              uck Messer wie Gabeln kaufen. Dazu kauft er 13 Packungen Gabeln
+      mehr als Packungen Messer.
+      Wie viele St¨
+                 uck Gabeln hat der Wirt gekauft?
+---
+9.    In der Abbildung ¨
+                           uberschneiden sich ein Quadrat und ein Rechteck in einem rechteckigen Ge-
+      biet (in der Abbildung grau), sodass drei Teilﬁguren entstehen. Die drei Teilﬁguren haben alle
+      denselben Fl¨
+                  acheninhalt.
+                                   6 cm
+                                                            2 cm
+                 6 cm
+                                                                                  5 cm
+       a)  Bestimme den Fl¨
+                           acheninhalt des grauen Rechtecks.                                    (1P)
+       b)  Berechne den Umfang der Gesamtﬁgur (in der Abbildung fett ausgezogen).               (3P)
+      Zeige deinen L¨
+                     osungsweg! Du darfst dazu auch in die Abbildung hineinschreiben!
+      Hinweis: Die Abbildung ist nicht massst¨
+                                            ablich.
+---
+Auf dieser Seite kannst du Aufgaben weiter l¨
+                                            osen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.
+---
+Zentrale Aufnahmeprüfung 2023
+für die Langgymnasien des Kantons Zürich
+Korrekturschema Mathematik
+1.  a)   352 oder 352 kg
+    b)   49 oder 49 min
+2.  a)   273 km (oder in anderer Einheit)
+    b)   400 oder 400 km/h
+    c)   40 oder 40 min
+3.  a)   A =  ర   und B = భ
+    b)        భఱ          మ
+         20 oder 20 Häuschen und eines der vier
+         Rechtecke der Abbildung rechts.
+4.  richtig, falsch, richtig, falsch
+5.  Siehe verkleinerte Lösungsfigur rechts.
+6.  a)   8000 oder 8000 cm³                            8 cm   E              k            k
+    bc) Siehe die Abbildung rechts.
+                                                                                                56 cm
+                                                                                            E
+                                                                       E
+7.  a)    7   12   5          b)   1   6    5                        65 cm
+          10  46  13                3  30   12
+          3   11   8               2   9    7
+8.  156 oder 156 Gabeln
+9.  a)   18 cm² (oder in anderer Einheit)
+    b)   31.4 cm (oder in anderer Einheit)
+---
+                                                       ZAP 2023 LG, Korrekturschema Mathematik
+Bewertungsgrundsätze
+     Es gelten die folgenden Grundsätze. Auf Abweichungen davon wird bei den betreffenden Auf-
+gaben hingewiesen.
+     1. Bei jeder Aufgabe sind 4 Punkte möglich. Die Maximalpunktzahl darf nur erteilt werden,
+   wenn alle Zwischenergebnisse und das Endergebnis richtig sind sowie der Lösungsweg ver-
+   ständlich ist. Ein richtiges Endergebnis ohne verständlichen Lösungsweg gibt 0 Punkte. Ist
+   der Lösungsweg nur bei einem Teil der Aufgabe nicht verständlich, wird nur der entspre-
+   chende Teil der Aufgabe mit 0 Punkten bewertet.
+   Wird eine Aufgabe auf mehrere Arten gelöst und führt dies zu verschiedenen Endergebnis-
+   sen, wird die Aufgabe mit 0 Punkten bewertet.
+   Für Kettenrechnungen wie z. B. 12 : 3 = 4 + 6 = 10   7 = 70 wird kein Punkt abgezogen.
+         2. Bei Aufgaben mit Einheiten muss auch im Endergebnis eine Einheit angegeben werden.
+   Wenn sie fehlt, wird ein Punkt abgezogen. Fehlende Einheiten bei Zwischenergebnissen
+   werden nicht bestraft.
+      3. Ein Rechenfehler liegt vor, wenn eine Rechenoperation numerisch fehlerhaft ausgeführt
+   wurde. Ein Abschreibfehler liegt vor, wenn eine gegebene Zahl oder ein richtiges Zwischen-
+   ergebnis falsch abgeschrieben wurde. In diesem Korrekturschema werden diese beiden Feh-
+   lerarten mit RF abgekürzt.
+   Ein Überlegungsfehler liegt vor, wenn ein Zwischen- oder Endergebnis falsch ist und kein
+   RF begangen wurde.
+   Die Behandlung von RF und Überlegungsfehlern wird durch dieses Korrekturschema gere-
+   gelt. Dabei werden Überlegungsfehler durch die angegebenen Optionen erfasst.
+         4. Bei jeder Aufgabe ist angegeben, wie weit man für eine bestimmte Punktsumme kommen
+   muss. Sind mehrere Optionen notiert, die zu einer gewissen Punktzahl führen, genügt es,
+   eine dieser Optionen zu erfüllen, um die entsprechende Punktzahl zu erhalten. Optionen sind
+   an einem vorangestellten Punkt  zu erkennen. Die Punktzahlen pro Aufgabe werden nicht
+   kumuliert.
+   Kann der Lösungsweg gemäss dem Korrekturschema mit unterschiedlichen Punktzah-
+   len bewertet werden, so wird die höhere Punktzahl erteilt.
+                                                                            Seite 2 von 12
+---
+                                              ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 1
+Endergebnisse
+     a)  352 oder 352 kg           b)  49 oder 49 min
+Lösungswege und Zwischenergebnisse
+     a)  1.24 t = 1240 kg und 1240 kg – 536 kg = 704 kg,
+         dann 704 kg : 2 = 352 kg
+     b)  ఱ von 153 min = 5 ꞏ 17 min = 85 min,
+         వ
+         dann 85 min – 36 min = 49 min
+Hinweis
+     Für Kettenrechnungen wie z. B. 12 : 3 = 4 + 6 = 10   7 = 70 wird kein Punkt abgezogen.
+Bewertung Teilaufgabe a)         (maximal 2 Punkte)
+   2 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis, mit oder ohne Einheit
+   1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                 Richtiger Lösungsweg mit genau einem RF
+                 Das Zwischenergebnis 704 oder 704 kg wurde korrekt berechnet.
+   0 Punkte:  Sonst
+Bewertung Teilaufgabe b)         (maximal 2 Punkte)
+   2 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis, mit oder ohne Einheit
+   1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                 Richtiger Lösungsweg mit genau einem RF
+                 Das Zwischenergebnis 85 oder 85 min wurde korrekt berechnet.
+   0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den beiden Teilauf-
+gaben addiert.
+                                                                           Seite 3 von 12
+---
+                                             ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 2
+Endergebnisse
+    a)  273 km (oder in anderer Einheit)
+    b)  400 oder 400 km/h         c)  40 oder 40 min
+Lösungswege und Zwischenergebnisse
+    a)  848 km – 575 km = 273 km
+    b)  500 km in 75 min bedeutet 100 km in 15 min, also 400 km in 60 min oder 400 km/h
+    c)  640 km in 400 min bedeutet 8 km in 5 min (das entspricht 96 km/h),
+        also 632 km in 395 min, und schliesslich 435 min – 395 min = 40 min
+Bewertung Teilaufgabe a)        (maximal 1 Punkt)
+  1 Punkt:   Korrektes Endergebnis mit korrekter Einheit
+  0 Punkte:  Sonst
+Bewertung Teilaufgabe b)        (maximal 1 Punkt)
+  1 Punkt:   Richtiger Lösungsweg und korrektes Endergebnis mit korrekter oder ohne Ein-
+             heit
+  0 Punkte:  Sonst
+Bewertung Teilaufgabe c)        (maximal 2 Punkte)
+  2 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis mit korrekter oder ohne Ein-
+             heit
+  1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                Richtiger Lösungsweg mit genau einem RF
+                Es wurde berechnet, dass ein solches Auto in 5 min 8 km zurücklegen würde.
+  0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den drei Teilaufga-
+ben addiert.
+                                                                          Seite 4 von 12
+---
+                                              ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 3
+Endergebnisse
+    a)  A = ర  und B = భ
+    b)      భఱ         మ
+        20 oder 20 Häuschen, ein
+        Rechteck wie in der Ab-
+        bildung
+Lösungswege und Zwischenergebnisse
+    a)  Das Rechteck besteht aus 30 Häuschen
+        Die Figur A entspricht 8 Häuschen, also ఴ = ర
+                                               యబ   భఱ  యబ  భఱ  భ
+    b)  Die Figur B entspricht 30 halben Häuschen, also లబ = యబ = మ
+        Die Figur besteht aus 12 Häuschen,
+        dann య sind 12 Häuschen,  భ ist 4 Häuschen und ఱ sind 20 Häuschen
+             ఱ                    ఱ                  ఱ
+        Dann eines der vier möglichen umfassenden Rechtecke einzeichnen
+Bewertung Teilaufgabe a)           (maximal 2 Punkte)
+   2 Punkte:  Die Brüche für A und für B sind beide korrekt und vollständig gekürzt.
+   1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                 Entweder A oder B ist korrekt und vollständig gekürzt.
+                 Sowohl A als auch B sind korrekt, aber nicht beide vollständig gekürzt.
+   0 Punkte:  Sonst
+Bewertung Teilaufgabe b)           (maximal 2 Punkte)
+   2 Punkte:  Korrekte Zahl 20 Häuschen und gültiges Rechteck eingezeichnet
+   1 Punkt:   Entweder korrekte Zahl 20 Häuschen notiert oder lediglich ein gültiges Rechteck
+              eingezeichnet
+   0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den beiden Teilauf-
+gaben addiert.
+                                                                            Seite 5 von 12
+---
+                                       ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 4
+Endergebnis
+         richtig  ◻
+       ◻            falsch
+         richtig  ◻
+       ◻            falsch
+Hinweise
+   Eine richtige Antwort ergibt +1 Punkt, eine falsche Antwort ergibt –1 Punkt. Keine Ant-
+   wort ergibt 0 Punkte.
+   Es wird keine Rechnung verlangt, aber die Kreuze müssen eindeutig gesetzt werden. Wenn
+   bei einer Teilaufgabe unklar ist, was angekreuzt worden ist, oder richtig und falsch zugleich
+   angekreuzt worden sind, wird die Teilaufgabe als unbeantwortet (0 Punkte) gewertet.
+Bewertung
+     Total Punkte         Korrekte Antworten
+                    0      1      2      3      4
+               0    0      1      2      3      4
+               1    0      0      1      2
+               2    0      0      0
+       Falsche 3    0      0
+         Antworten
+               4    0
+                                                                Seite 6 von 12
+---
+                                            ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 5
+Endergebnis
+    Siehe auch die massstäbliche Abbildung auf der nachfol-
+    genden Seite
+Lösungswege und Zwischenergebnisse
+    a)  Die Mittelsenkrechte von F und K schneidet die Ge-
+        rade w im Punkt P.
+    b)  Verdoppelung der gegebenen Strecke für 10 m, um
+        die Entsprechung für 20 m zu erzeugen. Kreis um L
+        mit diesem Radius. Gerade durch L und die obere
+        linke Ecke des Hauses schneidet den Kreis im Hilfs-
+        punkt Q. Zweiter Kreis um die obere linke Ecke des
+        Hauses durch Q. Markierung des gesuchten Gebiets.
+Hinweise
+        Die Konstruktion der Mittelsenkrechten ist mit Zirkel und Lineal verlangt und muss er-
+         sichtlich sein. Für die Verdoppelung der gegebenen Strecke wird auch eine Messung mit
+       dem Geodreieck akzeptiert. Die Genauigkeit der ganzen Konstruktion wird nicht bewertet.
+Bewertung Teilaufgabe a)        (maximal 1 Punkt)
+   1 Punkt:   Mit Zirkel konstruierte Mittelsenkrechte von F und K. Der Schnittpunkt dieser
+              Mittelsenkrechten und der Geraden w ist mit P beschriftet oder auf andere Weise
+              deutlich hervorgehoben.
+   0 Punkte:  Sonst
+Bewertung Teilaufgabe b)        (maximal 3 Punkte)
+   3 Punkte:  Der Kreis um L wurde mit dem richtigen Radius gezeichnet. Die Gerade durch
+              L und die obere linke Hausecke ist eingezeichnet und der Hilfspunkt Q ersicht-
+              lich. Der zweite kleine Kreis um die linke obere Hausecke ist gezeichnet und das
+              korrekte Gebiet markiert.
+   2 Punkte:  Es trifft eine der folgenden Optionen zu:
+                Der Kreis um L wurde mit dem richtigen Radius gezeichnet und das Gebiet
+                innerhalb ist markiert. Der kleine Kreis um die obere linke Hausecke wurde
+                nicht berücksichtigt.
+                Der Kreis um L wurde mit dem richtigen Radius gezeichnet. Die Gerade
+                durch L und die obere linke Hausecke ist eingezeichnet und der Hilfspunkt Q
+                ersichtlich. Der zweite kleine Kreis um die linke obere Hausecke ist gezeich-
+                net, aber das falsche Gebiet oder kein Gebiet markiert.
+   1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                Der Kreisradius 20 m wurde durch Verdoppelung erzeugt (allenfalls auch
+                durch Messung mit dem Geodreieck).
+                Der Kreis um L wurde mit dem falschen Radius 10 m gezeichnet.
+   0 Punkte:  Sonst
+                                                                        Seite 7 von 12
+---
+                                           ZAP 2023 LG, Korrekturschema Mathematik
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den beiden Teilauf-
+gaben addiert.
+Massstäbliche Lösungsfigur zur Aufgabe 5
+    Diese Seite kann als Vorlage für eine Folie verwendet werden.
+               10 m
+                                                Haus
+                                                                      Seite 8 von 12
+---
+                                             ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 6
+Endergebnisse                                  E               k
+    a)  8000 oder 8000 cm³               8 cm                               k
+    b)  Kante k wie in der Abbildung
+    c)  Beide Eckpunkte E wie in der Ab-
+        bildung                                                                    56 cm
+Lösungswege und Zwischenergebnisse
+    a)  Länge grosses Rechteck:                                                E
+           56 cm – 2 ꞏ 8 cm = 40 cm                      E
+        Breite grosses Rechteck:                       65 cm
+           65 cm – 40 cm = 25 cm
+        Volumen ist (40 ꞏ 25 ꞏ 8) cm³ = 8000 cm³
+Bewertung Teilaufgabe a)        (maximal 2 Punkte)
+  2 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis, mit oder ohne Einheit
+  1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                Richtiger Lösungsweg mit genau einem RF
+                Die Länge 40 oder 40 cm und die Breite 25 oder 25 cm wurden korrekt be-
+                rechnet.
+  0 Punkte:  Sonst
+Bewertung Teilaufgabe b)        (maximal 1 Punkt)
+  1 Punkt:   Die gesuchte Kante k ist korrekt und eindeutig markiert. Der Punkt wird auch
+             gegeben, wenn die Beschriftung fehlt.
+  0 Punkte:  Sonst
+Bewertung Teilaufgabe c)         (maximal 1 Punkt)
+  1 Punkt:   Beide gesuchten Eckpunkte E sind korrekt und eindeutig markiert. Der Punkt
+             wird auch gegeben, wenn die Beschriftung fehlt.
+  0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den drei Teilaufga-
+ben addiert.
+                                                                          Seite 9 von 12
+---
+                                          ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 7
+Endergebnisse
+    a)   7    12    5              b)   1    6     5
+         10   46   13                   3    30   12
+         3    11    8                   2    9     7
+Lösungswege und Zwischenergebnisse
+    a)  Die Zahlen 11 und 13 können sofort eingetragen und die Zahlen 7, 10 und 12 dann mit
+        Pröbeln gefunden werden.
+        Alternativ kann man nutzen, dass das Doppelte der Summe der Eckzahlen die Mitten-
+        zahl sein muss, 2 ꞏ (3 + 8 + 5 +  ) = 46, was auf   = 7 führt.
+    b)  Da die Summe der Eckzahlen 30 : 2 = 15 betragen muss, kommen für die oberen un-
+        geraden Eckzahlen ( ,  ) nur (1, 5), (3, 3) und (5, 1) in Frage. Nur (1, 5) führt zu
+        lauter verschiedenen Zahlen im ganzen Rechenquadrat.
+Hinweis
+    Es wird kein Lösungsweg verlangt, pröbeln ist erlaubt. Alle Lösungszahlen müssen aber
+    unmissverständlich eingetragen sein.
+Bewertung Teilaufgabe a)       (maximal 2 Punkte)
+  2 Punkte:  Alle Zahlen sind korrekt eingetragen.
+  1 Punkt:   Es trifft eine der folgenden Optionen zu:
+               Die Zahlen 11 und 13 in den grauen Feldern sind korrekt eingetragen.
+               Die linke obere Ecke ist 7.
+  0 Punkte:  Sonst
+Bewertung Teilaufgabe b)       (maximal 2 Punkte)
+  2 Punkte:  Alle Zahlen sind korrekt eingetragen.
+  1 Punkt:   Es trifft eine der folgenden Optionen zu:
+               Die Zahl 6 ist im oberen grauen Dreieck eingetragen.
+               Die oberen beiden weissen Dreiecke enthalten die Zahlen 1 und 5, allenfalls
+               auch in falscher Anordnung.
+  0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den beiden Teilauf-
+gaben addiert.
+                                                                     Seite 10 von 12
+---
+                                             ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 8
+Endergebnis
+    156 oder 156 Gabeln
+Lösungswege und Zwischenergebnisse
+    Die Anzahl Messer und Gabeln muss ein Vielfaches beider Packungsgrössen sein, also ein
+    Vielfaches von kgV(4, 6) = 12. Für genau 12 Messer und 12 Gabeln würden 3 Packungen
+    Gabeln und 2 Packungen Messer benötigt, also 1 Packung Gabeln mehr. Weil aber 13 Pa-
+    ckungen Gabeln mehr benötigt werden, sind es 12 ꞏ 13 = 156 Gabeln.
+    Oder: Bei gleicher Anzahl Packungen Messer/Gabeln wären es 2 Gabeln weniger pro Pa-
+    ckung, was mit 4 ꞏ 13 = 52 Gabeln kompensiert wird. Es wären also zunächst 52 : 2 = 26
+    Packungen Gabeln/Messer, nach der Kompensation 39 Packungen mit 39 ꞏ 4 = 156 Gabeln.
+    Oder: Da Gabelpackungen   మ     des Inhalts von Messerpackungen haben, braucht es umge-
+    kehrt nur  మ              య                                     భ
+               య so viele Messer- wie Gabelpackungen. Das fehlende  య    der Gabelpackungen
+    sind die genannten 13 Packungen, also 3 ꞏ 13 = 39 Packungen mit 39 ꞏ 4 = 156 Gabeln.
+    Oder: Da Messerpackungen 50 % mehr Inhalt als Gabelpackungen haben, braucht es um-
+    gekehrt 50 % mehr Gabel- als Messerpackungen. Diese 50 % der Messerpackungen sind
+    die genannten 13 Packungen, also 2 ꞏ 13 = 26 Packungen mit 26 ꞏ 6 = 156 Messern bzw.
+    Gabeln.
+Hinweis
+    Bei einem anderen richtigen und verständlichen Lösungsweg sollen die Teilpunkte mathe-
+    matisch sinngemäss vergeben werden.
+Bewertung
+   4 Punkte:   Es trifft eine der folgenden Optionen zu:
+                Richtiger systematischer Lösungsweg und korrektes Endergebnis
+                Es ist kein Lösungsweg ersichtlich, aber das korrekte Endergebnis wurde mit
+                Pröbeln gefunden.
+   3 Punkte:   Richtiger systematischer Lösungsweg mit genau einem RF
+   2 Punkte:   Es trifft eine der folgenden Optionen zu:
+                Es werden 52 zusätzliche Gabeln in Beziehung zu 2 Gabeln weniger pro Pa-
+                ckung gebracht.
+                Es ist ersichtlich, dass  భ der Anzahl Gabelpackungen 13 entsprechen.
+                                          య
+                Es ist ersichtlich, dass 50 % der Anzahl Messerpackungen 13 entsprechen.
+   1 Punkt:    Es trifft eine der folgenden Optionen zu:
+                Es wird das kgV(4, 6) = 12 berechnet.
+                Richtiger systematischer Lösungsweg mit genau zwei RF
+   0 Punkte:   Sonst
+                                                                         Seite 11 von 12
+---
+                                               ZAP 2023 LG, Korrekturschema Mathematik
+Aufgabe 9
+Endergebnisse                                               6 cm
+    a)   18 cm² (oder in anderer Einheit)
+    b)   31.4 cm (oder in anderer Einheit)                                  2 cm
+                                                               4.5 cm           2.7 cm
+Lösungswege und Zwischenergebnisse
+    a)   Das Quadrat hat Flächeninhalt 36 cm²,   6 cm
+         das graue Rechteck die Hälfte davon,                 18 cm²        4 cm           5 cm
+         also 18 cm².
+    b)   Das graue Rechteck hat die Länge 6 cm    1.5 cm
+         – 2 cm = 4 cm. Die Breite beträgt dann        1 cm
+         18 cm² : 4 cm = 4.5 cm.                                      7.2 cm
+         Das grosse Rechteck hat den Flächen-
+         inhalt 36 cm². Die Breite beträgt dann 36 cm² : 5 cm = 7.2 cm.
+         Daraus lassen sich weitere Teile berechnen oder auch direkt der Umfang, nämlich
+         2 ꞏ (2 cm + 5 cm) + 2 ꞏ (6 cm + 7.2 cm – 4.5 cm) = 2 ꞏ 7 cm + 2 ꞏ 8.7 cm = 31.4 cm.
+Hinweis
+    Bei einem anderen richtigen und verständlichen Lösungsweg sollen die Teilpunkte mathe-
+    matisch sinngemäss vergeben werden.
+Bewertung Teilaufgabe a)          (maximal 1 Punkt)
+   1 Punkt:   Korrektes Ergebnis mit korrekter Einheit
+   0 Punkte:  Sonst
+Bewertung Teilaufgabe b)          (maximal 3 Punkte)
+   3 Punkte:  Richtiger Lösungsweg und korrektes Ergebnis mit korrekter Einheit
+   2 Punkte:  Es trifft eine der folgenden Optionen zu:
+                 Richtiger Lösungsweg und korrektes Ergebnis mit falscher oder fehlender
+                 Einheit
+                 Richtiger Lösungsweg mit genau einem RF, das Ergebnis mit korrekter Ein-
+                 heit
+                 Es wurde die Grösse 7.2 cm berechnet, sowie 4.5 cm oder 1.5 cm (allenfalls
+                 auch ohne Einheiten).
+   1 Punkt:   Es trifft eine der folgenden Optionen zu:
+                 Richtiger Lösungsweg mit genau einem RF, das Ergebnis mit falscher oder
+                 fehlender Einheit
+                 Es wurde eine der drei Grössen 7.2 cm oder 4.5 cm oder 1.5 cm berechnet
+                 (allenfalls auch ohne Einheit).
+   0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punktzahlen aus den beiden Teilauf-
+gaben addiert.
+                                                                            Seite 12 von 12
+
+Zentrale Mathematikprüfung 2023, Matheprüfung 2023, Mathematiktest Jahr 2023, Mathe Aufgaben 2023, Lösungen Prüfung 2023 Mathe, Aufgabe 1 bis 6 Mathe 2023, Teil A Teil B Mathe 2023, Mathe ZAP 2023, Prüfungsversion 2023 Mathe, 2023 2023 2023 23 23 23, Originalprüfung Mathematik 2023, Prüfung aus 2023 Mathe.

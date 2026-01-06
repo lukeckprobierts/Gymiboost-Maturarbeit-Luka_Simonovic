@@ -1,0 +1,10 @@
+Luc0407@icloud.com
+SELECT m.* 
+FROM Message m
+JOIN ChatSession cs ON m.session_id = cs.id
+JOIN User u ON cs.user_id = u.id
+WHERE u.email = 'Luc0407@icloud.com'
+ORDER BY m.timestamp;
+
+
+SELECT m.id, m.timestamp, CASE WHEN m.is_user = 1 THEN 'USER' ELSE 'BOT' END AS role, m.content, cs.id AS session_id, cs.name AS session_name, u.id AS user_id, u.email FROM message m JOIN chat_session cs ON m.session_id = cs.id JOIN user u ON cs.user_id = u.id WHERE u.email = 'julia.c.edelman@googlemail.com' ORDER BY m.timestamp;

@@ -1,0 +1,127 @@
+Kanton Zürich
+Zentrale Aufnahmeprüfung 2019
+für die Langgymnasien
+Mathematik
+Name:                                                  Vorname:
+Prüfungsnummer:                                        Kantonsschule:
+Allgemeine Hinweise:
+•  Du hast 60 Minuten Zeit.
+•  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer
+   Aufgabe nicht aus, fährst du auf der letzten Seite weiter.
+•  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der
+   Lösungsweg verständlich ist; sonst erhältst du keine Punkte.
+•  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich
+   und notiere sie mit der passenden Masseinheit
+•  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+•  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel
+   verwenden.
+Bitte leer lassen!
+ Aufgabe        1       2       3       4       5       6      7       8       9     Total       Note
+ Maximale       4       4       4       4       4       4      4       4       4      36
+ Punktzahl                                                                                                          Neu
+ Erreichte
+ Punktzahl
+---
+NO_CONTENT_HERE
+---
+1.    Gib das Ergebnis an:  (107· 0.471) + (6.98 + 3.41 + 3.02 − 3.39)− (97· 0.471)
+---
+2.    Auf dem Ponyhof
+        Anzahl Ponys                                                            32
+        durchschnittlicher Futterbedarf pro Pony                  6 kg Heu pro Tag
+        durchschnittlicher Wasserbedarf pro Pony                      30 l pro Tag
+        durchschnittliches Gewicht pro Pony                                 350 kg
+        maximales Gewicht des Reiters                          1 des Ponygewichtes
+                                                              4
+        Fassvermögen eines Wassertroges                                      150 l
+       a)  Wie gross ist der Futterbedarf im Monat März für alle Ponys?
+       b)  Wie viel sollte ein Reiter eines Ponys mit durchschnittlichem Gewicht höchstens wiegen?
+       c)  Einmal pro Tag wird Wasser für die Ponys bereitgestellt. Wie viele Wassertröge werden
+           mindestens benötigt?
+---
+3.    Eine Kuh gibt täglich 20 l Milch. Landwirt Egli hat 15 Kühe, welche erfahrungsgemäss eine
+      Wiese in 35 Tagen abgrasen. Landwirt Egli kauft noch so viele Kühe dazu, dass er jeden Tag
+      insgesamt 500 l Milch erhält.
+      Nach wie vielen Tagen ist diese Wiese jetzt abgegrast?
+---
+4.    Frau Misano besucht mit ihrer Klasse mit 22 Schülerinnen und Schülern auf der Schulreise
+      einen Kletterpark. Sie werden von Herrn Cesaro begleitet. Für die Bahnfahrt bezahlt ein Er-
+      wachsener doppelt so viel wie ein Kind, wobei eine erwachsene Person gratis fährt. Für den
+      Seilpark bezahlt ein Kind 22 Fr. und ein Erwachsener 32 Fr. Hier gibt es keine Gratiseintritte.
+      Die Schulreise kostet insgesamt 800 Fr.
+      Wie viel kostet die Bahnfahrt für ein Kind?
+---
+5.    Mit einem geeigneten Vorgehen lassen sich die folgenden Aufgaben mit viel weniger Rechen-
+      aufwand lösen, als wenn man von links nach rechts rechnet.
+      Wähle ein geeignetes Vorgehen und rechne aus. Schreibe deine Rechenschritte auf.
+       a)   (621.6 : 37) − (251.6 : 37)
+       b)   (90· 0.043) + (11· 0.43)
+---
+6.    Die Freundinnen Lea, Noemi und Pascale machen eine Wanderung zu einer Berghütte, in der
+      sie übernachten. Die ersten 5 h wandern sie mit einer Geschwindigkeit von 4.8 km/h. Für den
+                                  4
+      steilen Anstieg von 1.6 km Länge brauchen sie 41 min. Die restlichen 2.2 km bis zur Berghütte
+      wandern sie mit 5.5 km/h.
+      Mit welcher durchschnittlichen Geschwindigkeit sind die drei Freundinnen die ganze Tour ge-
+      wandert?
+---
+7.    Aus dem grauen Rechteck mit der Länge 35 cm und
+      der Breite 25 cm wird das schrafﬁerte Rechteck heraus-
+      geschnitten. Dadurch entsteht ein überall gleich breiter
+      grauer Rahmen. Der Umfang des schrafﬁerten Rechtecks
+      ist  5 des Umfangs des grauen Rechtecks.                     b
+           6
+      Berechne die Breite b des Rahmens.
+---
+8.    Aus den Ziffern 1, 2, 3, 4 und 5 können verschiedene Zahlen zusammengestellt werden, z.B.
+      54123, 12534 usw. Jede Ziffer muss in der Zahl genau einmal vorkommen.
+      Welche Zahlen erfüllen alle folgenden Bedingungen?
+      •    Sie sind durch 4 teilbar.
+      •    Sie sind kleiner als 40000.
+      •    Ihre erste Ziffer ist kleiner als ihre zweite Ziffer.
+      Markiere deine Lösungszahlen deutlich.
+---
+9.    Die beiden U-förmigen Teile A und B, die aus je 7 Würfeln bestehen, werden zu einer Gesamt-
+      ﬁgur zusammengesetzt, wie es angegeben ist.
+                       Q                                       Q
+                  P
+            R
+           A                    B                                        R
+                                                                   Gesamtﬁgur
+       a)  Von wie vielen Würfeln der Gesamtﬁgur sind genau drei Seitenﬂächen (Quadrate) sicht-
+           bar?
+       b)  Wie viele Quadrate der Figur A werden beim Zusammenfügen mit der Figur B verdeckt?
+       c)  Wie viele Quadrate der Gesamtﬁgur sind von aussen sichtbar?
+       d)  Auf der Gesamtﬁgur wandert man entlang von Würfelkanten vom Punkt P auf A zum
+           Punkt Q auf B. Wie lange ist eine solcher Weg mindestens?
+---
+Auf dieser Seite kannst du Aufgaben weiter lösen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.
+---
+Zentrale Aufnahmeprüfung 2019
+für die Langgymnasien des Kantons Zürich
+Korrekturschema Mathematik
+Lösungen
+1.   14.73 (oder dieselbe Zahl in anderer Form, z. B. 14 73  )
+                                                         100
+2.   a) 5952 kg (oder dasselbe Ergebnis in anderer Form, z. B. 5 t 952 kg)
+     b) 87.5 kg (oder dasselbe Ergebnis in anderer Form)
+     c) 7 Wassertröge (oder 7)
+3.   Nach 21 Tagen (oder 21 d oder 21)
+4.   10.50 Fr. (oder dasselbe Ergebnis in anderer Form, z. B. 10 1 Fr. oder 1050 Rp.)
+                                                                 2
+5.   a) 10
+     b) 8.6 (oder dasselbe Ergebnis in anderer Form, z. B. 8 3 )
+                                                             5
+     Für die volle Punktzahl muss bei beiden Teilaufgaben je ein «Trick» angewendet werden.
+6.   4.2 km/h (oder dasselbe Ergebnis in anderer Form, z. B. 4 1 km/h oder 1 1  m/s)
+                                                               5              6
+7.   2.5 cm (oder dasselbe Ergebnis in anderer Form, z. B. 2 1 cm oder 25 mm)
+                                                             2
+8.   13452, 13524, 14352, 14532, 15324, 15432, 34152, 34512, 35124, 35412
+9.   a) 4 Würfel (oder 4)
+     b) 5 Quadrate (oder 5)
+     c) 50 Quadrate (oder 50); ebenfalls als richtig gilt: 60 − 2 ⋅ [eine falsche Lösung bei b)]
+     d) 6 Kanten
+
+Matheprüfung 2019, Mathematikprüfung 2019, Prüfung ZAP Mathematik 2019, Aufgaben und Lösungen Mathe 2019, Jahr 2019 Matheprüfung, Zentrale Mathematikprüfung 2019, Teil A 2019, Teil B 2019, Aufgabe 1–6 2019, Lösungen 2019 Mathe, ZAP 2019 Mathe, 2019 2019 2019 19 19 19, Mathematiktest von 2019, Matheprüfung original 2019, Zentrale Prüfung Jahr 2019 Mathematik, Aufgaben Mathematikprüfung 2019, Mathematikprüfung vom Jahr 2019, Prüfungsversion Mathe 2019.

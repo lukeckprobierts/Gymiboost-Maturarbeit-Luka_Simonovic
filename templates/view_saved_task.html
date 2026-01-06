@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+{% block content %}
+<div class="container">
+    <div id="taskResults" class="results-container" style="display: block;">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0">Generierte Aufgaben</h3>
+            </div>
+            <div class="card-body" id="generatedTasks">
+                <div class="tasks-header">
+                    <h4 class="tasks-title"><i class="bi bi-journal-text"></i> Aufgabenblatt</h4>
+                </div>
+                <div id="tasksContent"></div>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4" id="solutionSection" style="display: none;">
+            <div class="card-header bg-success text-white">
+                <h3 class="card-title mb-0"><i class="bi bi-check-circle"></i> Lösungen</h3>
+            </div>
+            <div class="card-body" id="taskSolutions">
+                <div class="solutions-header">
+                    <h4 class="solutions-title">Lösungsblatt</h4>
+                </div>
+                <div id="solutionsContent"></div>
+            </div>
+        </div>
+
+        <div id="actionButtons" class="results-actions text-center mb-5" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+            <button id="showSolutionsBtn" class="btn btn-success">
+                <i class="bi bi-eye"></i> Lösungen anzeigen
+            </button>
+            <button id="exportPdfBtn" class="btn btn-danger">
+                <i class="bi bi-file-earmark-pdf"></i> Aufgaben als PDF
+            </button>
+            <button id="exportSolutionsPdfBtn" class="btn btn-warning" style="display: none;">
+                <i class="bi bi-file-earmark-pdf"></i> Lösungen als PDF
+            </button>
+            <button id="saveTasksBtn" class="btn btn-primary">
+                <i class="bi bi-save"></i> Aufgaben speichern
+            </button>
+            <button id="exportToChatBtn" class="btn btn-success">
+                <i class="bi bi-chat-left-text"></i> Zu Chat exportieren
+            </button>
+        </div>
+    </div>
+
+    <script>
+    function renderMarkdownWithMath(content) {
+        try {
+            if (!content) return '<div class="markdown-content">Kein Inhalt verfügbar</div>';
+            const protectedText = content.replace(/(\\\(.*?\\\)|\\\[.*?\\\])/gs, match => `%%MATHJAX:${btoa(match)}%%`);
+            const dirty = marked.parse(protectedText);
+            const clean = DOMPurify.sanitize(dirty, {
+                ADD_TAGS: ['iframe', 'mjx-container'],
+                ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'jax', 'display']
+            });
+            const withMath = clean.replace(/%%MATHJAX:(.*?)%%/gs, (_, encoded) => atob(encoded));
+            return `<div class="markdown-content math-container">${withMath}</div>`;
+        } catch (error) {
+            console.error('Markdown rendering error:', error);
+            return `<div class="markdown-content">${content}</div>`;
+        }
+    }
+
+    function showToast(message, type = 'success') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.innerHTML = `<i class="bi bi-${type === 'success' ? 'check-circle' : 'exclamation-octagon'}"></i><span>${message}</span>`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const tasksContentEl = document.getElementById('tasksContent');
+        const solutionsContentEl = document.getElementById('solutionsContent');
+        const showSolutionsBtn = document.getElementById('showSolutionsBtn');
+        const exportPdfBtn = document.getElementById('exportPdfBtn');
+        const exportSolutionsPdfBtn = document.getElementById('exportSolutionsPdfBtn');
+        const saveTasksBtn = document.getElementById('saveTasksBtn');
+        const exportToChatBtn = document.getElementById('exportToChatBtn');
+        const solutionSection = document.getElementById('solutionSection');
+
+        const tasksheetRaw = {{ task.tasksheet|tojson }};
+        const solutionsheetRaw = {{ task.solutionsheet|tojson }};
+
+        function typesetMath() {
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([tasksContentEl, solutionsContentEl].filter(Boolean))
+                    .catch(err => console.error('MathJax typeset failed:', err));
+            }
+        }
+
+        tasksContentEl.innerHTML = renderMarkdownWithMath(tasksheetRaw || '');
+        typesetMath();
+
+        // Solutions only shown when you press the button
+        showSolutionsBtn.addEventListener('click', function() {
+            solutionSection.style.display = 'block';
+            solutionsContentEl.innerHTML = renderMarkdownWithMath(solutionsheetRaw || '');
+            typesetMath();
+            this.style.display = 'none';
+            exportSolutionsPdfBtn.style.display = 'inline-block';
+        });
+
+        // PDF Export logic
+        async function exportToPDF(exportSolutions = false) {
+            try {
+                const button = exportSolutions ? exportSolutionsPdfBtn : exportPdfBtn;
+                button.disabled = true;
+                button.innerHTML = '<span class="spinner-border spinner-border-sm"></span> PDF wird erstellt...';
+
+                const contentElement = exportSolutions ? solutionsContentEl : tasksContentEl;
+                if (!contentElement || !contentElement.textContent.trim()) {
+                    throw new Error(exportSolutions ? 'Lösungen müssen zuerst angezeigt werden' : 'Keine Aufgaben vorhanden');
+                }
+
+                const title = `Gymiboost ${exportSolutions ? 'Lösungen' : 'Aufgaben'}`;
+                const date = new Date().toLocaleDateString('de-CH');
+
+                const response = await fetch('/generate_pdf', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        title: title,
+                        date: date,
+                        content: contentElement.innerHTML,
+                        type: exportSolutions ? 'solutions' : 'tasks'
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(await response.text());
+                }
+
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `gymiboost-${exportSolutions ? 'loesungen' : 'aufgaben'}-${new Date().toISOString().slice(0,10)}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error('PDF Export Error:', error);
+                showToast('Fehler beim PDF-Export: ' + error.message, 'error');
+            } finally {
+                const button = exportSolutions ? exportSolutionsPdfBtn : exportPdfBtn;
+                button.disabled = false;
+                button.innerHTML = `<i class="bi bi-file-earmark-pdf"></i> ${exportSolutions ? 'Lösungen als PDF' : 'Aufgaben als PDF'}`;
+            }
+        }
+
+        exportPdfBtn.addEventListener('click', () => exportToPDF(false));
+        exportSolutionsPdfBtn.addEventListener('click', () => exportToPDF(true));
+
+        // Save tasks (disable, set spinner, save to server)
+        saveTasksBtn.addEventListener('click', async () => {
+            const saveBtn = saveTasksBtn;
+            try {
+                saveBtn.disabled = true;
+                saveBtn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Speichern...';
+                const title = prompt('Gib einen Namen für diese Aufgaben ein:', `Aufgaben vom ${new Date().toLocaleDateString('de-CH')}`);
+                if (!title) return;
+                const topic = prompt('Optional: Gib ein Thema für diese Aufgaben ein (z.B. Bruchrechnen, Satzglieder):', '');
+                // Save the RAW markdown/latex, not textContent!
+                const saveRequest = await fetch('/save_tasks', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        title: title,
+                        topic: topic || '',
+                        tasksheet: tasksheetRaw || '',
+                        solutionsheet: solutionsheetRaw || ''
+                    })
+                });
+                if (!saveRequest.ok) throw new Error(await saveRequest.text());
+                const resultData = await saveRequest.json();
+                if (!resultData?.success) throw new Error(resultData?.message || 'Fehler beim Speichern');
+                showToast('Aufgaben erfolgreich gespeichert', 'success');
+                if (confirm('Möchtest du zu deinen gespeicherten Aufgaben wechseln?')) {
+                    window.location.href = '/saved_tasks';
+                }
+            } catch (error) {
+                showToast('Fehler beim Speichern: ' + error.message, 'error');
+            } finally {
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = '<i class="bi bi-save"></i> Aufgaben speichern';
+            }
+        });
+
+        // Export tasks & solutions to chat
+        exportToChatBtn.addEventListener('click', async function() {
+            const btn = this;
+            try {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Exportieren...';
+                const response = await fetch('/export_tasks_to_chat', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        tasksheet: tasksContentEl.textContent,
+                        solutionsheet: solutionsContentEl.textContent
+                    })
+                });
+                if (!response.ok) throw new Error(await response.text());
+                const data = await response.json();
+                if (!data.success) throw new Error(data.message || 'Export fehlgeschlagen');
+                showToast('Aufgaben erfolgreich zum Chat exportiert', 'success');
+                setTimeout(() => window.location.href = '/chat', 1500);
+            } catch (error) {
+                showToast(error.message || 'Fehler beim Exportieren', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="bi bi-chat-left-text"></i> Zu Chat exportieren';
+            }
+        });
+    });
+    </script>
+</div>
+{% endblock %}

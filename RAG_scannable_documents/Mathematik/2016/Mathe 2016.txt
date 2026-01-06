@@ -1,0 +1,101 @@
+Zentrale Aufnahmeprüfung 2016 für die Langgymnasien des Kantons Zürich 2016 2016 2016 
+Μathematik
+Name:   . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  Vorname:     . . . . . . . . . . . . . . . . . . . . . . . . . .
+Prüfungsnummer:  . . . . . . . . . . .                             Schule:  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Allgemeine Hinweise:
+   •  Du hast 60 Minuten Zeit.
+   •  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer Aufgabe nicht,
+      fährst du auf der letzten Seite weiter.
+   •  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der Lösungsweg
+      verständlich ist; sonst erhältst du keine Punkte.
+   •  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich und notiere
+      sie mit der passenden Masseinheit.
+   •  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+   •  Die Aufgabe 9 musst du mit Bleistift und den Geometriewerkzeugen lösen.
+      Die Konstruktionslinien müssen sichtbar sein.
+   •  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel verwenden.
+Bitte leer lassen!
+ Aufgabe      1     2     3     4    5                              6  7  8  9 Total  Note
+ Maximale     4     4     4     4    4                              4  4  4  4   36
+ Punktzahl
+ Erreichte
+ Punktzahl
+---
+1.      a)    Gib das Ergebnis in hl und l an:  8.11 hl− (7 17 hl : 32)
+                                                           25
+        b)    Gib die Lösung in d und h an:   (9 d 8 h− 37 h) : 17 = 5 3 d−
+                                                                    8
+2.    Gib die Lösung als Dezimalzahl an:      (27211 : 23) +   = (29· 12 3)− 181.5
+                                                  20                     4
+---
+3.    Bei der Renovierung eines Kirchturms werden die alten Holztreppen erneuert. Dadurch ändert
+      sich die Anzahl der Stufen. Vom Eingang bis zur ersten Plattform waren die 27 Stufen je 16 cm
+      hoch. Neu sind die Stufen 2 cm höher. Von der ersten bis zur zweiten Plattform haben die 80
+      neuen Stufen eine Höhe von je 17 cm. Die alten waren 20 cm hoch. Wie viele Stufen mehr wird
+      der renovierte Kirchturm insgesamt haben?
+4.    Eine Familie besteht aus Vater, Mutter und Drillingen. Das Auto der Familie hat ein Leergewicht
+      von 1.352 t. Sitzt die ganze Familie im Auto, erhöht sich das Gewicht auf 1.595 t. Der Vater
+      wiegt 17 kg mehr als die Mutter, die wiederum 33 kg schwerer ist als einer der Drillinge, welche
+      alle gleich schwer sind. Wie schwer ist der Vater?
+---
+5.    Mauro gönnt sich in den Ferien ein feines Glacé am besten Glacéstand des Dorfes. Drei ver-
+      schiedene Sorten sollen es sein. Mindestens eine seiner beiden Lieblingssorten, Schokolade (S)
+      und Erdbeere (E), muss dabei sein. Zusätzlich kommen die Sorten Mango (M), Pistache (P) und
+      Zitrone (Z) in Frage. Die Kombination von Mango und Pistache schmeckt ihm allerdings nicht.
+      Welche Kombinationen kommen für Mauro in Frage?
+6.    Auf der Insel Far-Far-Away gibt es nur Sonnen- und Regentage. Die Monate April (30 Tage),
+      Mai (31 Tage) und Juni (30 Tage) haben gleich viele Tage wie bei uns. Im April des Jahres 2015
+      hatte es dort genau 5-mal so viele Sonnentage wie Regentage. Im selben Jahr im Juni hatte es
+      halb so viele Sonnentage wie Regentage. Während der drei Monate April bis Juni 2015 hatte es
+      insgesamt 13 Sonnentage mehr als Regentage. Wie viele Sonnentage hatte es im Mai 2015 auf
+      der Insel Far-Far-Away?
+---
+7.    Leonie und Nadine fahren mit ihrem kleinen Motorboot normalerweise in 24 Minuten von ih-
+      rem Ferienhaus über den See zum Imbissstand. Ihre durchschnittliche Geschwindigkeit beträgt
+      15 km/h. Doch heute ist ihr Benzintank bereits nach 6 Minuten leer. Während Leonie ihren
+      Kollegen Noah per Handy um Hilfe bittet, rudert Nadine eine Viertelstunde lang mit einer Ge-
+      schwindigkeit von 3 km/h weiter. Dann braust Noah mit dem Ersatzkanister an. Nach 2 Minuten
+      Pause können die Mädchen ihre Fahrt mit vollem Tank und der gewohnten Geschwindigkeit
+      fortsetzen. Wie viele Minuten sind sie heute unterwegs?
+---
+8.    Aus kleinen Würfelchen wird ein grosser Würfel zusammengefügt und anschliessend aussen
+      herum auf allen Seiten rot bemalt. Dann werden Würfelchen so entfernt, dass in drei Richtungen
+      durchgehende Löcher entstehen (siehe Skizze).
+       a)   Wie viele Würfelchen wurden entfernt, um den durchlöcherten Würfel zu erhalten?
+       b)   Aus wie vielen Würfelchen besteht der durchlöcherte Würfel?
+       c)   Wie viele der Quadrate des durchlöcherten Würfels sind rot bemalt?
+       d)   Wie viele der Quadrate des durchlöcherten Würfels sind unbemalt?
+---
+9.    Konstruiere das unregelmässige Viereck ABCD mit Zirkel und Lineal (ohne abzumessen) und
+      beschrifte die Ecken. Benutze dabei den vorgegebenen Punkt A, den Winkel β, die Seite d und
+      die Angaben für α, a und δ .
+      α = 90◦
+       a =  d
+            2
+       δ =  3β
+            4
+                           d                                    β
+                           d
+                      A
+---
+Auf dieser Seite kannst du Aufgaben weiter lösen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.
+---
+Zentrale Aufnahmeprufung 2016
+fir die Langgymnasien des Kantons Zurich
+Korrekturschema Mathematik
+Losungen
+    a) 7 hl 87 | (oder 7.87 hl und 787 |)   b) 4 d 22 h (oder 443 d und 118 h)
+    176.4
+      Stufen (oder 9)
+    82 kg (oder dieselbe Angabe in einer anderen Einheit)
+    SMZ, SPZ, EMZ , EPZ, SEM, SEP , SEZ
+    (oder dieselben Kombinationen mit ausgeschriebenen Sortennamen)
+    17 Sonnentage oder 17
+    38 Minuten (oder 38)
+    a) 7 kleine Wiirfelchen (oder 7)     b) 20 Wurfelchen (oder 20)
+    c) 48 Quadrate (oder 48)                24 Quadrate (oder 24)
+                                             B
+
+Matheprüfung 2016, Zentrale Prüfung Mathematik 2016, Mathematiktest 2016, ZAP Mathe 2016, Aufgaben Mathematik 2016, Prüfung Mathe 2016, 2016 Zentrale Mathematikprüfung, Teil A 2016, Teil B 2016, Aufgabe 1 bis 6 2016, Mathe Jahr 2016, 2016 2016 2016 16 16 16, Mathematik Lösungen 2016, Diese Prüfung stammt aus dem Jahr 2016, Matheprüfung von 2016, Prüfungsversion 2016, Mathe 2016 Zentrale Aufnahmeprüfung, Mathematik 2016 ZAP Lösungen Aufgaben Teil A Teil B.
+2016 2016 2016 2016 2016 2016 2016 2016 2016 216 16 2016 2016 2016 2016 2016 2016

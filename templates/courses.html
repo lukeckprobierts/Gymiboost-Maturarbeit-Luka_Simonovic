@@ -1,0 +1,636 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="courses-page">
+  <section class="courses-hero">
+    <div class="courses-hero__content">
+      <div>
+        <h1 class="courses-title">Kurse entdecken</h1>
+        <p class="courses-subtitle">Interaktive, KI-gestützte Kurse zu Mathe, Deutsch und mehr – erstellt von der Community, für alle.</p>
+      </div>
+      <div class="courses-hero__actions">
+        <a id="create-course-btn" class="btn btn-primary" href="/courses/create">
+          <i class="bi bi-magic"></i>
+          Kurs erstellen
+        </a>
+      </div>
+    </div>
+    <div class="courses-meta">
+      <span><i class="bi bi-people"></i> Globales Kursverzeichnis</span>
+      <span><i class="bi bi-shield-check"></i> Fortschrittsfähig (für spätere Auswertungen)</span>
+      <span><i class="bi bi-box-arrow-up-right"></i> Automatisch geteilt</span>
+    </div>
+  </section>
+
+  <section class="courses-controls" aria-label="Kurse filtern und suchen">
+    <div class="control-row">
+      <div class="control control--search">
+        <i class="bi bi-search"></i>
+        <input id="course-search" type="search" placeholder="Suche nach Thema, Fach, Kursname …" autocomplete="off" />
+      </div>
+
+      <div class="control control--select">
+        <label for="filter-subject">Fach</label>
+        <select id="filter-subject">
+          <option value="">Alle</option>
+          <option>Mathematik</option>
+          <option>Deutsch</option>
+          <option>Französisch</option>
+          <option>Englisch</option>
+          <option>Logik</option>
+          <option>Lernstrategien</option>
+          <option>Allgemein</option>
+        </select>
+      </div>
+
+      <div class="control control--select">
+        <label for="filter-level">Niveau</label>
+        <select id="filter-level">
+          <option value="">Alle</option>
+          <option>Anfänger</option>
+          <option>Mittelstufe</option>
+          <option>Fortgeschritten</option>
+        </select>
+      </div>
+
+      <div class="control control--select">
+        <label for="filter-duration">Dauer</label>
+        <select id="filter-duration">
+          <option value="">Alle</option>
+          <option value="short">Kurz (&lt; 1h)</option>
+          <option value="medium">Mittel (1–3h)</option>
+          <option value="long">Lang (3–10h)</option>
+          <option value="xl">Sehr lang (10h+)</option>
+        </select>
+      </div>
+
+      <div class="control control--select">
+        <label for="sort-by">Sortieren</label>
+        <select id="sort-by">
+          <option value="popular">Beliebtheit</option>
+          <option value="rating">Bewertung</option>
+          <option value="new">Neu</option>
+          <option value="duration">Dauer</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="chips" id="topics-chips" aria-label="Trend-Themen">
+      <button class="chip" data-topic="Aufsatz">Aufsatz</button>
+      <button class="chip" data-topic="Textverständnis">Textverständnis</button>
+      <button class="chip" data-topic="Geometrie">Geometrie</button>
+      <button class="chip" data-topic="Algebra">Algebra</button>
+      <button class="chip" data-topic="Logik">Logik</button>
+      <button class="chip" data-topic="Prüfungstraining">Prüfungstraining</button>
+    </div>
+  </section>
+
+  <section class="courses-results">
+    <div class="results-meta">
+      <span id="results-count">0 Kurse</span>
+      <div class="legend">
+        <span class="legend-item"><span class="pill pill--subject"></span> Fach</span>
+        <span class="legend-item"><span class="pill pill--level"></span> Niveau</span>
+        <span class="legend-item"><i class="bi bi-stars"></i> Bewertung</span>
+        <span class="legend-item"><i class="bi bi-graph-up"></i> Lernende</span>
+      </div>
+    </div>
+    <div id="courses-grid" class="courses-grid" role="list"></div>
+  </section>
+</div>
+
+<style>
+/* Layout */
+.courses-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+.courses-hero {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.courses-hero__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.courses-title {
+  font-size: 2rem;
+  margin: 0;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.courses-subtitle {
+  color: #9ca3af;
+  margin-top: 6px;
+}
+.courses-hero__actions .btn {
+  text-decoration: none;
+}
+.courses-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+.courses-meta i {
+  color: #60a5fa;
+  margin-right: 6px;
+}
+
+/* Controls */
+.courses-controls {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 16px;
+  padding: 14px;
+  margin: 12px 0 18px;
+}
+.control-row {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(4, minmax(160px, 1fr));
+  gap: 10px;
+}
+.control {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 12px;
+  gap: 8px;
+  padding: 10px 12px;
+  color: #d1d5db;
+}
+.control--search {
+  padding: 8px 12px;
+}
+.control--search i {
+  color: #9ca3af;
+}
+.control input, .control select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+.control label {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-right: 8px;
+}
+
+/* Chips */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.chip {
+  background: rgba(96,165,250,0.12);
+  border: 1px solid rgba(96,165,250,0.25);
+  color: #dbeafe;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s;
+}
+.chip:hover { transform: translateY(-1px); background: rgba(96,165,250,0.18); }
+.chip.active { background: rgba(96,165,250,0.28); }
+
+/* Results */
+.results-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 2px;
+  color: #9ca3af;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.legend { display: flex; gap: 14px; flex-wrap: wrap; }
+.legend-item { display: inline-flex; align-items: center; gap: 6px; }
+.pill {
+  display: inline-block;
+  width: 16px; height: 8px;
+  border-radius: 9999px;
+}
+.pill--subject { background: linear-gradient(90deg, #60a5fa, #a78bfa); }
+.pill--level { background: linear-gradient(90deg, #34d399, #10b981); }
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+@media (max-width: 1100px) {
+  .control-row { grid-template-columns: 1fr 1fr 1fr; }
+  .courses-grid { grid-template-columns: repeat(8, 1fr); }
+}
+@media (max-width: 860px) {
+  .control-row { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: repeat(6, 1fr); }
+}
+@media (max-width: 640px) {
+  .courses-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 460px) {
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Card */
+.course-card {
+  grid-column: span 4;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(96,165,250,0.18);
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s;
+}
+.course-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(96,165,250,0.08);
+  border-color: rgba(96,165,250,0.35);
+}
+.course-card:focus-visible { outline: 2px solid rgba(96,165,250,0.6); outline-offset: 2px; }
+.course-card__top {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 8px;
+}
+.course-title {
+  font-weight: 600;
+  margin: 0;
+  color: #f3f4f6;
+}
+.course-badges {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+.badge {
+  font-size: 0.75rem;
+  color: #d1d5db;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 9999px;
+  padding: 3px 8px;
+}
+.badge--subject { border-color: rgba(96,165,250,0.35); }
+.badge--level { border-color: rgba(16,185,129,0.35); }
+
+.course-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #9ca3af;
+  font-size: 0.92rem;
+}
+.course-meta .sep { opacity: 0.5; }
+
+.rating { display: inline-flex; align-items: center; gap: 6px; }
+.rating-stars { display: inline-flex; gap: 2px; }
+.rating-stars i { color: #fbbf24; }
+.count { color: #9ca3af; font-size: 0.85rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag {
+  background: rgba(37,99,235,0.14);
+  color: #bfdbfe;
+  border: 1px solid rgba(37,99,235,0.3);
+  border-radius: 9999px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+}
+
+.course-footer {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+}
+.creator {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+.actions { display: inline-flex; gap: 8px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(96,165,250,0.25);
+  color: #e5e7eb;
+  text-decoration: none;
+  background: rgba(96,165,250,0.12);
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { transform: translateY(-1px); background: rgba(96,165,250,0.18); }
+.btn-secondary { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); }
+.btn-ghost { background: transparent; border-color: rgba(255,255,255,0.12); }
+.btn-primary { background: linear-gradient(135deg, #2563eb, #7c3aed); border: none; color: #fff; }
+.btn-icon { width: 38px; justify-content: center; }
+.btn.active, .btn.saved { background: rgba(34,197,94,0.18); border-color: rgba(34,197,94,0.32); color: #bbf7d0; }
+
+/* Small helpers */
+.kicker { color: #9ca3af; font-size: 0.9rem; }
+.hidden { display: none !important; }
+
+/* Dim global starfield on catalog only */
+body .stars, body .stars2, body .stars3 { 
+  opacity: 0.15 !important; 
+  animation-duration: 60s !important; 
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+  // User access (public catalog, actions gated by subscription)
+  const user = window.gymiboostUser || {};
+  const hasSub = !!(user && user.subscriptionActive);
+  const isAuth = !!(user && user.isAuthenticated);
+
+  // State
+  let catalog = [];            // from API
+  let savedSet = new Set();    // from /api/courses/me (if sub)
+  let enrolledSet = new Set(); // from /api/courses/me (if sub)
+  let lastIdxMap = new Map();  // courseId -> lastModuleIndex (from /api/courses/me)
+
+  // Elements
+  const grid = document.getElementById('courses-grid');
+  const countEl = document.getElementById('results-count');
+  const searchEl = document.getElementById('course-search');
+  const subjectEl = document.getElementById('filter-subject');
+  const levelEl = document.getElementById('filter-level');
+  const durationEl = document.getElementById('filter-duration');
+  const sortEl = document.getElementById('sort-by');
+  const chipsEl = document.getElementById('topics-chips');
+
+  // Fetch helpers
+  async function fetchJSON(url, opts) {
+    const res = await fetch(url, opts || {});
+    const ct = res.headers.get('content-type') || '';
+    if (!res.ok) {
+      // If HTML, likely redirected to login; navigate
+      if (ct.includes('text/html')) {
+        window.location.href = res.url || '/login';
+        return Promise.reject(new Error('Redirected'));
+      }
+      const txt = await res.text().catch(()=> '');
+      throw new Error(txt || ('HTTP ' + res.status));
+    }
+    if (ct.includes('application/json')) return res.json();
+    return res.text();
+  }
+
+  async function loadCatalog() {
+    try {
+      const data = await fetchJSON('/api/courses');
+      catalog = Array.isArray(data.items) ? data.items : [];
+      if (hasSub) {
+        try {
+          const me = await fetchJSON('/api/courses/me');
+          savedSet = new Set((me.saved || []).map(c => c.id));
+          const enrolled = (me.enrolled || []).map(c => c.id);
+          enrolledSet = new Set(enrolled);
+          lastIdxMap = new Map();
+          (me.enrolled || []).forEach(c => {
+            if (typeof c.lastModuleIndex === 'number') {
+              lastIdxMap.set(c.id, c.lastModuleIndex);
+            }
+          });
+        } catch (e) {
+          // ignore
+        }
+      }
+      applyFilters();
+    } catch (e) {
+      grid.innerHTML = '<div class="kicker">Fehler beim Laden der Kurse.</div>';
+      console.error(e);
+    }
+  }
+
+  function formatDuration(min) {
+    if (!min && min !== 0) return '—';
+    if (min < 60) return min + ' Min';
+    const h = Math.floor(min/60), m = min % 60;
+    return h + ' h' + (m ? ' ' + m + ' min' : '');
+  }
+
+  function durationBucket(min) {
+    if (min < 60) return 'short';
+    if (min <= 180) return 'medium';
+    if (min <= 600) return 'long';
+    return 'xl';
+  }
+
+  function renderStars(avg) {
+    avg = avg || 0;
+    const full = Math.floor(avg);
+    const half = avg - full >= 0.5 ? 1 : 0;
+    const empty = 5 - full - half;
+    return (
+      '<span class="rating-stars">' +
+      '★'.repeat(full).split('').map(()=>'<i class="bi bi-star-fill"></i>').join('') +
+      (half ? '<i class="bi bi-star-half"></i>' : '') +
+      '☆'.repeat(empty).split('').map(()=>'<i class="bi bi-star"></i>').join('') +
+      '</span>'
+    );
+  }
+
+  function applyFilters() {
+    const q = (searchEl.value || '').trim().toLowerCase();
+    const subj = subjectEl.value;
+    const lvl = levelEl.value;
+    const dur = durationEl.value;
+    const sort = sortEl.value;
+    let list = catalog.slice();
+
+    if (q) {
+      list = list.filter(c =>
+        (c.title || '').toLowerCase().includes(q) ||
+        (c.subject || '').toLowerCase().includes(q) ||
+        (c.summary || '').toLowerCase().includes(q) ||
+        (c.tags || []).some(t => (t || '').toLowerCase().includes(q))
+      );
+    }
+    if (subj) list = list.filter(c => c.subject === subj);
+    if (lvl) list = list.filter(c => c.level === lvl);
+    if (dur) list = list.filter(c => durationBucket(c.minutes || 0) === dur);
+
+    switch (sort) {
+      case 'rating': list.sort((a,b) => (b.rating||0) - (a.rating||0)); break;
+      case 'new': list.sort((a,b) => (b.createdAt||0) - (a.createdAt||0)); break;
+      case 'duration': list.sort((a,b) => (a.minutes||0) - (b.minutes||0)); break;
+      case 'popular':
+      default:
+        list.sort((a,b) => (b.learners||0) - (a.learners||0));
+    }
+    renderList(list);
+  }
+
+  function cardHTML(c) {
+    const isSaved = savedSet.has(c.id);
+    const isEnrolled = enrolledSet.has(c.id);
+    const rating = c.rating || 0;
+    const tags = (c.tags || []).slice(0, 4).map(t => '<span class="tag">'+t+'</span>').join('');
+    return `
+      <article class="course-card" role="listitem" data-id="${c.id}" data-last-index="${(lastIdxMap && lastIdxMap.has(c.id)) ? lastIdxMap.get(c.id) : ''}" tabindex="0" aria-label="${c.title} – öffnen">
+        <div class="course-card__top">
+          <div>
+            <h3 class="course-title">${c.title}</h3>
+            <div class="course-badges">
+              <span class="badge badge--subject">${c.subject}</span>
+              <span class="badge badge--level">${c.level}</span>
+              <span class="badge"><i class="bi bi-clock"></i> ${formatDuration(c.minutes)}</span>
+              <span class="badge"><i class="bi bi-layout-text-sidebar"></i> ${c.modules} Module</span>
+            </div>
+          </div>
+          <button class="btn btn-icon ${isSaved ? 'saved' : ''}" data-action="save" title="${isSaved ? 'Gespeichert' : 'Speichern'}">
+            <i class="bi ${isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'}"></i>
+          </button>
+        </div>
+
+        <div class="course-meta">
+          <span class="rating" title="Durchschnittliche Bewertung">
+            ${renderStars(rating)}
+            <span>${(rating||0).toFixed(1)}</span>
+            <span class="count">(${c.ratings || 0})</span>
+          </span>
+          <span class="sep">•</span>
+          <span title="Teilnehmende"><i class="bi bi-graph-up"></i> ${(c.learners || 0).toLocaleString('de-CH')}</span>
+        </div>
+
+        <div class="tags">${tags}</div>
+
+        <div class="course-footer">
+          <div class="creator"><i class="bi bi-patch-check"></i> ${c.creator}</div>
+          <div class="actions">
+            <a class="btn btn-secondary" href="/courses/${encodeURIComponent(c.id)}" aria-label="Details zu ${c.title}">
+              <i class="bi bi-box-arrow-up-right"></i> Details
+            </a>
+            <button class="btn ${isEnrolled ? 'active' : ''}" data-action="enroll">
+              <i class="bi ${isEnrolled ? 'bi-play-circle' : 'bi-plus-circle'}"></i>
+              ${isEnrolled ? 'Weiterlernen' : 'Starten'}
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderList(list) {
+    grid.innerHTML = list.map(cardHTML).join('') || '<div class="kicker">Keine Kurse gefunden. Tipp: Suchbegriff anpassen oder Filter zurücksetzen.</div>';
+    countEl.textContent = `${list.length} Kurs${list.length === 1 ? '' : 'e'}`;
+  }
+
+  async function handleAction(id, action) {
+    if (!hasSub) {
+      if (!isAuth) {
+        window.location.href = '/login?next=' + encodeURIComponent('/courses');
+      } else {
+        window.location.href = '/pricing';
+      }
+      return;
+    }
+    try {
+      if (action === 'save') {
+        const res = await fetchJSON(`/api/courses/${id}/save`, { method: 'POST', headers: { 'Content-Type': 'application/json' }});
+        if (res.saved) savedSet.add(id); else savedSet.delete(id);
+      } else if (action === 'enroll') {
+        await fetchJSON(`/api/courses/${id}/enroll`, { method: 'POST', headers: { 'Content-Type': 'application/json' }});
+        enrolledSet.add(id);
+        window.location.href = `/courses/${id}`;
+        return;
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      applyFilters();
+    }
+  }
+
+  function handleGridClick(e) {
+    const card = e.target.closest('.course-card');
+    if (!card) return;
+    const id = parseInt(card.getAttribute('data-id'), 10);
+    const btn = e.target.closest('button, a');
+
+    if (btn && btn.dataset && btn.dataset.action === 'save') {
+      e.preventDefault();
+      handleAction(id, 'save');
+      return;
+    }
+    if (btn && btn.dataset && btn.dataset.action === 'enroll') {
+      e.preventDefault();
+      if (btn.classList.contains('active')) {
+        const li = card.getAttribute('data-last-index');
+        window.location.href = '/courses/' + id + (li ? ('?m=' + encodeURIComponent(li)) : '');
+        return;
+      }
+      handleAction(id, 'enroll');
+      return;
+    }
+    // If clicked a direct link (e.g. "Details"), let the default link work
+    if (btn && btn.tagName.toLowerCase() === 'a') return;
+
+    // Otherwise, clicking anywhere on the card navigates to the course (resume at last module if known)
+    {
+      const li = card.getAttribute('data-last-index');
+      window.location.href = '/courses/' + id + (li ? ('?m=' + encodeURIComponent(li)) : '');
+    }
+  }
+
+  function attachEvents() {
+    [searchEl, subjectEl, levelEl, durationEl, sortEl].forEach(el => el && el.addEventListener('input', applyFilters));
+    if (chipsEl) {
+      chipsEl.addEventListener('click', (e) => {
+        const b = e.target.closest('.chip');
+        if (!b) return;
+        const active = b.classList.toggle('active');
+        chipsEl.querySelectorAll('.chip').forEach(x => { if (x !== b) x.classList.remove('active'); });
+        searchEl.value = active ? b.dataset.topic : '';
+        applyFilters();
+      });
+    }
+    grid.addEventListener('click', handleGridClick);
+    grid.addEventListener('keydown', (e) => {
+      const el = e.target;
+      if (!el || !el.classList || !el.classList.contains('course-card')) return;
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const id = parseInt(el.getAttribute('data-id'), 10);
+        const li = el.getAttribute('data-last-index');
+        if (id) window.location.href = '/courses/' + id + (li ? ('?m=' + encodeURIComponent(li)) : '');
+      }
+    });
+
+    // Gate "Kurs erstellen" for tease users
+    const createBtn = document.getElementById('create-course-btn');
+    if (createBtn && !hasSub) {
+      createBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = isAuth ? '/pricing' : '/login?next=' + encodeURIComponent('/courses/create');
+      });
+    }
+  }
+
+  // Init
+  attachEvents();
+  loadCatalog();
+})();
+</script>
+{% endblock %}

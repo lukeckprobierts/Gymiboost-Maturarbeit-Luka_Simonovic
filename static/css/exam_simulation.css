@@ -1,0 +1,76 @@
+/* File Upload and Preview Styles */
+.file-upload-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.file-upload-container label {
+    cursor: pointer;
+    padding: 8px 15px;
+    background-color: #4a89dc;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.file-upload-container label:hover {
+    background-color: #3b7dd8;
+}
+
+#filePreviews {
+    margin-top: 10px;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.preview-content {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.preview-icon {
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.file-name {
+    flex-grow: 1;
+    font-size: 0.9em;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.remove-file {
+    cursor: pointer;
+    color: #dc3545;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.remove-file:hover {
+    color: #c82333;
+}

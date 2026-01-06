@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="exam-container">
+    <div class="timer" id="examTimer">90:00</div>
+    
+    <!-- Document upload section for OCR -->
+    <div class="file-upload-container" style="margin-bottom: 25px;">
+        <input type="file" id="examPdfFile" name="examPdfFile" accept="application/pdf,image/png,image/jpeg,image/jpg" required style="display:none;">
+        <label for="examPdfFile" class="btn" style="cursor:pointer;">Dokument oder Bild hochladen (PDF, PNG, JPG)</label>
+        <span id="ocrStatus" style="margin-left:16px;"></span>
+    </div>
+    
+    <!-- End document upload section -->
+    <div class="exam-content">
+        <div class="exam-pdf-container">
+            <iframe src="{{ url_for('static', filename=exam_path) }}" class="exam-pdf"></iframe>
+        </div>
+        
+        <div class="answers">
+            <form id="examForm" method="POST" action="{{ url_for('submit_exam') }}">
+                <div class="answer-container" style="height: 35vh;">
+                    <div id="answerField" class="answer-field" contenteditable="true" style="height: 32vh; color: #000000; background-color: transparent; padding: 15px; border: 1px solid #ccc; overflow-y: auto;"></div>
+                    <input type="hidden" name="answerData" id="answerData">
+                </div>
+                <button type="submit" class="btn">Prüfung abschicken</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="loading-screen" id="loadingScreen" style="display: none;">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Prüfung wird bewertet...</div>
+    <div class="loading-text">Dies kann einen Moment dauern</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// --- OCR Upload Handling ---
+const uploadForm = document.getElementById('ocrUploadForm');
+const fileInput = document.getElementById('examPdfFile');
+const statusSpan = document.getElementById('ocrStatus');
+fileInput.addEventListener('change', async e => {
+    const selectedFile = fileInput.files[0];
+    if (!selectedFile) {
+        statusSpan.textContent = "";
+        return;
+    }
+    statusSpan.textContent = `Datei wird hochgeladen und verarbeitet... (${selectedFile.name})`;
+    const data = new FormData();
+    data.append('examPdfFile', selectedFile);
+    try {
+        const resp = await fetch("/upload_exam_document", {
+            method: "POST",
+            body: data,
+        });
+        if (!resp.ok) throw new Error("Fehler beim Hochladen oder OCR.");
+        const payload = await resp.json();
+        if (payload.success) {
+            statusSpan.textContent = "OCR erfolgreich!";
+            // Insert extracted text into the main answer field and focus/cursor to end
+            const answerField = document.getElementById('answerField');
+            answerField.innerText = payload.text;
+            answerField.focus();
+            try {
+                const range = document.createRange();
+                range.selectNodeContents(answerField);
+                range.collapse(false);
+                const sel = window.getSelection();
+                sel.removeAllRanges();
+                sel.addRange(range);
+            } catch (e) {}
+        } else {
+            statusSpan.textContent = "Fehler bei der Verarbeitung.";
+            alert(payload.error || "Unbekannter Fehler.");
+        }
+    } catch(err) {
+        statusSpan.textContent = "Fehler beim Upload.";
+        alert(err.toString());
+    }
+});
+
+/* removed broken uploadForm submit handler */
+
+// Form submission handling
+document.getElementById('examForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Transfer answer from editable div into hidden input as JSON
+    document.getElementById('answerData').value = JSON.stringify({
+        text: document.getElementById('answerField').innerText.trim()
+    });
+    
+    document.getElementById('loadingScreen').style.display = 'flex';
+    try {
+        const response = await fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this),
+            redirect: 'follow'
+        });
+        // Check if response is HTML (success)
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('text/html')) {
+            // Get the HTML response and replace current document
+            const html = await response.text();
+            document.open();
+            document.write(html);
+            document.close();
+        } else {
+            throw new Error('Unexpected response type');
+        }
+    } catch (error) {
+        console.error('Submission error:', error);
+        document.getElementById('loadingScreen').style.display = 'none';
+        alert('Übermittlung fehlgeschlagen. Bitte versuchen Sie es erneut.');
+    }
+});
+
+// 90 minute countdown timer
+let timeLeft = 90 * 60;
+const timer = document.getElementById('examTimer');
+
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timer.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    
+    if (timeLeft <= 0) {
+        // Ensure answer data is captured before auto-submit
+        const form = document.getElementById('examForm');
+        document.getElementById('answerData').value = JSON.stringify({
+            text: document.getElementById('answerField').innerText.trim()
+        });
+        if (form.requestSubmit) {
+            form.requestSubmit();
+        } else {
+            form.dispatchEvent(new Event('submit', {cancelable: true}));
+        }
+    } else {
+        timeLeft--;
+        setTimeout(updateTimer, 1000);
+    }
+}
+
+// Start timer
+updateTimer();
+
+// Auto-submit when time runs out
+setTimeout(function() {
+    // Ensure answer data is captured before auto-submit
+    const form = document.getElementById('examForm');
+    document.getElementById('answerData').value = JSON.stringify({
+        text: document.getElementById('answerField').innerText.trim()
+    });
+    if (form.requestSubmit) {
+        form.requestSubmit();
+    } else {
+        form.dispatchEvent(new Event('submit', {cancelable: true}));
+    }
+}, 90 * 60 * 1000);
+
+// Prevent accidental navigation
+window.onbeforeunload = function() {
+    return "Sind Sie sicher, dass Sie die Seite verlassen möchten? Ihr Prüfungsfortschritt geht verloren.";
+};
+// (Removed duplicate form submit event listener for clarity)
+</script>
+{% endblock %}

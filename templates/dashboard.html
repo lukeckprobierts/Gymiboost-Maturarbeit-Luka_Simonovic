@@ -1,0 +1,892 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-container">
+    <h1 class="dashboard-title">Willkommen bei Gymiboost</h1>
+    <p class="dashboard-subtitle">Wähle eine Funktion aus, um loszulegen</p>
+
+    <!-- Themed, subtle onboarding overlay styles -->
+    <style>
+        .gb-onboarding { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 2000; display: none; }
+        .gb-onboarding[aria-hidden="false"] { display: block; }
+        .gb-onboarding__backdrop {
+            position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            background: radial-gradient(1200px 800px at 20% -10%, rgba(37,99,235,0.12), transparent),
+                        radial-gradient(1200px 800px at 120% 120%, rgba(147,51,234,0.12), transparent),
+                        rgba(2,6,23,0.65);
+            backdrop-filter: blur(4px);
+        }
+        .gb-onboarding__panel {
+            position: relative;
+            width: 92vw;
+            max-width: 760px;
+            margin: 8vh auto;
+            background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(51,65,85,0.7));
+            border: 1px solid rgba(96,165,250,0.25);
+            border-radius: 16px;
+            box-shadow: 0 30px 80px rgba(2,6,23,0.5);
+            color: #e5e7eb;
+            padding: 28px 24px;
+            overflow: hidden;
+            outline: none;
+            animation: gb-fade-in 300ms ease forwards, gb-pop 280ms ease forwards;
+        }
+        @keyframes gb-fade-in { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes gb-pop { from { transform: translateY(10px) scale(0.98); } to { transform: translateY(0) scale(1); } }
+
+        .gb-onboarding__close {
+            position: absolute; right: 10px; top: 8px;
+            background: transparent; border: none; color: #9ca3af;
+            font-size: 28px; cursor: pointer; line-height: 1;
+        }
+        .gb-onboarding__close:hover { color: #fff; }
+
+        .gb-onboarding__header { text-align: center; padding: 8px 8px 16px; }
+        .gb-onboarding__icon {
+            width: 48px; height: 48px; margin: 0 auto 10px;
+            color: #60a5fa; filter: drop-shadow(0 6px 16px rgba(96,165,250,0.2));
+            animation: gb-pulse 2.2s ease-in-out infinite;
+        }
+        @keyframes gb-pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .gb-onboarding__header h2 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            margin-bottom: 4px;
+        }
+        .gb-onboarding__subtitle { color: #cbd5e1; margin: 0 auto; max-width: 640px; }
+
+        .gb-onboarding__steps {
+            display: flex; flex-wrap: wrap; gap: 14px; margin: 18px 4px 8px;
+        }
+        .gb-step {
+            background: linear-gradient(135deg, rgba(71,85,105,0.5), rgba(51,65,85,0.32));
+            border: 1px solid rgba(96,165,250,0.18);
+            border-radius: 12px; padding: 16px; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; cursor: default;
+            flex: 1 1 220px;
+        }
+        .gb-step:hover { transform: translateY(-3px); border-color: rgba(96,165,250,0.35); box-shadow: 0 12px 26px rgba(2,6,23,0.35); }
+        .gb-step h4 { color: #fff; margin: 6px 0 6px; font-size: 1.05rem; }
+        .gb-step p { color: #cbd5e1; font-size: 0.95rem; margin-bottom: 12px; }
+        .gb-step .gb-link {
+            display: inline-flex; align-items: center; gap: 6px; color: #e5e7eb; text-decoration: none;
+            background: linear-gradient(135deg, #2563eb, #7c3aed); padding: 8px 12px; border-radius: 10px; font-weight: 600;
+        }
+        .gb-step .gb-link:hover { transform: translateY(-1px); }
+
+        .gb-onboarding__actions {
+            display: flex; justify-content: center; gap: 12px; padding: 14px 0 4px;
+        }
+        .gb-btn { border: none; border-radius: 9999px; padding: 10px 18px; font-weight: 600; cursor: pointer; }
+        .gb-btn--primary { background: linear-gradient(135deg, #2563eb, #7c3aed); color: #fff; }
+        .gb-btn--ghost { background: transparent; color: #e5e7eb; border: 1px solid rgba(148,163,184,0.35); }
+        .gb-btn--ghost:hover { border-color: rgba(96,165,250,0.55); }
+
+        @media (max-width: 520px) {
+            .gb-onboarding__panel { margin: 6vh auto; padding: 22px 16px; }
+        }
+    </style>
+
+    <div class="dashboard-grid">
+        <!-- Chat Function Card -->
+<div class="dashboard-card" onclick='window.location.href="{{ url_for("chat") }}";'>
+            <div class="card-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <h3>KI-Tutor Chat</h3>
+            <p>Stelle Fragen zu Prüfungsaufgaben und erhalte detaillierte Erklärungen von unserem KI-Tutor.</p>
+            <div class="card-action">Chat starten →</div>
+        </div>
+        <!-- Add to dashboard-grid -->
+<div class="dashboard-card" onclick='window.location.href="{{ url_for("exam_selection") }}";'>
+            <div class="card-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 14l9-5-9-5-9 5 9 5z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <h3>Prüfungssimulation</h3>
+            <p>Simulieren Sie die echte Gymiprüfung mit Zeitlimit und automatischer Bewertung.</p>
+            <div class="card-action">Jetzt starten →</div>
+        </div>
+        
+        
+        <!-- Task Generation Card -->
+<div class="dashboard-card" onclick='window.location.href="{{ url_for("task_generation") }}";'>
+            <div class="card-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </div>
+            <h3>Aufgaben generieren</h3>
+            <p>Erstelle personalisierte Übungsaufgaben basierend auf deinen Bedürfnissen.</p>
+            <div class="card-action">Jetzt starten →</div>
+        </div>
+
+        <!-- Courses Card -->
+        <div class="dashboard-card" onclick='window.location.href="{{ url_for("courses") }}";'>
+            <div class="card-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 4h16v14H4z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M8 4v14M16 4v14" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 18h16l-2 2H6l-2-2z" fill="currentColor" opacity="0.15"/>
+                </svg>
+            </div>
+            <h3>Kurse</h3>
+            <p>Erstelle individuelle Lernpläne basierend auf deinem Lernstand und deinen Zielen.</p>
+            <div class="card-action">Kursplan öffnen →</div>
+        </div>
+
+        <!-- Progress Analysis Card -->
+        <div class="dashboard-card" onclick="openProgressDashboard();">
+            <div class="card-icon">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3 3v18h18" stroke="currentColor" stroke-width="2"/>
+                    <path d="M7 15l3-4 3 3 4-6" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <circle cx="10" cy="11" r="1.5" fill="currentColor"/>
+                    <circle cx="13" cy="14" r="1.5" fill="currentColor"/>
+                    <circle cx="17" cy="8" r="1.5" fill="currentColor"/>
+                </svg>
+            </div>
+            <h3>Fortschritt &amp; Prognose</h3>
+            <p>Übersicht über deine Stärken/Schwächen, Themen-Fortschritt und Notenprognose.</p>
+            <div class="card-action">Fortschritt ansehen →</div>
+        </div>
+    </div>
+
+    <!-- Progress overlay styles and markup -->
+    <style>
+        .gbp-overlay { position: fixed; inset: 0; z-index: 2100; display: none; }
+        .gbp-overlay[aria-hidden="false"] { display: block; }
+        .gbp-backdrop {
+            position: absolute; inset: 0;
+            background: radial-gradient(1200px 800px at 20% -10%, rgba(37,99,235,0.12), transparent),
+                        radial-gradient(1200px 800px at 120% 120%, rgba(147,51,234,0.12), transparent),
+                        rgba(2,6,23,0.65);
+            backdrop-filter: blur(4px);
+        }
+        .gbp-panel {
+            position: relative; width: 94vw; max-width: 1100px; max-height: 86vh;
+            margin: 7vh auto; background: linear-gradient(135deg, rgba(17,24,39,0.96), rgba(30,41,59,0.88));
+            border: 1px solid rgba(96,165,250,0.25); border-radius: 16px; box-shadow: 0 30px 80px rgba(2,6,23,0.6);
+            color: #e5e7eb; padding: 18px 18px 12px; overflow: hidden; display: flex; flex-direction: column;
+            animation: gb-fade-in 300ms ease forwards, gb-pop 280ms ease forwards;
+        }
+        .gbp-close { position: absolute; right: 10px; top: 8px; background: transparent; border: none; color: #9ca3af; font-size: 28px; cursor: pointer; line-height: 1; }
+        .gbp-close:hover { color: #fff; }
+        .gbp-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 6px 8px; border-bottom: 1px solid rgba(148,163,184,0.2); }
+        .gbp-header h2 { font-size: 1.3rem; margin: 0; background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gbp-subjects { display: inline-flex; gap: 6px; background: rgba(15,23,42,0.6); padding: 4px; border-radius: 12px; border: 1px solid rgba(96,165,250,0.2); }
+        .gbp-tab { appearance: none; background: transparent; color: #cbd5e1; border: none; border-radius: 10px; padding: 6px 10px; font-weight: 600; cursor: pointer; }
+        .gbp-tab[aria-selected="true"] { background: linear-gradient(135deg, rgba(37,99,235,0.25), rgba(147,51,234,0.25)); color: #fff; }
+        .gbp-actions { display: flex; gap: 8px; padding: 10px 6px; }
+        .gbp-btn { border: 1px solid rgba(148,163,184,0.35); background: rgba(15,23,42,0.4); color: #e5e7eb; border-radius: 10px; padding: 8px 12px; font-weight: 600; cursor: pointer; }
+        .gbp-btn--primary { background: linear-gradient(135deg, #2563eb, #7c3aed); border-color: transparent; }
+        .gbp-body { flex: 1; overflow: auto; padding: 8px 6px 14px; }
+        .gbp-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 14px; }
+        @media (max-width: 900px) { .gbp-grid { grid-template-columns: 1fr; } }
+        .gbp-card { background: linear-gradient(135deg, rgba(71,85,105,0.4), rgba(51,65,85,0.28)); border: 1px solid rgba(96,165,250,0.18); border-radius: 12px; padding: 12px; }
+        .gbp-card h3 { margin: 0 0 8px; color: #fff; font-size: 1.05rem; }
+        .gbp-summary { display: grid; grid-template-columns: 160px 1fr; gap: 12px; align-items: center; }
+        .gbp-gauge { width: 140px; height: 140px; border-radius: 50%; background: conic-gradient(#3b82f6 0% 0%, rgba(255,255,255,0.1) 0% 100%); display: grid; place-items: center; margin: 0 auto; position: relative; }
+        .gbp-gauge::after { content: ""; position: absolute; width: 108px; height: 108px; border-radius: 50%; background: rgba(17,24,39,0.96); }
+        .gbp-gauge__value { position: relative; font-size: 1.4rem; font-weight: 800; color: #e5e7eb; }
+        .gbp-summary__metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        .gbp-metric { background: rgba(15,23,42,0.5); border: 1px solid rgba(96,165,250,0.15); border-radius: 10px; padding: 10px; }
+        .gbp-metric span { color: #9ca3af; font-size: 0.85rem; display: block; }
+        .gbp-metric strong { font-size: 1.2rem; color: #fff; }
+        .gbp-kpi-row { display: flex; gap: 8px; flex-wrap: wrap; }
+        .gbp-topic-row { display: grid; grid-template-columns: 1fr 110px 80px 80px; align-items: center; gap: 10px; padding: 8px; border-bottom: 1px dashed rgba(148,163,184,0.2); }
+        .gbp-topic-row:last-child { border-bottom: none; }
+        .gbp-progressbar { width: 100%; height: 10px; background: rgba(148,163,184,0.2); border-radius: 9999px; position: relative; overflow: hidden; }
+        .gbp-progressbar__fill { height: 100%; background: linear-gradient(90deg, #2563eb, #7c3aed); border-radius: 9999px; width: 0%; transition: width 0.25s ease; }
+        .gbp-actions-row { display: flex; gap: 6px; }
+        .gbp-icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; border: 1px solid rgba(148,163,184,0.35); background: rgba(15,23,42,0.4); color: #e5e7eb; cursor: pointer; }
+        .gbp-icon-btn:hover { border-color: rgba(96,165,250,0.6); }
+        .gbp-inline { display: inline-flex; align-items: center; gap: 8px; }
+        .gbp-link { color: #e5e7eb; text-decoration: none; font-weight: 600; }
+        .gbp-link:hover { text-decoration: underline; }
+        .gbp-ai { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 720px) { .gbp-ai { grid-template-columns: 1fr; } }
+        .gbp-ai h4 { margin: 0 0 6px; font-size: 0.95rem; }
+        .gbp-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 9999px; background: rgba(37,99,235,0.2); border: 1px solid rgba(96,165,250,0.35); color: #e5e7eb; font-size: 0.85rem; }
+        .gbp-spark { display: inline-flex; gap: 3px; align-items: flex-end; height: 28px; }
+        .gbp-spark span { display: block; width: 6px; background: linear-gradient(180deg, #7c3aed, #2563eb); border-radius: 2px 2px 0 0; }
+        /* modal */
+        .gbp-modal { position: fixed; inset: 0; display: none; z-index: 2200; }
+        .gbp-modal[aria-hidden="false"] { display: grid; place-items: center; }
+        .gbp-modal__panel { width: 92vw; max-width: 520px; background: linear-gradient(135deg, rgba(30,41,59,0.96), rgba(51,65,85,0.88)); border: 1px solid rgba(96,165,250,0.25); border-radius: 14px; padding: 16px; }
+        .gbp-modal__panel label { display: grid; gap: 6px; margin: 8px 0; font-size: 0.92rem; color: #cbd5e1; }
+        .gbp-modal__panel input[type="text"] { background: rgba(15,23,42,0.6); border: 1px solid rgba(148,163,184,0.35); border-radius: 8px; padding: 10px; color: #e5e7eb; }
+        .gbp-modal__panel input[type="range"] { width: 100%; }
+        .gbp-modal__actions { display: flex; justify-content: flex-end; gap: 8px; padding-top: 6px; }
+    </style>
+
+    <div id="progress-overlay" class="gbp-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="gbp-title">
+        <div class="gbp-backdrop" data-gbp-close></div>
+        <div class="gbp-panel" role="document" tabindex="-1">
+            <button class="gbp-close" aria-label="Schliessen" data-gbp-close>&times;</button>
+            <header class="gbp-header">
+                <h2 id="gbp-title">Dein Lernfortschritt</h2>
+                <div>
+                    <div class="gbp-subjects" role="tablist" aria-label="Fächer">
+                        <button class="gbp-tab" data-subject="Deutsch" aria-selected="true">Deutsch</button>
+                        <button class="gbp-tab" data-subject="Mathematik" aria-selected="false">Mathematik</button>
+                    </div>
+                </div>
+            </header>
+
+            
+
+            <div class="gbp-body">
+                <section class="gbp-grid">
+                    <div class="gbp-card gbp-summary">
+                        <div style="text-align:center;">
+                            <div class="gbp-gauge" id="gbp-gauge">
+                                <div class="gbp-gauge__value" id="gbp-gauge-value">0%</div>
+                            </div>
+                        </div>
+                        <div class="gbp-summary__metrics">
+                            <div class="gbp-metric">
+                                <span>Prognose</span>
+                                <strong id="gbp-projected-grade">-</strong>
+                            </div>
+                            <div class="gbp-metric">
+                                <span>Ø Simulationen</span>
+                                <strong id="gbp-avg-grade">-</strong>
+                            </div>
+                            <div class="gbp-metric">
+                                <span>Bearbeitete Themen</span>
+                                <strong id="gbp-topics-count">-</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gbp-card">
+                        <h3>Themenübersicht</h3>
+                        <div id="gbp-topics"></div>
+                        <div class="gbp-kpi-row" style="margin-top:10px;">
+                            <button class="gbp-btn" id="gbp-add-topic">Thema hinzufügen</button>
+                            <span class="gbp-pill" id="gbp-topic-info">Tipps: Füge deine eigenen Themen hinzu oder bearbeite bestehende.</span>
+                        </div>
+                    </div>
+
+                    <div class="gbp-card">
+                        <h3>Prüfungssimulationen</h3>
+                        <div id="gbp-exam-stats">
+                            <div class="gbp-kpi-row">
+                                <div class="gbp-metric" style="flex:1;">
+                                    <span>Versuche</span>
+                                    <strong id="gbp-exam-count">0</strong>
+                                </div>
+                                <div class="gbp-metric" style="flex:1;">
+                                    <span>Letztes Ergebnis</span>
+                                    <strong id="gbp-last-grade">-</strong>
+                                </div>
+                                <div class="gbp-metric" style="flex:1;">
+                                    <span>Tendenz</span>
+                                    <div class="gbp-spark" id="gbp-spark"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <a href="{{ url_for('exam_selection') }}" class="gbp-link">Neue Simulation starten →</a>
+                        </div>
+                    </div>
+
+                    <div class="gbp-card">
+                        <h3>AI-Zusammenfassung</h3>
+                        <div class="gbp-ai" id="gbp-ai-summary">
+                            <div>
+                                <h4>Stärken</h4>
+                                <div id="gbp-ai-strengths"></div>
+                            </div>
+                            <div>
+                                <h4>Schwächen</h4>
+                                <div id="gbp-ai-weaknesses"></div>
+                            </div>
+                        </div>
+                        <div style="margin-top:8px;">
+                            <h4>Nächste Schritte</h4>
+                            <div id="gbp-ai-tips"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Topic modal -->
+            <div class="gbp-modal" id="gbp-topic-modal" aria-hidden="true">
+                <div class="gbp-modal__panel">
+                    <h4 id="gbp-topic-modal-title">Thema</h4>
+                    <label>Name
+                        <input type="text" id="gbp-topic-name" placeholder="z.B. Textproduktion">
+                    </label>
+                    <label class="gbp-inline">Fortschritt
+                        <input type="range" id="gbp-topic-mastery" min="0" max="100" value="0" oninput="document.getElementById('gbp-topic-mastery-val').textContent = this.value + '%'">
+                        <span id="gbp-topic-mastery-val">0%</span>
+                    </label>
+                    <div class="gbp-modal__actions">
+                        <button class="gbp-btn" data-gbp-modal-cancel>Abbrechen</button>
+                        <button class="gbp-btn gbp-btn--primary" id="gbp-topic-save">Speichern</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Onboarding overlay -->
+    <div id="onboarding-overlay" class="gb-onboarding" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ob-title">
+        <div class="gb-onboarding__backdrop" data-ob-close></div>
+        <div class="gb-onboarding__panel" tabindex="-1">
+            <button class="gb-onboarding__close" aria-label="Schliessen" data-ob-close>&times;</button>
+            <div class="gb-onboarding__header">
+                <div class="gb-onboarding__icon" aria-hidden="true">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h2 id="ob-title">Willkommen bei Gymiboost</h2>
+                <p class="gb-onboarding__subtitle" id="ob-sub">Starte mit einem kurzen Überblick – du bist in wenigen Sekunden startklar.</p>
+            </div>
+
+            <div class="gb-onboarding__steps">
+                <div class="gb-step">
+                    <h4>1. Chat mit KI-Tutor</h4>
+                    <p>Fragen zu Deutsch & Mathe – mit Kontext aus echten ZAP-Prüfungen.</p>
+                    <a class="gb-link" href="{{ url_for('chat') }}">Zum Chat →</a>
+                </div>
+                <div class="gb-step">
+                    <h4>2. Prüfungssimulation</h4>
+                    <p>Trainiere realitätsnah mit Zeitlimit und automatischer Bewertung.</p>
+                    <a class="gb-link" href="{{ url_for('exam_selection') }}">Simulation starten →</a>
+                </div>
+                <div class="gb-step">
+                    <h4>3. Aufgaben generieren</h4>
+                    <p>Erhalte personalisierte Übungsaufgaben passend zu deinem Niveau.</p>
+                    <a class="gb-link" href="{{ url_for('task_generation') }}">Aufgaben erstellen →</a>
+                </div>
+            </div>
+
+            <div class="gb-onboarding__actions">
+                <button class="gb-btn gb-btn--primary" id="ob-start">Los geht's</button>
+                <button class="gb-btn gb-btn--ghost" id="ob-skip">Später</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Hover micro-interactions on dashboard cards
+    const cards = document.querySelectorAll('.dashboard-card:not(.coming-soon)');
+    cards.forEach(function(card) {
+        card.addEventListener('mouseenter', function() {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        });
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = '';
+            card.style.boxShadow = '';
+        });
+    });
+
+    // Onboarding logic
+    const u = window.gymiboostUser || { isAuthenticated: false, subscriptionActive: false, trialActive: false, trialDaysLeft: 0 };
+    const overlay = document.getElementById('onboarding-overlay');
+    const panel = overlay ? overlay.querySelector('.gb-onboarding__panel') : null;
+    const subtitle = document.getElementById('ob-sub');
+
+    function markOnboarded(reason) {
+        try {
+            const now = String(Date.now());
+            if (reason === 'trial') localStorage.setItem('gb_onboarded_trial', now);
+            else if (reason === 'sub') localStorage.setItem('gb_onboarded_sub', now);
+            else localStorage.setItem('gb_onboarded_first', now);
+        } catch (e) {}
+    }
+
+    function shouldShow() {
+        if (!u.isAuthenticated) return false;
+        try {
+            if (u.subscriptionActive) {
+                return !localStorage.getItem('gb_onboarded_sub');
+            } else if (u.trialActive) {
+                return !localStorage.getItem('gb_onboarded_trial');
+            } else {
+                return !localStorage.getItem('gb_onboarded_first');
+            }
+        } catch (e) { return true; }
+    }
+
+    function reason() {
+        if (u.subscriptionActive) return 'sub';
+        if (u.trialActive) return 'trial';
+        return 'first';
+    }
+
+    function openOverlay(rsn) {
+        if (!overlay) return;
+        overlay.setAttribute('aria-hidden', 'false');
+        overlay.style.display = 'block';
+        if (subtitle) {
+            if (rsn === 'trial') {
+                const days = typeof u.trialDaysLeft === 'number' ? u.trialDaysLeft : 7;
+                subtitle.textContent = 'Deine 7‑Tage Testphase ist aktiv – noch ' + days + ' Tag' + (days === 1 ? '' : 'e') + '. Nutze alle Funktionen unbegrenzt.';
+            } else if (rsn === 'sub') {
+                subtitle.textContent = 'Dein Abonnement ist aktiv – du hast unbegrenzten Zugang zu allen Funktionen.';
+            } else {
+                subtitle.textContent = 'Starte mit einem kurzen Überblick – du bist in wenigen Sekunden startklar.';
+            }
+        }
+        // focus trap start
+        setTimeout(function() { if (panel) panel.focus(); }, 50);
+    }
+
+    function closeOverlay(rsn) {
+        if (!overlay) return;
+        overlay.setAttribute('aria-hidden', 'true');
+        overlay.style.display = 'none';
+        markOnboarded(rsn || reason());
+    }
+
+    if (shouldShow()) {
+        openOverlay(reason());
+    }
+
+    // Close handlers
+    if (overlay) {
+        var closeEls = overlay.querySelectorAll('[data-ob-close], #ob-skip');
+        closeEls.forEach(function(el) {
+            el.addEventListener('click', function() { closeOverlay(); });
+        });
+    }
+    var obStartBtn = document.getElementById('ob-start');
+    if (obStartBtn) {
+        obStartBtn.addEventListener('click', function() { closeOverlay(); });
+    }
+
+    // ESC to close
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay && overlay.getAttribute('aria-hidden') === 'false') {
+            closeOverlay();
+        }
+    });
+    /* Progress overlay logic */
+    (function() {
+        const STORAGE_KEY = 'gbp_state_v1';
+        const subjects = ['Deutsch', 'Mathematik'];
+        let state = loadState();
+        let editIndex = null;
+
+        function defaultState() {
+            return {
+                activeSubject: 'Deutsch',
+                subjects: {
+                    'Deutsch': {
+                        topics: [
+                            { name: 'Textproduktion', mastery: 25, updatedAt: Date.now() },
+                            { name: 'Textverständnis', mastery: 40, updatedAt: Date.now() },
+                            { name: 'Sprachbetrachtung', mastery: 20, updatedAt: Date.now() }
+                        ],
+                        exams: [
+                            // Example schema: { grade: 4.5, timestamp: 1710000000000 }
+                        ],
+                        ai: { strengths: [], weaknesses: [], tips: [] }
+                    },
+                    'Mathematik': {
+                        topics: [
+                            { name: 'Zahl und Variable', mastery: 35, updatedAt: Date.now() },
+                            { name: 'Form und Raum', mastery: 30, updatedAt: Date.now() },
+                            { name: 'Grössen/Funktionen/Daten', mastery: 20, updatedAt: Date.now() }
+                        ],
+                        exams: [],
+                        ai: { strengths: [], weaknesses: [], tips: [] }
+                    }
+                }
+            };
+        }
+
+        function loadState() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return defaultState();
+                const parsed = JSON.parse(raw);
+                // basic shape guard
+                if (!parsed.subjects || !parsed.subjects['Deutsch'] || !parsed.subjects['Mathematik']) {
+                    return defaultState();
+                }
+                return parsed;
+            } catch (e) {
+                return defaultState();
+            }
+        }
+
+        function saveState() {
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e) {}
+        }
+
+        function setActiveSubject(subj) {
+            if (!subjects.includes(subj)) return;
+            state.activeSubject = subj;
+            saveState();
+            render();
+        }
+
+        function current() { return state.subjects[state.activeSubject]; }
+
+        function computeMetrics() {
+            const subj = current();
+            const topicAvg = subj.topics.length ? subj.topics.reduce((a,t)=>a+t.mastery,0)/subj.topics.length : 0;
+            const examAvg = subj.exams.length ? subj.exams.reduce((a,e)=>a+e.grade,0)/subj.exams.length : 0;
+            // readiness blend: 60% topics (0..100), 40% exams normalized (grade 1..6 -> 0..100)
+            const examNorm = examAvg ? Math.max(0, Math.min(100, (examAvg - 1) / 5 * 100)) : 0;
+            const readiness = Math.round(0.6 * topicAvg + 0.4 * examNorm);
+            const projectedGrade = Math.round((1 + 5 * (readiness/100)) * 10) / 10; // 1..6
+            return { topicAvg, examAvg, examNorm, readiness, projectedGrade };
+        }
+
+        function formatGrade(g) {
+            if (!g && g !== 0) return '-';
+            return (Math.round(g * 10) / 10).toFixed(1).replace('.', ',');
+        }
+
+        function openProgressDashboard() {
+            const ov = document.getElementById('progress-overlay');
+            if (!ov) return;
+            ov.setAttribute('aria-hidden','false');
+            setTimeout(()=> {
+                const panel = ov.querySelector('.gbp-panel');
+                if (panel) panel.focus();
+            }, 30);
+            render();
+            // Auto-sync and auto-load AI summary
+            if (typeof syncFromServer === 'function') { syncFromServer(); }
+            if (typeof loadAISummary === 'function') { loadAISummary(); }
+        }
+        window.openProgressDashboard = openProgressDashboard;
+
+        function closeProgressDashboard() {
+            const ov = document.getElementById('progress-overlay');
+            if (!ov) return;
+            ov.setAttribute('aria-hidden','true');
+        }
+
+        function attachOverlayEvents() {
+            const ov = document.getElementById('progress-overlay');
+            if (!ov) return;
+            ov.addEventListener('click', (e) => {
+                if (e.target.matches('[data-gbp-close]')) closeProgressDashboard();
+            });
+            document.addEventListener('keydown', (e) => {
+                const isOpen = ov.getAttribute('aria-hidden') === 'false';
+                if (e.key === 'Escape' && isOpen) closeProgressDashboard();
+            });
+            const cancel = ov.querySelector('[data-gbp-modal-cancel]');
+            if (cancel) cancel.addEventListener('click', () => toggleTopicModal(false));
+        }
+
+        function renderTabs() {
+            const tabs = document.querySelectorAll('.gbp-tab');
+            tabs.forEach(btn => {
+                const subj = btn.getAttribute('data-subject');
+                btn.setAttribute('aria-selected', String(subj === state.activeSubject));
+                btn.onclick = () => { 
+                    setActiveSubject(subj); 
+                    if (typeof syncFromServer === 'function') { syncFromServer(); }
+                    if (typeof loadAISummary === 'function') { loadAISummary(); }
+                };
+            });
+        }
+
+        function renderGauge(readiness) {
+            const gauge = document.getElementById('gbp-gauge');
+            const val = document.getElementById('gbp-gauge-value');
+            if (gauge && typeof readiness === 'number') {
+                gauge.style.background = `conic-gradient(#3b82f6 0% ${readiness}%, rgba(255,255,255,0.1) ${readiness}% 100%)`;
+            }
+            if (val) val.textContent = readiness + '%';
+        }
+
+        function renderSummary() {
+            const { readiness, projectedGrade, examAvg } = computeMetrics();
+            renderGauge(readiness);
+            const proj = document.getElementById('gbp-projected-grade');
+            const avg = document.getElementById('gbp-avg-grade');
+            const cnt = document.getElementById('gbp-topics-count');
+            if (proj) proj.textContent = formatGrade(projectedGrade);
+            if (avg) avg.textContent = formatGrade(examAvg);
+            if (cnt) cnt.textContent = String(current().topics.length);
+        }
+
+        function renderTopics() {
+            const wrap = document.getElementById('gbp-topics');
+            if (!wrap) return;
+            const subj = current();
+            if (!subj.topics.length) {
+                wrap.innerHTML = '<p style="color:#9ca3af;">Noch keine Themen. Füge dein erstes Thema hinzu.</p>';
+                return;
+            }
+            wrap.innerHTML = subj.topics.map((t, idx) => {
+                return `
+                    <div class="gbp-topic-row">
+                        <div class="gbp-inline">
+                            <strong style="color:#fff;">${escapeHtml(t.name)}</strong>
+                        </div>
+                        <div class="gbp-progressbar" aria-label="Fortschritt ${escapeHtml(t.name)}">
+                            <div class="gbp-progressbar__fill" style="width:${t.mastery}%;"></div>
+                        </div>
+                        <div style="color:#e5e7eb; font-weight:700;">${t.mastery}%</div>
+                        <div class="gbp-actions-row">
+                            <button class="gbp-icon-btn" title="Bearbeiten" data-edit="${idx}">✎</button>
+                            <button class="gbp-icon-btn" title="Löschen" data-delete="${idx}">🗑</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            wrap.querySelectorAll('[data-edit]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = parseInt(btn.getAttribute('data-edit'), 10);
+                    openEditTopic(idx);
+                });
+            });
+            wrap.querySelectorAll('[data-delete]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = parseInt(btn.getAttribute('data-delete'), 10);
+                    deleteTopic(idx);
+                });
+            });
+        }
+
+        function renderExams() {
+            const subj = current();
+            const cnt = document.getElementById('gbp-exam-count');
+            const last = document.getElementById('gbp-last-grade');
+            const spark = document.getElementById('gbp-spark');
+            if (cnt) cnt.textContent = String(subj.exams.length);
+            if (last) last.textContent = subj.exams.length ? formatGrade(subj.exams[subj.exams.length - 1].grade) : '-';
+            if (spark) {
+                const last5 = subj.exams.slice(-10);
+                if (!last5.length) { spark.innerHTML = '<span style="height:2px;width:100px;background:rgba(148,163,184,0.3);border-radius:2px;"></span>'; return; }
+                const min = Math.min(...last5.map(e=>e.grade));
+                const max = Math.max(...last5.map(e=>e.grade));
+                const range = (max - min) || 1;
+                spark.innerHTML = last5.map(e => {
+                    const h = 8 + ((e.grade - min)/range) * 20;
+                    return `<span style="height:${h}px;"></span>`;
+                }).join('');
+            }
+        }
+
+        function renderAI() {
+            const subj = current();
+            const s = document.getElementById('gbp-ai-strengths');
+            const w = document.getElementById('gbp-ai-weaknesses');
+            const t = document.getElementById('gbp-ai-tips');
+            const strengths = subj.ai.strengths || [];
+            const weaknesses = subj.ai.weaknesses || [];
+            const tips = subj.ai.tips || [];
+
+            s.innerHTML = strengths.length ? ('<ul>' + strengths.map(i=>`<li>${escapeHtml(i)}</li>`).join('') + '</ul>') : '<p style="color:#9ca3af;">Noch keine Daten.</p>';
+            w.innerHTML = weaknesses.length ? ('<ul>' + weaknesses.map(i=>`<li>${escapeHtml(i)}</li>`).join('') + '</ul>') : '<p style="color:#9ca3af;">Noch keine Daten.</p>';
+            t.innerHTML = tips.length ? ('<ul>' + tips.map(i=>`<li>${escapeHtml(i)}</li>`).join('') + '</ul>') : '<p style="color:#9ca3af;">Analyse wird automatisch aktualisiert.</p>';
+        }
+
+        function render() {
+            renderTabs();
+            renderSummary();
+            renderTopics();
+            renderExams();
+            renderAI();
+        }
+
+        function toggleTopicModal(show, topic) {
+            const m = document.getElementById('gbp-topic-modal');
+            if (!m) return;
+            m.setAttribute('aria-hidden', show ? 'false' : 'true');
+            if (show) {
+                const name = document.getElementById('gbp-topic-name');
+                const mastery = document.getElementById('gbp-topic-mastery');
+                const d = topic || { name: '', mastery: 0 };
+                name.value = d.name || '';
+                mastery.value = d.mastery || 0;
+                document.getElementById('gbp-topic-mastery-val').textContent = (d.mastery || 0) + '%';
+                setTimeout(()=> name.focus(), 20);
+            }
+        }
+
+        function openEditTopic(idx) {
+            editIndex = idx;
+            const topic = current().topics[idx];
+            toggleTopicModal(true, topic);
+        }
+
+        function deleteTopic(idx) {
+            const t = current().topics[idx];
+            if (!confirm(`„${t.name}“ löschen?`)) return;
+            current().topics.splice(idx, 1);
+            saveState();
+            render();
+            // Persist to server
+            persistCurrentTopics();
+        }
+
+        function addTopicFlow() {
+            editIndex = null;
+            toggleTopicModal(true, null);
+        }
+
+        function handleTopicSave() {
+            const name = document.getElementById('gbp-topic-name').value.trim();
+            const mastery = parseInt(document.getElementById('gbp-topic-mastery').value, 10) || 0;
+            if (!name) { alert('Bitte einen Namen eingeben.'); return; }
+            const subj = current();
+            if (editIndex === null) {
+                subj.topics.push({ name, mastery, updatedAt: Date.now() });
+            } else {
+                subj.topics[editIndex] = { name, mastery, updatedAt: Date.now() };
+            }
+            toggleTopicModal(false);
+            saveState();
+            render();
+            // Persist to server
+            persistCurrentTopics();
+        }
+
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+        }
+
+        async function syncFromServer() {
+            // Hook for future backend integration
+            try {
+                const subjKey = state.activeSubject;
+                const res = await fetch(`/api/progress?subject=${encodeURIComponent(subjKey)}`, { method: 'GET' });
+                if (res.ok) {
+                    const data = await res.json();
+                    // Expected shape: { topics: [{name, mastery}], exams: [{grade, timestamp}] }
+                    if (data.topics) state.subjects[subjKey].topics = data.topics.map(t => ({ ...t, updatedAt: Date.now() }));
+                    if (data.exams) state.subjects[subjKey].exams = data.exams;
+                    saveState();
+                    render();
+                } else {
+                    // Fallback: do nothing, keep local
+                }
+            } catch (e) {
+                // Offline or not implemented yet
+            }
+        }
+
+        async function loadAISummary() {
+            const subjKey = state.activeSubject;
+            try {
+                // Show lightweight placeholder while loading
+                const aiWrap = document.getElementById('gbp-ai-summary');
+                const tipsEl = document.getElementById('gbp-ai-tips');
+                if (aiWrap && tipsEl) {
+                    tipsEl.innerHTML = '<p style="color:#9ca3af;">Analysiere deinen Lernstand…</p>';
+                }
+                const res = await fetch(`/api/progress/ai_summary?subject=${encodeURIComponent(subjKey)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    state.subjects[subjKey].ai = {
+                        strengths: data.strengths || [],
+                        weaknesses: data.weaknesses || [],
+                        tips: data.tips || []
+                    };
+                    saveState();
+                    renderAI();
+                    return;
+                }
+            } catch (e) {}
+            // If backend not available, fall back heuristically
+            const subj = state.subjects[subjKey];
+            const strong = subj.topics.filter(t=>t.mastery>=75).map(t=>t.name);
+            const weak = subj.topics.filter(t=>t.mastery<50).map(t=>t.name);
+            const tips = [];
+            if (weak.length) tips.push(`Konzentriere dich zuerst auf: ${weak.slice(0,3).join(', ')}`);
+            if (strong.length) tips.push(`Nutze deine Stärken (${strong.slice(0,3).join(', ')}) für gemischte Aufgaben.`);
+            const { projectedGrade } = computeMetrics();
+            tips.push(`Prognose: Note ${formatGrade(projectedGrade)} – simuliere 1–2 Prüfungen pro Woche.`);
+            subj.ai = { strengths: strong, weaknesses: weak, tips };
+            saveState();
+            renderAI();
+        }
+
+        async function persistCurrentTopics() {
+            const subjKey = state.activeSubject;
+            const body = {
+                subject: subjKey,
+                topics: state.subjects[subjKey].topics.map(t => ({ name: t.name, mastery: t.mastery }))
+            };
+            try {
+                const res = await fetch('/api/progress', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.topics) {
+                        state.subjects[subjKey].topics = data.topics.map(t => ({ ...t, updatedAt: Date.now() }));
+                        saveState();
+                        renderSummary();
+                        renderTopics();
+                        if (typeof loadAISummary === 'function') { await loadAISummary(); }
+                    }
+                }
+            } catch (e) {
+                // Keep local state on error
+            }
+        }
+
+        function attachActions() {
+            const add = document.getElementById('gbp-add-topic');
+            if (add) add.onclick = addTopicFlow;
+
+            const saveBtn = document.getElementById('gbp-topic-save');
+            if (saveBtn) saveBtn.onclick = handleTopicSave;
+        }
+
+        // Initialize
+        attachOverlayEvents();
+        attachActions();
+
+        // Expose minimal API for external updates (future use)
+        window.GBProgress = {
+            addExamResult(subject, grade, timestamp) {
+                const s = state.subjects[subject] || null;
+                if (!s) return;
+                s.exams.push({ grade, timestamp: timestamp || Date.now() });
+                saveState();
+                if (state.activeSubject === subject) render();
+            },
+            addOrUpdateTopic(subject, name, mastery) {
+                const s = state.subjects[subject] || null;
+                if (!s) return;
+                const idx = s.topics.findIndex(t=>t.name.toLowerCase()===String(name).toLowerCase());
+                if (idx === -1) s.topics.push({ name, mastery, updatedAt: Date.now() });
+                else s.topics[idx] = { name, mastery, updatedAt: Date.now() };
+                saveState();
+                if (state.activeSubject === subject) render();
+            }
+        };
+
+        // If user navigates here via card, allow immediate open on hash
+        if (location.hash === '#progress') {
+            setTimeout(openProgressDashboard, 50);
+        }
+    })();
+});
+</script>
+{% endblock %}

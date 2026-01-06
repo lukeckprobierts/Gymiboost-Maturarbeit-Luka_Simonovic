@@ -1,0 +1,38 @@
+/* Saved Task View - Force Styles */
+body #content .view-saved-task-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    color: #e2e8f0 !important;
+    background: #0f172a !important;
+}
+
+body #content .view-saved-task-container .page-title {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    margin-bottom: 1rem !important;
+    color: transparent !important;
+}
+
+body #content .view-saved-task-container .card {
+    background: rgba(30, 41, 59, 0.7) !important;
+    border: 1px solid #334155 !important;
+    border-radius: 0.75rem !important;
+    margin-bottom: 2rem !important;
+}
+
+body #content .view-saved-task-container .card-header {
+    background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+    color: white !important;
+    border-bottom: none !important;
+}
+
+/* TEST STYLE - SHOULD MAKE BUTTONS RED */
+body #content .view-saved-task-container .btn {
+    background: red !important;
+    color: white !important;
+}

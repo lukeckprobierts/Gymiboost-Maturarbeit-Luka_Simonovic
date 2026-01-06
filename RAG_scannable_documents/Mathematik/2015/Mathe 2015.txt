@@ -1,0 +1,391 @@
+Zentrale Aufnahmeprüfung 2015
+für die Langgymnasien des Kantons Zürich
+Korrekturschema Mathematik
+Lösungen
+1.  a) 20 min 2 s (oder 20 1  min und 1202 s)
+                           30
+    b) 1 kg 944 g (oder 1.944 kg und 1944 g)
+2.  4.685
+3.  4 oder 4 Fr. oder 4.00 Fr.
+4.  25 oder 25 m
+5.  72 cm (oder dieselbe Länge in einer anderen Einheit)
+6.  980 oder 980 Flaschen
+7.  98 oder 98 Jahre
+8.  3120 km (oder dieselbe Strecke in einer anderen Einheit)
+9.  Zusammen gehören 1 und D, 2 und A, 4 und C.
+---
+ZAP 2015                                               Korrekturschema Mathematik Langgymnasien
+Bewertungsgrundsätze
+Es gelten die folgenden Grundsätze. Auf Abweichungen davon wird bei den betreffenden Aufga
+ben hingewiesen.
+ 1. Bei jeder Aufgabe sind 4 Punkte möglich. Die Maximalpunktzahl darf nur erteilt werden, wenn
+   alle Zwischenergebnisse und das Endergebnis richtig sind sowie der Lösungsweg verständlich
+   ist. Ein richtiges Endergebnis ohne verständlichen Lösungsweg gibt 0 Punkte.
+   Wird eine Aufgabe auf mehrere Arten gelöst und führt dies zu verschiedenen Endergebnissen,
+   wird die Aufgabe mit 0 Punkten bewertet.
+     2. Bei Aufgaben mit Einheiten muss auch im Endergebnis eine Einheit angegeben werden. Wenn
+   sie fehlt, wird ein Punkt abgezogen. Fehlende Einheiten bei Zwischenergebnissen werden nicht
+   bestraft.
+3. Ein Rechenfehler liegt vor, wenn eine Rechenoperation numerisch fehlerhaft ausgeführt wurde.
+   Ein Abschreibefehler liegt vor, wenn eine gegebene Zahl oder ein richtiges Zwischenergebnis
+   falsch abgeschrieben wurde. In diesem Korrekturschema werden diese beiden Fehlerarten mit
+   RF abgekürzt.
+   Ein Überlegungsfehler liegt vor, wenn ein Zwischen   oder Endergebnis falsch ist und kein RF
+   begangen wurde.
+   Die Behandlung von RF und Überlegungsfehlern wird durch dieses Korrekturschema geregelt.
+   Dabei werden Überlegungsfehler bei den Aufgaben 3 bis 9 durch die angegebenen Optionen
+   erfasst.
+          4. Bei jeder Aufgabe ist angegeben, wie weit man für eine bestimmte Punktsumme kommen
+   muss. Sind mehrere Optionen notiert, die zu einer gewissen Punktzahl führen, genügt es, eine
+   dieser Optionen zu erfüllen, um die entsprechende Punktzahl zu erhalten. Optionen sind an
+   einem vorangestellten Punkt  zu erkennen. Die Punktzahlen pro Aufgabe werden nicht kumu
+   liert.
+   Kann der Lösungsweg gemäss dem Korrekturschema mit unterschiedlichen Punktzahlen
+   bewertet werden, so wird die höhere Punktzahl erteilt.
+                                        Seite 2 von 11
+---
+ZAP 2015                                        Korrekturschema Mathematik Langgymnasien
+Aufgabe 1
+Endergebnis:         a) 20 min 2 s (oder 20 1 min und 1202 s)
+                                           30
+                     b) 1 kg 944 g (oder 1.944 kg und 1944 g)
+Zwischenergebnisse
+als Korrekturhilfe:  a) 459 s : 17 = 27 s
+                        19 min 35 s + 27 s = 20 min 2 s
+                     b) 7.26 kg   3.18 kg = 4.08 kg
+                        6.024 kg   4.08 kg = 1.944 kg
+Bewertung von Teilaufgabe a) (maximal 2 Punkte)
+2 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis in min und s
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg und korrektes Endergebnis, aber es fehlt die Einheit.
+              Als Lösung ist nur 20 1 min angegeben, nicht aber 1202 s.
+                                    30
+              Als Lösung ist nur 1202 s angegeben, nicht aber 20 1 min.
+                                                                 30
+              459 s : 17 = 27 s
+              459 : 17 = 27
+0 Punkte:  Sonst
+Bewertung von Teilaufgabe b) (maximal 2 Punkte)
+2 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis in kg und g
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Als Lösung ist nur 1.944 kg angegeben, nicht aber 1944 g.
+              Als Lösung ist nur 1944 g angegeben, nicht aber 1.944 kg.
+              7.26 kg   3.18 kg = 4.08 kg oder 4080 g oder 4 kg 80 g
+              7260 g   3180 g = 4080 g oder 4.08 kg oder 4 kg 80 g
+              7.26   3.18 = 4.08
+              7260   3180 = 4080
+0 Punkte:  Sonst
+Für die Bewertung der ganzen Aufgabe werden die Punkte aus den zwei Teilaufgaben addiert.
+                                      Seite 3 von 11
+---
+ZAP 2015                                        Korrekturschema Mathematik Langgymnasien
+Aufgabe 2
+Endergebnis:         4.685
+Zwischenergebnisse
+als Korrekturhilfe:  12   2.44 = 29.28
+                     72.67 : 13 = 5.59
+                     29.28   5.59 = 23.69
+                     28.375   23.69 = 4.685
+4 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis als Dezimalzahl
+3 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg und korrektes Endergebnis, dieses ist aber nicht als Dezimal
+              zahl angegeben (z. B. 4 137 ).
+                                    200
+              Es sind alle folgenden Teilrechnungen richtig ausgeführt:
+              12    2.44 = 29.28
+              72.67 : 13 = 5.59
+              29.28   5.59 = 23.69
+2 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Vollständiger und verständlicher Lösungsweg mit einem Fehler irgendwelcher Art
+              (z. B. der falschen Rechnung 28.375 + 23.69 anstatt 28.375   23.69), und das
+              Resultat ist als Dezimalzahl angegeben.
+              Es sind die beiden folgenden Teilrechnungen richtig ausgeführt:
+              12    2.44 = 29.28
+              72.67 : 13 = 5.59
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Vollständiger und verständlicher Lösungsweg mit einem Fehler irgendwelcher Art,
+              und das Endergebnis ist nicht als Dezimalzahl angegeben.
+              Es ist eine der folgenden Teilrechnungen richtig ausgeführt:
+              12    2.44 = 29.28
+              72.67 : 13 = 5.59
+0 Punkte:  Sonst
+                                      Seite 4 von 11
+---
+ZAP 2015                                           Korrekturschema Mathematik Langgymnasien
+Aufgabe 3
+Endergebnis:          4 oder 4 Fr. oder 4.00 Fr.
+Zwischenergebnisse
+als Korrekturhilfe:   Tim hat  3 von 84 Fr. = 36 Fr. aufgebraucht. Er hat noch 48 Fr.
+                               7
+                      (Variante: Tim hat noch 4 von 84 Fr. = 48 Fr.)
+                                              7
+                      Er plant,  2   von 48 Fr. = 32 Fr. für den Fussball auszugeben. Dann hat er
+                                 3
+                      nach dem Kauf noch 16 Fr.
+                      (Variante: Gemäss seiner Planung hat er nach dem Kauf noch   1   von 48 Fr.
+                                                                                   3
+                      = 16 Fr.)
+                      Da ihm 20 Fr. übrig bleiben, kostet der Fussball 48 Fr.   20 Fr. = 28 Fr.
+                      Der Fussball ist also 4 Fr. günstiger als erwartet.
+                      (Variante: Da ihm 20 Fr. übrig bleiben anstatt nur 16 Fr., ist der Fussball
+                      4 Fr. günstiger als erwartet.)
+Hinweis:              Bei einem anderen richtigen und verständlichen Lösungsweg sollen die
+                      Teilpunkte mathematisch sinngemäss vergeben werden.
+4 Punkte:   Richtiger Lösungsweg und korrektes Endergebnis mit oder ohne Einheit
+3 Punkte:   Es trifft eine der folgenden Optionen zu:
+               Nach Tims Planung bleiben ihm noch 16 Fr. übrig.
+               Tim plant, für den Fussball 32 Fr. auszugeben, und tatsächlich kostet der Fussball
+               28 Fr.
+               Richtiger Lösungsweg und korrektes Endergebnis, dieses ist aber in einer falschen
+               Einheit angegeben (400 Rp.).
+2 Punkte:   Es trifft eine der folgenden Optionen zu:
+               Richtiger Lösungsweg mit einem RF (mit oder ohne Einheit)
+               Tim plant,  2 von 48 Fr. = 32 Fr. für den Fussball auszugeben.
+                           3
+               Tatsächlich kostet der Fussball 28 Fr.
+1 Punkt:    Es trifft eine der folgenden Optionen zu:
+               Tim hat  3 von 84 Fr. = 36 Fr. aufgebraucht.
+                        7
+               Tim hat noch 48 Fr.
+0 Punkte:   Sonst
+                                         Seite 5 von 11
+---
+ZAP 2015                                         Korrekturschema Mathematik Langgymnasien
+Aufgabe 4
+Endergebnis:         25 oder 25 m
+Zwischenergebnisse
+als Korrekturhilfe:  Melanie rennt 80 m in 14s, 40 m in 7 s und 200 m in 35 s.
+                     Stefanie rennt 30 m in 6 s, 10 m in 2 s und 200 m in 40 s.
+                     Melanie trifft 40 s   35 s = 5 s vor Stefanie im Ziel ein.
+                     Stefanie rennt in 6 s 30 m, in 1 s 5 m, in 5 s 25 m, ist also noch 25 m von
+                     der Ziellinie entfernt.
+Hinweis:             Bei einem anderen richtigen und verständlichen Lösungsweg sollen die
+                     Teilpunkte mathematisch sinngemäss vergeben werden.
+4 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis mit oder ohne Einheit
+3 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg mit einem RF (mit oder ohne Einheit)
+              Melanie trifft 5 s vor Stefanie im Ziel ein.
+              Stefanie rennt in 35 s 175 m weit.
+2 Punkte:  Melanie rennt 200m in 35 s, und Stefanie rennt 200 m in 40 s.
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Melanie rennt 200m in 35 s.
+              Stefanie rennt 200 m in 40 s.
+0 Punkte:  Sonst
+                                       Seite 6 von 11
+---
+ZAP 2015                                         Korrekturschema Mathematik Langgymnasien
+Aufgabe 5
+Endergebnis:         72 cm (oder dieselbe Länge in einer anderen Einheit)
+Zwischenergebnisse
+als Korrekturhilfe:  Der Umfang von Rechteck D ist 2 (12 cm + 4.5 cm) = 33 cm.
+                     Weil Rechteck A denselben Umfang und dieselbe Breite wie Rechteck D
+                     hat, misst seine Höhe ebenfalls 4.5 cm.
+                     Rechteck B ist 2 4.5 cm = 9 cm hoch und (33 cm   18 cm ):2 = 7.5 cm
+                     breit.
+                     Rechteck E ist 12 cm + 7.5 cm = 19.5 cm breit und (44 cm   39 cm):2 =
+                     2.5 cm hoch.
+                     Rechteck C ist 2 4.5 cm + 2.5 cm = 11.5 cm hoch und (33 cm   23 cm):2
+                     = 5 cm breit.
+                     Die Gesamtfigur ist 12 cm + 7.5 cm + 5 cm = 24.5 cm breit und 11.5 cm
+                     hoch, ihr Umfang misst also 2 (24.5 cm + 11.5 cm ) = 72 cm.
+Hinweis:             Der Lösungsweg wird nicht bewertet. Es genügt auch, die Zwischenergeb
+                     nisse in der Figur einzutragen.
+4 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis mit Einheit
+3 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg und korrektes Endergebnis, aber ohne Einheit
+              Richtiger Lösungsweg mit einem RF
+              Rechteck C ist 5 cm breit.
+              Die Gesamtfigur ist 24.5 cm breit.
+2 Punkte:  Rechteck E ist 2.5 cm hoch.
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Der Umfang von Rechteck D ist 33 cm.
+              Rechteck B ist 7.5 cm breit.
+0 Punkte:  Sonst
+                                       Seite 7 von 11
+---
+ZAP 2015                                         Korrekturschema Mathematik Langgymnasien
+Aufgabe 6
+Endergebnis:         980 oder 980 Flaschen
+Zwischenergebnisse
+als Korrekturhilfe:  Die 80 grossen Flaschen bringen Einnahmen von 80 mal 15 Fr. = 1200 Fr.
+                     Die mittelgrossen und kleinen Flaschen bringen Einnahmen von 7500 Fr.
+                     1200 Fr. = 6300 Fr.
+                     Ein „Paket“ aus 2 mittelgrossen und 1 kleinen Flaschen kostet 21 Fr.
+                     Der Winzer verkauft 6300 Fr. : 21 Fr. = 300 solche „Pakete“, 900 mittel
+                     grosse und kleine Flaschen (genauer: 600 mittelgrosse und 300 kleine Fla
+                     schen).
+                     Insgesamt verkauft er 80 grosse, 600 mittelgrosse und 300 kleine Flaschen,
+                     also 980 Flaschen.
+Hinweis:             Bei einem anderen richtigen und verständlichen Lösungsweg sollen die
+                     Teilpunkte mathematisch sinngemäss vergeben werden.
+4 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis, mit oder ohne Einheit
+3 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg, aber genau ein RF
+              Der Winzer verkauft 900 mittelgrosse und kleine Flaschen.
+              Der Winzer verkauft 600 mittelgrosse Flaschen.
+              Der Winzer verkauft 300 kleine Flaschen.
+2 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Der Winzer verkauft 300 „Pakete“ mit 2 mittelgrossen und 1 kleinen Flasche.
+              Die mittelgrossen und kleinen Flaschen bringen Einnahmen von 6300 Fr. und ein
+              „Paket“ aus 2 mittelgrossen und 1 kleinen Flasche kostet 21 Fr.
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Die mittelgrossen und kleinen Flaschen bringen Einnahmen von 6300 Fr.
+              Ein „Paket“ aus 2 mittelgrossen und 1 kleinen Flasche kostet 21 Fr.
+0 Punkte:  Sonst
+                                       Seite 8 von 11
+---
+ZAP 2015                                         Korrekturschema Mathematik Langgymnasien
+Aufgabe 7
+Endergebnis:         98 oder 98 Jahre
+Zwischenergebnisse
+als Korrekturhilfe:  Bezeichnet man das Alter von Lea, Livia, deren Mutter, Grossmutter und
+                     Urgrossmutter mit le, li, mu, gr und ur, so gilt:
+                                         le    li     mu           63
+                                                           gr   ur   169
+                                         le           mu   gr   ur   220
+                     Aus den beiden ersten Zeilen folgt, dass alle Frauen zusammen 63 + 169
+                     = 232 Jahre alt sind.
+                     Der Unterschied zur dritten Zeile ist auf das Fehlen von Livia zurückzufüh
+                     ren, die daher 232   220 = 12 Jahre alt sein muss, ebenso wie ihre Zwil
+                     lingsschwester Lea.
+                     Gemäss der ersten Zeile muss die Mutter 63   12   12 = 39 Jahre alt sein.
+                     Sie ist 27 Jahre älter als Lea. Dies ist auch der Altersunterschied zwischen
+                     Leas Grossmutter und Urgrossmutter.
+                     Gemäss Zeile 2 sind die Grossmutter und Urgrossmutter zusammen 169
+                     Jahre alt. Die Urgrossmutter ist also (169 + 27):2 = 98 Jahre jung.
+                     (Variante: Die Grossmutter ist (169   27):2 = 71 jährig., die Urgrossmutter
+                     71+27=98 jährig.)
+Hinweis:             Bei einem anderen richtigen und verständlichen Lösungsweg sollen die
+                     Teilpunkte mathematisch sinngemäss vergeben werden.
+4 Punkte:  Richtiger Lösungsweg und korrektes Endergebnis
+3 Punkte:  Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg, aber genau ein RF
+              Der Altersunterschied zwischen Lea und ihrer Mutter sowie zwischen ihrer Gross
+              mutter und Urgrossmutter beträgt 27 Jahre.
+              Die Grossmutter ist 71 jährig.
+2 Punkte:  Die Mutter ist 39 Jahre alt.
+1 Punkt:   Es trifft eine der folgenden Optionen zu:
+              Livia ist 12 Jahre alt.
+              Lea und die Mutter sind zusammen 220   169 = 51 Jahre alt.
+0 Punkte:  Sonst
+                                       Seite 9 von 11
+---
+ZAP 2015                                         Korrekturschema Mathematik Langgymnasien
+Aufgabe 8
+Endergebnis:          3120 km (oder dieselbe Strecke in anderer Einheit)
+Zwischenergebnisse
+als Korrekturhilfe:   Beim Start wiegen die Passagiere insgesamt 54 t : 8 = 6.75 t und der Treib
+                      stoff 54 t : 3 = 18 t.
+                      Bei der Landung wiegt das Flugzeug 6   6.75 t = 40.5 t. Das Flugzeug hat
+                      also 54 t   40.5 t = 13.5 t Treibstoff verbraucht.
+                      Mit diesen 13.5 t konnte das Flugzeug 2340 km fliegen, mit 4.5 t kann es
+                      780 km weit fliegen, mit 18 t hätte es 3120 km fliegen können.
+Hinweis:              Bei einem anderen richtigen und verständlichen Lösungsweg sollen die
+                      Teilpunkte mathematisch sinngemäss vergeben werden.
+4 Punkte:   Richtiger Lösungsweg und korrektes Endergebnis mit Einheit
+3 Punkte:   Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg und korrektes Endergebnis, aber die Einheit fehlt oder ist
+              falsch (z. B. 3120 m).
+              Richtiger Lösungsweg, aber genau ein RF, und eine richtige Einheit ist angegeben.
+              Es sind zwei der folgenden drei Aussagen vorhanden:
+                 Beim Start enthielten die Tanks 18 t Treibstoff.
+                 Bei der Landung enthält das Flugzeug noch 4.5 t Treibstoff.
+                 Es wurden 13.5 t Treibstoff verbraucht.
+              Das Flugzeug hätte noch weitere 780 km fliegen können.
+2 Punkte:   Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg, aber genau ein RF, und die Einheit fehlt oder ist falsch.
+              Bei der Landung hat das Flugzeug ein Gesamtgewicht von 40.5 t.
+1 Punkt:    Es trifft eine der folgenden Optionen zu:
+              Richtiger Lösungsweg, aber genau zwei RF
+              Beim Start wiegt der Treibstoff 18 t.
+              Die Passagiere wiegen 6.75 t.
+              Der Rest des Flugzeugs wiegt 29.25 t.
+0 Punkte:   Sonst
+                                       Seite 10 von 11
+---
+ZAP 2015                                         Korrekturschema Mathematik Langgymnasien
+Aufgabe 9
+Endergebnis:  Zusammen gehören 1 und D, 2 und A, 4 und C.
+Hinweis:             Bei dieser Aufgabe können die Lösungen durch (mehr oder weniger syste
+                     matisches) Probieren gefunden werden. Der Lösungsweg wird daher nicht
+                     bewertet.
+4 Punkte:  3 richtige Paare
+3 Punkte:  2 richtige Paare, kein falsches Paar
+2 Punkte:  2 richtige Paare, 1 falsches Paar
+1 Punkte:  1 richtiges Paar
+0 Punkte:  Sonst
+                                      Seite 11 von 11
+---
+Zentrale Aufnahmeprüfung 2015 für die Langgymnasien des Kantons Zürich
+Μathematik
+Name:   . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  Vorname:     . . . . . . . . . . . . . . . . . . . . . . . . . .
+Prüfungsnummer:  . . . . . . . . . . .                             Schule:  . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Allgemeine Hinweise:
+   •  Du hast 60 Minuten Zeit.
+   •  Löse die Aufgaben direkt auf das Aufgabenblatt. Reicht der Platz bei einer Aufgabe nicht,
+      fährst du auf der letzten Seite weiter.
+   •  Du musst Ausrechnungen und Zwischenresultate aufschreiben, damit der Lösungsweg
+      verständlich ist; sonst erhältst du keine Punkte.
+   •  Antwortsätze sind nicht verlangt. Kennzeichne aber die Ergebnisse deutlich und notiere
+      sie mit der passenden Masseinheit.
+   •  Du darfst die Aufgaben in beliebiger Reihenfolge lösen.
+   •  Du darfst weder Taschenrechner noch andere elektronische Hilfsmittel verwenden.
+   •  Bei der Aufgabe 9 darfst du die Würfelnetze weder ausschneiden noch nachbilden.
+Bitte nicht ausfüllen!
+ Aufgabe      1     2     3     4    5                              6  7  8  9 Total  Note
+ Maximale     4     4     4     4    4                              4  4  4  4   36
+ Punktzahl
+ Erreichte
+ Punktzahl
+---
+1.      a)    Gib das Ergebnis in min und s an:  (7 min 39 s : 17) +19 7 min
+                                                                      12
+        b)    Gib die Lösung in kg und g an:   713 kg − 3.18 kg +   = 6024 g
+                                                50
+2.    Gib die Lösung als Dezimalzahl an:      (211 · 12)− (72.67 : 13) = 28 3 −
+                                                25                        8
+---
+3.     Von seinem Feriengeld von 84 Franken hat Tim bereits   3 aufgebraucht. Vom Rest plant er,  2
+                                                              7                                   3
+       für einen neuen Fussball auszugeben. Zu seiner Überraschung kostet der Fussball weniger als
+       erwartet. Nach dem Kauf hat er noch 20 Franken von seinem Feriengeld. Wie viele Franken ist
+       der Fussball günstiger als erwartet?
+4.     Am Sporttag rennen Melanie und Stefanie gemeinsam den 200-Meter-Lauf. Melanie legt 80 m
+       in 14 s zurück, und Stefanie braucht für 30 m 6 s. Beide halten ihre Geschwindigkeit während
+       des ganzen Laufes ein. Wie viele Meter vom Ziel entfernt ist Stefanie, wenn Melanie die Ziel-
+       linie überquert?
+---
+5.  Die Rechtecke A, B, C und D haben den gleichen Umfang. Der Umfang des Rechtecks E beträgt
+    44 cm. Bestimme den Umfang der Gesamtﬁgur.
+                             12 cm
+                              A
+                                           B
+                   4.5 cm     D                    C
+                                   E
+---
+6.    Ein Winzer verkauft seinen Wein in drei Flaschengrössen. Insgesamt nimmt er 7500 Fr. ein.
+      Zuerst verkauft er 80 grosse Flaschen für je 15 Fr. Dann verkauft er mittelgrosse Flaschen für
+      je 8 Fr. und halb so viele kleine Flaschen für je 5 Fr. Wie viele Flaschen verkauft der Winzer
+      insgesamt?
+7.    Fünf Frauen aus vier Generationen treffen sich an einem Familienfest. Die Zwillinge Lea und
+      Livia und ihre Mutter sind zusammen 63 Jahre alt. Die Grossmutter und Urgrossmutter der
+      Zwillinge sind zusammen 169 Jahre alt. Lea, ihre Mutter, Grossmutter und Urgrossmutter sind
+      zusammen 220 Jahre alt. Der Altersunterschied von Lea und ihrer Mutter ist gleich wie der
+      Altersunterschied von Grossmutter und Urgrossmutter. Wie alt ist die Urgrossmutter?
+---
+8.    Ein Flugzeug hatte beim Start ein Gesamtgewicht von 54 t. Davon machten die Passagiere einen
+      Achtel und der Treibstoff einen Drittel aus. Bei der Landung nach 2340 km macht der Anteil
+      der Passagiere einen Sechstel des Gesamtgewichts aus. Wie weit hätte das Flugzeug ﬂiegen
+      können, wenn es den gesamten Treibstoff aufgebraucht hätte?
+---
+9.  Drei der vier gezeichneten Würfelnetze 1 bis 4 gehören je zu genau einem der Würfel A bis
+    D. Ein Würfel und ein Netz bleiben übrig. Finde die drei zueinander passenden Paare. Mache
+    deutlich, welches Würfelnetz zu welchem Würfel gehört.
+         1            2            3            4
+         A            B            C            D
+---
+Auf dieser Seite kannst du Aufgaben weiter lösen, bei denen du zu wenig Platz hattest.
+Schreibe die Aufgabennummer deutlich hin.
+
+Zentrale Aufnahmeprüfung 2015, Mathematikprüfung 2015, Mathe ZAP 2015, Mathematik Test 2015, Mathematik Aufgaben 2015, Mathe Aufgaben 2015, Prüfung Mathematik 2015, 2015 Matheprüfung, Jahr 2015 Mathe, Mathe Jahr 2015, ZAP Mathematik 2015, Mathe Zentrale Prüfung 2015, Teil A 2015, Teil B 2015, Aufgabe 1 2015, Aufgabe 2 2015, Aufgabe 3 2015, Aufgabe 4 2015, Aufgabe 5 2015, Aufgabe 6 2015, Lösung Aufgabe 1 2015, Lösung Aufgabe 2 2015, Lösung Aufgabe 3 2015, Lösung Aufgabe 4 2015, Lösung Aufgabe 5 2015, Lösung Aufgabe 6 2015, Matheprüfung vom Jahr 2015, Zentrale Matheprüfung 2015, 2015 Mathematik ZAP, MATH 2015, 2015 2015 2015 15 15 15, Mathematiktest 2015 Lösungen Aufgaben Prüfung Teil A Teil B Jahr 2015.
+2015 2015 2015 2015

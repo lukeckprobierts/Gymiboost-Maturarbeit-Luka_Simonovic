@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="exam-selection-container">
+    <h1>Prüfungssimulation</h1>
+    <p>Wählen Sie eine Prüfung aus, um unter realistischen Bedingungen zu üben. Sie haben 90 Minuten Zeit.</p>
+    
+    <form id="examForm" method="GET" action="#">
+        <div class="exam-types">
+            {% for exam_type, files in exams.items() %}
+            <div class="exam-type">
+                <h2>{{ exam_type|capitalize }} Prüfungen</h2>
+                <div class="exam-files">
+                    <select name="{{ exam_type }}" id="{{ exam_type }}_select" class="exam-select">
+                        <option value="">-- Bitte wählen --</option>
+                        {% for file in files %}
+                        <option value="{{ file }}">{{ file }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="start-exam-btn">Prüfung starten</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Verhindert Zurück-Navigation während der Prüfung
+window.history.pushState(null, null, window.location.href);
+window.addEventListener('popstate', function() {
+    window.history.pushState(null, null, window.location.href);
+});
+
+// Form submission handler
+document.getElementById('examForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Find the selected exam
+    let selectedExamType = null;
+    let selectedFilename = null;
+    
+    document.querySelectorAll('.exam-select').forEach(select => {
+        if (select.value) {
+            selectedExamType = select.id.replace('_select', '');
+            selectedFilename = select.value;
+        }
+    });
+    
+    if (!selectedExamType || !selectedFilename) {
+        alert('Bitte wählen Sie mindestens eine Prüfung aus.');
+        return;
+    }
+    
+    // Redirect to start_exam with parameters
+    window.location.href = `/start_exam/${selectedExamType}/${encodeURIComponent(selectedFilename)}`;
+});
+</script>
+{% endblock %}

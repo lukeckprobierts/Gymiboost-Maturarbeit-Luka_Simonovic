@@ -1,0 +1,97 @@
+Aufgabe   1    2    3   4    5    6   7    8    9 Total   Note
+Maximale  4    4    4   4    4    4   4    4    4   36
+Punktzahl
+Erreichte
+Punktzahl
+---
+NO_CONTENT_HERE
+---
+1.       In der Rechenmaschine wird die eingegebene Zahl Schritt fir Schritt verarbeitet:
+           Eingabe    +6.3                    20.1    Ausgabe
+         Welche Zahl muss du eingeben, damit die Ausgabezahl 102 herauskommt?
+     b)  Rechne geschickt. Berechne mit moglichst wenig Rechenaufwand
+         Schreibe deine Rechenschritteauf,
+         125. 6.408
+---
+                  Anzahl       30 min         1h
+Pedalo              10         15Fr.        25Fr.
+Ruderboot           6                       30 Fr.
+SUP                 15                      17Fr;
+Kajak                                       13Fr:
+---
+3.    Stefan plante in den Sommerferien eine Zugreise ins Tessin. Er freute sich, zum ersten Mal den
+     57 kmn langen Gotthard-Basistunnel zu durchfahren. Die Durchfahrt dauerte genau 19 Minuten
+      a)  Mit welcher Durchschnittsgeschwindigkeit fuhr der Zugim Gotthard-Basistunnel? Gib
+          das Ergebnis in kmhh an
+      6)  In Bellinzona hatte Stefan gemass Fahrplan 5 min Zeit umzusteigen. Leider hatte derZug
+          12 min Verspatung Mit seinem schweren Gepack konnte Stefan mit 6kmlh gehen: Er
+          erreichte den Anschluss im letzten Moment Wie weit musste Stefan geben?
+---
+4.   Die beiden Zahlenfolgen sind je nach einer Regel aufgebaut
+     a)  2,  A,  B,  48,  240, 1440
+         Notiere die Zahlen A und B
+     b)  A,  30.5,  26.25, B, 17.75,
+         Notiere die Zahlen A, B und C.
+---
+5.    Oma Tina kocht jeweils dienstags fiir ihre drei Enkel Lia, Sara und Ben das Mittagessen: Lia
+      kommt alle 2 Wochen, Sara jeden dritten Dienstag und Ben nur jeden vierten Dienstag: Heute
+     sind alle gemeinsam beim Mittagessen.
+       a)  In wie vielen Wochen werden das nachsteMalwieder alle drei gemeinsam zum Mittages-
+           sen kommen?
+      b)    Wie oft waren bis dann nur Ben und Lia gemeinsam beim Mittagessen?
+       C)   An wie vielen Dienstagen zwischen dem ersten und dem zweiten gemeinsamen Mittages-
+           sen aller drei Enkel bekochte Oma Tina keine Enkel? Zeige deine Uberlegungen auf.
+---
+6_   Die Bienenvolker von Maja und Willi liefern jedes Jahr durchschnittlichgleichviel Honig pro
+     Volk; ImkerinMajaverdient mit ihren 20 Bienenvilkern in einem Jahr 24 480 Fr: Bei ihr kosten
+     500 g Honig 24 Fr: Imker Willi besitzt 15 Bienenvolker Er verlangt fir SO g Honig 22Fr:
+      Wie viel nimmt Willi durch den Verkauf seines Honigs ein?
+---
+7     Die folgende Figur (nicht massstablich) ist aus Rechtecken zusammengesetzt; Der Punkt P ist
+      die Mitte von AB und der Punkt Q die Mitte von AC. Der schattierte Teil hatdieFlache 40cm?_
+      Bestimme die Flache der gesamtenFigur(fett ausgezogen)_
+                              8 cm
+               cm                                9 cm
+                                 6 cm
+---
+8    Der eingezeichnete Startwiirfel wird immer durch Kippen iiber eine Wiirfelkante um 909 auf
+     dem eingezeichneten Weg zum Zielwirfel bewegt
+     Beschrifte die drei sichtbaren Seiten des Zielwiirfels mit den Augenzahlen, die dort zu liegen
+     kommen_ (Hinweis: Die Summe der beiden gegeniberliegenden Augenzahlen eines Wiirfels
+     betragt immer 7,)
+      b)
+---
+9.    Konstruiere ein Fiinfeck ABCDE mit folgenden Eigenschaften
+           Das Fiinfeck ABCDE ist achsensymmetrisch: Die Symmetrie-
+           achse     wie in derFigur-rechts durch die Ecke C,
+                geht
+           Die Punkte A und B sind vorgegeben.
+           Die Punkte C und Dliegen auf der Geraden &.
+           Die Lange der Strecke BC ist vorgegeben:
+           Der Winkel bei C ist stumpf (grosser als 90?)
+                                          A
+                     Bx
+---
+Auf dieser Seite kannst du Aufgaben weiter losen; bei denen du Zu wenig Platz hattest
+Schreibe die Aufgabennummer deutlich hin;
+---
+Zentrale Aufnahmeprufung 2021
+fur die Langgymnasien des Kantons Zurich
+Korrekturschema Mathematik
+Losungen
+1. a) 360
+    b) 801 (Ftir die volle Punktzabl muss ein <Trick angewendet werden )
+2.  a) 20.- oder 20 Fr. (oder dasselbe Ergebnis in anderer Einheit; Z. B. 2000 Rp.)
+    6) 8 Kajaks oder 8
+    c) 65.- oder 65 Fr. (oder dasselbe Ergebnis in anderer Einheit; 2. B. 6500 Rp:)
+3_  a) 180 kmhh
+    b) 350 m (oder dasselbe Ergebnis in anderer Einheit; 2. B. 0.35 km)
+    a) A=4,B= 12
+    b) A =34.75,B=22,C = 13.5
+5.  a) 12 oder 12 Wochen
+    6)2 mal
+6. 16830 FI. oder 16830.- (oder dasselbe Ergebnis in anderer Einheit, z. B. 1683000 Rp )
+7.  226 cm? (oder dasselbe Ergebnis in anderer Einheit; z. B. 2,.26 dm?)
+8.  a)                               b)
+
+Mathematikprüfung 2021, Zentrale Aufnahmeprüfung 2021 Mathematik, Mathe ZAP 2021, Teil A und B 2021, Mathematik Aufgaben 2021, Mathe Lösungen 2021, Aufgabe 1 bis 6 2021, 2021 Matheprüfung Original, Prüfung von 2021 Mathe, 2021 2021 2021 21 21 21, Mathematiktest Prüfungsjahr 2021, Prüfung Mathematik ZAP 2021, Matheprüfung Jahr 2021, Zentrale Matheprüfung 2021.

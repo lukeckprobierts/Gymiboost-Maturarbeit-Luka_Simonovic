@@ -1,0 +1,1198 @@
+
+{% extends "base.html" %}
+{% block content %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gymiboost.ch - Dein KI-Tutor für die Gymiprüfung</title>
+    <style>
+        /* Global Resets & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #0f172a;
+            scroll-behavior: smooth;
+        }
+
+        /* Space-themed animations and effects */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            transform: rotate(-45deg);
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.95), transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.9), transparent),
+                radial-gradient(2px 2px at 160px 30px, #f1f5f9, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: starZoomA 24s linear infinite;
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .stars2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            transform: rotate(-45deg);
+            background-image: 
+                radial-gradient(2px 2px at 25px 25px, #ffffff, transparent),
+                radial-gradient(2px 2px at 50px 75px, rgba(255,255,255,0.85), transparent),
+                radial-gradient(1px 1px at 125px 30px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(1px 1px at 175px 85px, #ffffff, transparent);
+            background-repeat: repeat;
+            background-size: 250px 150px;
+            animation: starZoomB 36s linear infinite;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .stars3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            transform: rotate(-45deg);
+            background-image: 
+                radial-gradient(1px 1px at 10px 10px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(1px 1px at 30px 60px, rgba(255,255,255,0.45), transparent),
+                radial-gradient(1px 1px at 65px 20px, rgba(255,255,255,0.65), transparent),
+                radial-gradient(1px 1px at 80px 90px, rgba(255,255,255,0.55), transparent),
+                radial-gradient(1px 1px at 110px 10px, rgba(255,255,255,0.35), transparent),
+                radial-gradient(1px 1px at 140px 70px, rgba(255,255,255,0.5), transparent);
+            background-repeat: repeat;
+            background-size: 300px 200px;
+            animation: starZoomC 48s linear infinite;
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes zoom {
+            0% {
+                opacity: 0;
+                transform: rotate(-45deg) scale(0);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Star outward zoom animations (constant presence) */
+        @keyframes starZoomA {
+            0% { transform: rotate(-45deg) scale(1); }
+            100% { transform: rotate(-45deg) scale(1.35); }
+        }
+        @keyframes starZoomB {
+            0% { transform: rotate(-45deg) scale(1); }
+            100% { transform: rotate(-45deg) scale(1.45); }
+        }
+        @keyframes starZoomC {
+            0% { transform: rotate(-45deg) scale(1); }
+            100% { transform: rotate(-45deg) scale(1.55); }
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 9999px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #60a5fa;
+            border: 2px solid #60a5fa;
+        }
+
+        .btn-outline:hover {
+            background: #60a5fa;
+            color: white;
+        }
+
+        .btn-purple {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+        }
+
+        .btn-purple:hover {
+            background: linear-gradient(135deg, #6d28d9, #db2777);
+            transform: scale(1.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a, #581c87, #1e293b);
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            color: #60a5fa;
+            animation: pulse 2s infinite;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-bottom: 32px;
+            max-width: 768px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            color: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .features h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .features-subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            text-align: center;
+            max-width: 768px;
+            margin: 0 auto 64px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(71, 85, 105, 0.5), rgba(51, 65, 85, 0.3));
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(96, 165, 250, 0.5);
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            width: 32px;
+            height: 32px;
+            color: #60a5fa;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* Detailed Features Section */
+        .detailed-features {
+            padding: 80px 0;
+            background: #0f172a;
+            color: white;
+        }
+
+        .detailed-features h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .detailed-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .detailed-feature-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.4));
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(71, 85, 105, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .detailed-feature-card:hover {
+            border-color: rgba(167, 139, 250, 0.5);
+            transform: scale(1.05);
+        }
+
+        .detailed-feature-card .feature-icon {
+            color: #a78bfa;
+            margin-bottom: 24px;
+        }
+
+        .detailed-feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            color: white;
+        }
+
+        .pricing h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #10b981, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(51, 65, 85, 0.4));
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular {
+            border-color: rgba(167, 139, 250, 0.5);
+            box-shadow: 0 20px 25px -5px rgba(167, 139, 250, 0.2);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin: 16px 0;
+        }
+
+        .pricing-card .currency {
+            font-size: 1.25rem;
+            color: #9ca3af;
+            margin-left: 4px;
+        }
+
+        .pricing-card .period {
+            color: #9ca3af;
+        }
+
+        .pricing-card p {
+            color: #d1d5db;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .pricing-card li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: #d1d5db;
+        }
+
+        .pricing-card .check-icon {
+            width: 20px;
+            height: 20px;
+            color: #10b981;
+            flex-shrink: 0;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: #1e293b;
+            color: white;
+        }
+
+        .testimonials h2 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(71, 85, 105, 0.5), rgba(51, 65, 85, 0.3));
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(71, 85, 105, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(251, 191, 36, 0.5);
+            transform: scale(1.05);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            margin-bottom: 16px;
+        }
+
+        .star {
+            width: 20px;
+            height: 20px;
+            color: #fbbf24;
+            fill: currentColor;
+        }
+
+        .testimonial-card blockquote {
+            color: #d1d5db;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: white;
+        }
+
+        .testimonial-details {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* Call to Action Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0f172a, #581c87, #1e293b);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.1), rgba(147, 51, 234, 0.1));
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1024px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .cta-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            color: #a78bfa;
+            animation: pulse 2s infinite;
+        }
+
+        .cta h2 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta p {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-bottom: 40px;
+            max-width: 512px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .cta-features {
+            color: #9ca3af;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 48px 0;
+            border-top: 1px solid #374151;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .footer-logo svg {
+            width: 32px;
+            height: 32px;
+            color: #60a5fa;
+            margin-right: 12px;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer p {
+            color: #9ca3af;
+            margin-bottom: 8px;
+            max-width: 512px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-divider {
+            border-top: 1px solid #374151;
+            padding-top: 32px;
+            margin-top: 32px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.25rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .features h2,
+            .detailed-features h2,
+            .pricing h2,
+            .testimonials h2,
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .cta h2 {
+                font-size: 2.5rem;
+            }
+            
+            .cta p {
+                font-size: 1.25rem;
+            }
+            
+            .features-grid,
+            .detailed-features-grid,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .cta-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background stars effect -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+            </div>
+            
+            <h1>Bestehe die Gymi-Prüfung mit deinem persönlichen KI-Tutor!</h1>
+            
+            <p>Gymiboost.ch ist dein smarter Begleiter für die Zentrale Aufnahmeprüfung (ZAP) in der Schweiz. Entwickelt von Gymi-Schülern für Gymi-Schüler – intelligent, aktuell und unschlagbar günstig.</p>
+            
+            <div class="hero-buttons">
+                {% if current_user %}
+                    <a href="{{ url_for('chat') }}" class="btn btn-primary">Zum Chat gehen</a>
+                {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-primary">Jetzt kostenlos testen</a>
+                {% endif %}
+                <a href="#features" class="btn btn-outline">Features entdecken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <h2>Warum Gymiboost.ch wählen?</h2>
+            <p class="features-subtitle">
+                Entdecke die mächtigen Features, die unser KI-Nachhilfesystem von allen anderen unterscheiden
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Hochmoderne KI</h3>
+                    <p>Profitiere von den neuesten KI-Modellen, die speziell auf die Anforderungen der Gymiprüfung trainiert wurden. Erhalte präzise Erklärungen und individuelle Unterstützung.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3>KI-generierte Aufgaben</h3>
+                    <p>Trainiere mit personalisierten Übungsaufgaben, die von unserer KI basierend auf deinem Niveau und den ZAP-Anforderungen erstellt werden.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Von Schülern für Schüler</h3>
+                    <p>Entwickelt von Schülern der Kantonsschule Zürcher Unterland, die genau wissen, worauf es ankommt und ihre Erfolgsstrategien teilen möchten.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Unschlagbarer Preis</h3>
+                    <p>Qualitativ hochwertige Vorbereitung muss nicht teuer sein. Gymiboost bietet dir Top-Leistung zu einem Bruchteil der Kosten herkömmlicher Nachhilfe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Features Section -->
+    <section class="detailed-features">
+        <div class="features-container">
+            <h2>Unsere Top-Funktionen im Detail</h2>
+            <p class="features-subtitle">
+                Gymiboost.ch wurde entwickelt, um dir die bestmögliche und flexibelste Vorbereitung auf die Gymiprüfung zu ermöglichen. Entdecke, was unseren KI-Tutor so besonders macht.
+            </p>
+            
+            <div class="detailed-features-grid">
+                <div class="detailed-feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Neueste KI-Modelle</h3>
+                    <p>Unsere Plattform nutzt fortschrittliche künstliche Intelligenz, um dir bei komplexen Aufgaben zu helfen, Lösungswege zu erklären und Wissenslücken zu identifizieren.</p>
+                </div>
+                <div class="detailed-feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>KI-gestützte Übungen</h3>
+                    <p>Unsere KI generiert massgeschneiderte Übungsaufgaben und kann dir bei der Lösung Schritt für Schritt helfen - wie ein persönlicher Tutor, der sich deinem Lerntempo anpasst.</p>
+                </div>
+                <div class="detailed-feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h3>Handverlesene Buchempfehlungen</h3>
+                    <p>Wir haben die besten Lehrbücher und Übungsmaterialien für dich recherchiert. Dein KI-Tutor kann dir basierend auf deinen Bedürfnissen passende Empfehlungen geben.</p>
+                </div>
+                <div class="detailed-feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Alle ZAP-Dokumente integriert</h3>
+                    <p>Der KI-Tutor hat Zugriff auf offizielle Dokumente und Prüfungen der Zentralen Aufnahmeprüfung, um dich optimal auf reale Prüfungssituationen vorzubereiten.</p>
+                </div>
+                <div class="detailed-feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h3>Von Gymi-Schülern entwickelt</h3>
+                    <p>Wir, Schüler der Kantonsschule Zürcher Unterland, haben Gymiboost.ch aus eigener Erfahrung entwickelt, um anderen den Weg ins Gymnasium zu erleichtern.</p>
+                </div>
+                <div class="detailed-feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v3.5c0 .83-.67 1.5-1.5 1.5H9.5c-.83 0-1.5-.67-1.5-1.5V1a1 1 0 011-1h2a1 1 0 011 1v3m0 0H7m0 0a1 1 0 00-1 1v3c0 .55.45 1 1 1h2v7l2 2h4l2-2v-7h2c.55 0 1-.45 1-1V5a1 1 0 00-1-1z"></path>
+                        </svg>
+                    </div>
+                    <h3>24/7 Support & Unbegrenzte Nutzung</h3>
+                    <p>Mit deinem Abonnement erhältst du unbegrenzten Zugang zu allen Funktionen und kannst dich bei Fragen jederzeit an unseren Support wenden.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="features-container">
+            <h2>Faire Preise für deine Zukunft</h2>
+            <p class="features-subtitle">
+                Wähle das Abo, das am besten zu deiner Lernstrategie passt. Alle Abos beinhalten unbegrenzte Nutzung und 24/7 Support.
+            </p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Monatsabo</h3>
+                    <div class="price">
+                        10<span class="currency">CHF</span>
+                        <div class="period">/Monat</div>
+                    </div>
+                    <p>Flexible Laufzeit für kurzfristige Vorbereitung</p>
+                    <ul>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Flexible Laufzeit
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Jederzeit kündbar
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Voller Zugriff auf alle Funktionen
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            24/7 Support
+                        </li>
+                    </ul>
+                <form id="monthly-form" class="stripe-form">
+                    <input type="hidden" name="priceId" value="{{ price_ids['monthly'] }}">
+                    <button type="submit" class="btn btn-primary">Jetzt starten</button>
+                </form>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-badge">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        Beliebt
+                    </div>
+                    <h3>Semesterabo</h3>
+                    <div class="price">
+                        50<span class="currency">CHF</span>
+                        <div class="period">/6 Monate</div>
+                    </div>
+                    <p>Ideal für die intensive Vorbereitung</p>
+                    <ul>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Ideal für die intensive Vorbereitung
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Spare 10 CHF gegenüber Monatsabo
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Voller Zugriff auf alle Funktionen
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Priority Support
+                        </li>
+                    </ul>
+                <form id="semester-form" class="stripe-form">
+                    <input type="hidden" name="priceId" value="{{ price_ids['semester'] }}">
+                    <button type="submit" class="btn btn-purple">Bestseller wählen</button>
+                </form>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Jahresabo</h3>
+                    <div class="price">
+                        80<span class="currency">CHF</span>
+                        <div class="period">/Jahr</div>
+                    </div>
+                    <p>Maximaler Wert für langfristige Nutzung</p>
+                    <ul>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Maximaler Wert
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Spare 40 CHF gegenüber Monatsabo
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Voller Zugriff auf alle Funktionen
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Premium Support
+                        </li>
+                        <li>
+                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Early Access zu neuen Features
+                        </li>
+                    </ul>
+                <form id="yearly-form" class="stripe-form">
+                    <input type="hidden" name="priceId" value="{{ price_ids['yearly'] }}">
+                    <button type="submit" class="btn btn-primary">Jahresabo sichern</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="features-container">
+            <h2>Was unsere Nutzer sagen</h2>
+            <p class="features-subtitle">
+                Schließe dich erfolgreichen Schülern an, die ihre Gymi-Prüfung mit Gymiboost.ch gemeistert haben
+            </p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <blockquote>
+                        "Gymiboost hat mir geholfen, meine Mathe-Angst zu überwinden. Die KI erklärt alles so geduldig und verständlich!"
+                    </blockquote>
+                    <div class="testimonial-author">Sarah, 14</div>
+                    <div class="testimonial-details">Bestanden 2023</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <blockquote>
+                        "Endlich eine günstige Alternative zu teurer Nachhilfe! Die Übungsaufgaben waren genauso schwer wie die echte Prüfung."
+                    </blockquote>
+                    <div class="testimonial-author">Jan, 15</div>
+                    <div class="testimonial-details">Bestanden 2024</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <svg class="star" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                    </div>
+                    <blockquote>
+                        "Besonders gut fand ich die Erklärungen zu den Aufsatzthemen. Damit habe ich in Deutsch viel besser abgeschnitten!"
+                    </blockquote>
+                    <div class="testimonial-author">Lena, 13</div>
+                    <div class="testimonial-details">Bestanden 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <div class="cta-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+            </div>
+            
+            <h2>Bist du bereit, deine Gymivorbereitung auf das nächste Level zu heben?</h2>
+            
+            <p>Schließe dich der Gymiboost.ch-Community an und starte noch heute deinen Weg zum Erfolg! Entwickelt von Gymi-Schülern speziell für die Schweizer ZAP.</p>
+            
+            <div class="cta-buttons">
+                {% if current_user %}
+                    <a href="{{ url_for('chat') }}" class="btn btn-purple">
+                        Zum Chat gehen
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-purple">
+                        Jetzt kostenlos testen
+                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                {% endif %}
+                <a href="#features" class="btn btn-outline">Mehr erfahren</a>
+            </div>
+            
+            <div class="cta-features">
+                <p>Unbegrenzte Nutzung • 24/7 Support • Jederzeit kündbar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    
+
+    <script>
+        // Handle Stripe checkout form submissions
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.stripe-form').forEach(form => {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    if (submitBtn) submitBtn.disabled = true;
+                    
+                    // Check if user is logged in (current_user is available in template)
+                    const isLoggedIn = "{{ 'true' if current_user else 'false' }}" === "true";
+                    
+                    if (!isLoggedIn) {
+                        window.location.href = "{{ url_for('register') }}";
+                        return;
+                    }
+                    
+                    const formData = new FormData(form);
+                    const priceId = formData.get('priceId');
+                    
+                    try {
+                        const response = await fetch("/payment/create-checkout-session", {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: new URLSearchParams(formData)
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (data.error) {
+                            alert(data.error);
+                            if (data.redirect) {
+                                window.location.href = data.redirect;
+                            }
+                        } else if (data.checkoutUrl) {
+                            window.location.href = data.checkoutUrl;
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    } finally {
+                        if (submitBtn) submitBtn.disabled = false;
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple animation on scroll (optional)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.feature-card, .detailed-feature-card, .pricing-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+{% endblock %}

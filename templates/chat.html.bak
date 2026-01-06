@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    .math-display {
+        margin: 1em 0;
+        padding: 1em;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+    .math-inline {
+        background-color: #f8f9fa;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+    }
+    .message-content {
+        line-height: 1.6;
+    }
+    .message-content pre {
+        background-color: #f5f5f5;
+        padding: 1em;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+    .message-content code {
+        background-color: #f5f5f5;
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-family: monospace;
+    }
+    .message-content blockquote {
+        border-left: 3px solid #ddd;
+        padding-left: 1em;
+        margin-left: 0;
+        color: #666;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="chat-container">
+    <!-- Mobile sidebar toggle button -->
+    <button class="mobile-sidebar-toggle" id="sidebarToggle">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+    </button>
+
+    <aside class="chat-sidebar" id="chatSidebar">
+        <div class="sidebar-header">
+            <h3>Chat-Verlauf</h3>
+        </div>
+        
+        <ul class="session-list">
+            {% for s in sessions %}
+                <li class="session-item">
+                    <a href="#" class="session-link" data-session-id="{{ s.id }}">{{ s.name }}</a>
+                    <form action="{{ url_for('delete_session', session_id=s.id) }}" method="POST">
+                        <button type="submit" class="delete-button">&times;</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        <form id="new-chat-form" class="new-chat-form">
+            <input type="text" id="session-name-input" name="session_name" placeholder="Neuer Chat-Name" required>
+            <button type="submit" class="create-button">
+                <span class="plus-icon">+</span>
+                Neuen Chat erstellen
+            </button>
+        </form>
+    </aside>
+
+    <div class="chat-main">
+        <div id="chat-window" class="message-container"></div>
+        <div id="thinking-loader" class="thinking-loader">
+            <div class="dots-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        <form id="chat-form" class="message-form-wrapper">
+            <div class="message-form">
+                <input type="text" id="message-input" placeholder="Schreibe eine Nachricht..." autocomplete="off">
+                <label for="file-upload" class="upload-button" title="Dokument hochladen">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 4v12m0-12l-4 4m4-4l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </label>
+                <input type="file" id="file-upload" accept=".pdf,.png,.jpg,.jpeg,.tiff,.bmp" hidden>
+                <button type="submit" class="send-button" id="submit-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const currentSessionId = {{ session_id if session_id else (sessions[0].id if sessions|length > 0 else 0) }};
+    
+    function renderMessageWithMarkdownAndMathJax(message) {
+        try {
+            // First render markdown
+            const renderedMarkdown = marked.parse(message);
+            // Queue MathJax to typeset the content
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+            return renderedMarkdown;
+        } catch (e) {
+            console.error('Error rendering message:', e);
+            return message;
+        }
+    }
+</script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% endblock %}

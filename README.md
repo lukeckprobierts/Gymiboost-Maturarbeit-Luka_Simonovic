@@ -2,7 +2,7 @@
 
 **An AI tutoring platform for the Zurich Gymiprüfung, built as my Maturarbeit (graded 5.5 / 6).**
 
-📄 **Paper (German):** [Luka_Simonovic_Maturitaetsarbeit_RAG.pdf](Luka_Simonovic_Maturitaetsarbeit_RAG.pdf)
+📄 **Paper (German):** [Full paper (PDF)](marbeit.pdf)
 
 ## In English
 
